@@ -1,0 +1,90 @@
+    /* ===== Cores compartilhadas do projeto ===== */
+:root {
+    --cor-fundo: #f2f5fc;
+    --cor-superficie: #ffffff;
+    --cor-texto: #123b64;
+    --cor-texto-secundario: #526477;
+    --cor-primaria: #0074d9;
+    --cor-borda: #ccd6e0;
+}
+
+    /* ===== Cálculo de tamanho dos elementos ===== */
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+}
+
+    /* ===== Aparência geral da página ===== */
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background-color: var(--cor-fundo);
+    color: var(--cor-texto);
+}
+
+    /* ===== Fonte dos controles de formulário ===== */
+input,
+button,
+select,
+textarea {
+    font-family: inherit;
+}
+    /* ===== Cabeçalho ===== */
+.cabecalho {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 16px;
+    padding: 16px 24px;
+    background-color: #ffffff;
+    border-bottom: 1px solid #ccd6e0;
+}
+
+    /* Logo principal à esquerda */
+.logo {
+    display: block;
+    width: 180px;
+    max-width: 100%;
+    height: auto;
+}
+
+    /* Grupo do coração e dos textos à direita */
+.identificacao-clinica {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+}
+
+    /* Coração vazado */
+.identificacao-clinica .icone-clinica {
+    display: block;
+    width: 48px;
+    height: 48px;
+    object-fit: contain;
+    flex-shrink: 0;
+}
+
+    /* Textos ao lado do coração */
+.textos-clinica {
+    text-align: left;
+}
+
+    /* Nome da clínica */
+.nome-clinica {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    font-size: 16px;
+    font-weight: bold;
+    color: #123b64;
+}
+
+    /* Descrição abaixo do nome */
+.descricao-clinica {
+    margin: 4px 0 0;
+    font-family: Arial, sans-serif;
+    font-size: 11px;
+    font-weight: normal;
+    color: #526477;
+}
