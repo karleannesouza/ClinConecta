@@ -23,50 +23,22 @@
     </header>
 
     <main class="pagina-agendamento">
-        <nav class="progresso" aria-label="Etapas do agendamento">
-            <span class="etapa etapa-atual"><b>1</b> Especialidade</span>
-            <span class="linha-progresso" aria-hidden="true"></span>
-            <span class="etapa"><b>2</b> Profissional</span>
-            <span class="linha-progresso" aria-hidden="true"></span>
-            <span class="etapa"><b>3</b> Data e horário</span>
-        </nav>
-
         <section class="painel-agendamento" aria-labelledby="titulo-pagina">
             <p class="rotulo-etapa">Agendar consulta</p>
             <h1 id="titulo-pagina">Qual especialidade você precisa?</h1>
             <p class="descricao-pagina">Selecione uma especialidade para ver os profissionais disponíveis.</p>
 
             <form id="form-especialidade">
-                <fieldset class="opcoes-especialidade">
-                    <legend class="sr-only">Especialidades disponíveis</legend>
-
-                    <label class="opcao-especialidade">
-                        <input type="radio" name="especialidade" value="clinico-geral">
-                        <span class="conteudo-opcao">
-                            <strong>Clínico geral</strong>
-                            <small>Atendimento para cuidados gerais de saúde.</small>
-                        </span>
-                        <span class="marcador-opcao" aria-hidden="true"></span>
-                    </label>
-
-                    <label class="opcao-especialidade">
-                        <input type="radio" name="especialidade" value="cardiologia">
-                        <span class="conteudo-opcao">
-                            <strong>Cardiologia</strong>
-                            <small>Avaliação e acompanhamento do coração.</small>
-                        </span>
-                        <span class="marcador-opcao" aria-hidden="true"></span>
-                    </label>
-
-                    <label class="opcao-especialidade">
-                        <input type="radio" name="especialidade" value="pediatria">
-                        <span class="conteudo-opcao">
-                            <strong>Pediatria</strong>
-                            <small>Cuidados de saúde para crianças e adolescentes.</small>
-                        </span>
-                        <span class="marcador-opcao" aria-hidden="true"></span>
-                    </label>
-                </fieldset>
+                <label class="campo-formulario" for="especialidade">
+                    <span class="rotulo-campo">Especialidade <span class="obrigatorio">*</span></span>
+                    <span class="combobox" data-combobox>
+                        <input id="especialidade-busca" class="combobox-input" type="text" placeholder="Selecione uma especialidade" autocomplete="off" role="combobox" aria-expanded="false" aria-controls="lista-especialidades">
+                        <input id="especialidade" name="especialidade" type="hidden">
+                        <button class="combobox-limpar" type="button" aria-label="Limpar especialidade" hidden>×</button>
+                        <button class="combobox-seta" type="button" aria-label="Abrir especialidades" aria-controls="lista-especialidades" aria-expanded="false">⌄</button>
+                        <span class="combobox-lista" id="lista-especialidades" role="listbox" hidden></span>
+                    </span>
+                </label>
 
                 <p class="mensagem-formulario" id="mensagem-formulario" role="alert" hidden>
                     Selecione uma especialidade para continuar.
