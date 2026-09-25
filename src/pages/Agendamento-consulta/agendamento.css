@@ -78,6 +78,30 @@ h1 {
     line-height: 1.3;
 }
 
+.campo-data-input {
+    width: 100%;
+    min-height: 46px;
+    padding: 0 14px;
+    border: 1px solid #ccd6e0;
+    border-radius: 8px;
+    background: #ffffff;
+    color: var(--texto);
+    cursor: pointer;
+    font-size: 15px;
+}
+
+.campo-data-input:focus {
+    border-color: var(--primaria);
+    outline: 2px solid rgba(8, 120, 209, 0.18);
+    outline-offset: 1px;
+}
+
+.campo-data-input:disabled {
+    background: #f1f4f8;
+    color: #91a0af;
+    cursor: not-allowed;
+}
+
 .obrigatorio {
     color: #d93737;
 }
@@ -173,6 +197,147 @@ h1 {
     box-shadow: 0 10px 22px rgba(24, 64, 105, 0.16);
 }
 
+.calendario[hidden] {
+    display: none;
+}
+
+.calendario {
+    position: absolute;
+    z-index: 3;
+    top: calc(100% + 6px);
+    right: 0;
+    left: 0;
+    padding: 16px;
+    border: 1px solid var(--borda);
+    border-radius: 12px;
+    background: #ffffff;
+    box-shadow: 0 12px 28px rgba(24, 64, 105, 0.18);
+}
+
+.calendario-cabecalho,
+.calendario-acoes {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 10px;
+}
+
+.calendario-cabecalho {
+    position: relative;
+    justify-content: center;
+}
+
+.calendario-fechar {
+    position: absolute;
+    top: -4px;
+    right: -4px;
+    display: grid;
+    width: 26px;
+    height: 26px;
+    place-items: center;
+    border: 0;
+    border-radius: 50%;
+    background: #e4e9ef;
+    color: #6d7d8d;
+    cursor: pointer;
+    font-size: 18px;
+    line-height: 1;
+}
+
+.calendario-mes {
+    color: var(--texto);
+    font-size: 14px;
+}
+
+.calendario-navegacao,
+.calendario-botao {
+    border: 1px solid var(--borda);
+    background: #ffffff;
+    color: var(--texto);
+    cursor: pointer;
+}
+
+.calendario-navegacao {
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    font-size: 22px;
+    line-height: 1;
+}
+
+.calendario-semana,
+.calendario-dias {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    gap: 5px;
+    text-align: center;
+}
+
+.calendario-semana {
+    margin: 18px 0 8px;
+    color: var(--texto-secundario);
+    font-size: 10px;
+    font-weight: 700;
+}
+
+.calendario-dia,
+.calendario-dia-vazio {
+    display: grid;
+    min-height: 32px;
+    place-items: center;
+}
+
+.calendario-dia {
+    border: 0;
+    border-radius: 50%;
+    background: transparent;
+    color: var(--texto);
+    cursor: pointer;
+    font-size: 12px;
+}
+
+.calendario-dia:hover,
+.calendario-dia:focus-visible {
+    background: #e8f2fc;
+    outline: 0;
+}
+
+.calendario-dia.dia-indisponivel {
+    color: #b8c2cc;
+    cursor: not-allowed;
+    text-decoration: line-through;
+}
+
+.calendario-dia.dia-indisponivel:hover {
+    background: transparent;
+}
+
+.calendario-dia.dia-selecionado {
+    background: var(--primaria);
+    color: #ffffff;
+    font-weight: 700;
+}
+
+.calendario-acoes {
+    margin-top: 16px;
+    justify-content: flex-end;
+}
+
+.calendario-botao {
+    min-width: 88px;
+    min-height: 34px;
+    padding: 0 14px;
+    border-radius: 18px;
+    font-size: 12px;
+    font-weight: 700;
+}
+
+.calendario-botao:disabled {
+    background: #f1f4f8;
+    color: #91a0af;
+    cursor: not-allowed;
+}
+
 .opcao-combobox {
     display: grid;
     gap: 3px;
@@ -189,6 +354,20 @@ h1 {
 .opcao-combobox:focus-visible {
     background: #e8f2fc;
     outline: 0;
+}
+
+.opcao-combobox.horario-indisponivel {
+    background: #f1f4f8;
+    color: #9aa7b4;
+    cursor: not-allowed;
+}
+
+.opcao-combobox.horario-indisponivel span {
+    color: #9aa7b4;
+}
+
+.opcao-combobox.horario-indisponivel:hover {
+    background: #f1f4f8;
 }
 
 .opcao-combobox strong {

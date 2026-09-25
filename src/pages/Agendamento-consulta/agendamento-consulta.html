@@ -51,6 +51,41 @@
                     </span>
                 </label>
 
+                <label class="campo-formulario campo-data" for="data-consulta">
+                    <span class="rotulo-campo">Data <span class="obrigatorio">*</span></span>
+                    <span class="combobox combobox-desabilitado" data-combobox-data>
+                        <input id="data-consulta-busca" class="combobox-input" type="text" placeholder="Selecione um profissional primeiro" autocomplete="off" role="combobox" aria-expanded="false" aria-controls="calendario-consulta" readonly disabled>
+                        <input id="data-consulta" name="data" type="hidden" required>
+                        <button class="combobox-seta" type="button" aria-label="Abrir calendário" aria-controls="calendario-consulta" aria-expanded="false" disabled>⌄</button>
+                        <div class="calendario" id="calendario-consulta" role="dialog" aria-label="Selecione uma data" hidden>
+                            <div class="calendario-cabecalho">
+                                <button class="calendario-fechar" type="button" data-calendario-fechar aria-label="Fechar calendário">×</button>
+                                <button class="calendario-navegacao" type="button" data-mes-anterior aria-label="Mês anterior">‹</button>
+                                <strong class="calendario-mes" data-calendario-mes></strong>
+                                <button class="calendario-navegacao" type="button" data-mes-proximo aria-label="Próximo mês">›</button>
+                            </div>
+                            <div class="calendario-semana" aria-hidden="true">
+                                <span>DOM</span><span>SEG</span><span>TER</span><span>QUA</span><span>QUI</span><span>SEX</span><span>SÁB</span>
+                            </div>
+                            <div class="calendario-dias" data-calendario-dias></div>
+                            <div class="calendario-acoes">
+                                <button class="calendario-botao" type="button" data-calendario-confirmar disabled>Confirmar</button>
+                            </div>
+                        </div>
+                    </span>
+                </label>
+
+                <label class="campo-formulario" for="horario-busca">
+                    <span class="rotulo-campo">Horário disponível <span class="obrigatorio">*</span></span>
+                    <span class="combobox combobox-desabilitado" data-combobox-horario>
+                        <input id="horario-busca" class="combobox-input" type="text" placeholder="Selecione uma data primeiro" autocomplete="off" role="combobox" aria-expanded="false" aria-controls="lista-horarios" readonly disabled>
+                        <input id="horario" name="horario" type="hidden">
+                        <button class="combobox-limpar" type="button" aria-label="Limpar horário" hidden>×</button>
+                        <button class="combobox-seta" type="button" aria-label="Abrir horários" aria-controls="lista-horarios" aria-expanded="false" disabled>⌄</button>
+                        <span class="combobox-lista" id="lista-horarios" role="listbox" hidden></span>
+                    </span>
+                </label>
+
                 <p class="mensagem-formulario" id="mensagem-formulario" role="alert" hidden>
                     Selecione uma especialidade para continuar.
                 </p>
@@ -59,6 +94,7 @@
                     <a class="botao botao-secundario" href="../../src/index.html">Voltar</a>
                     <button class="button-cadastrar" type="submit" disabled>Continuar</button>
                 </div>
+
             </form>
         </section>
     </main>
