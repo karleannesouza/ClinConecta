@@ -69,12 +69,6 @@
     margin: 0 0 16px;
 }
 
-    /* Define a fonte, a cor de fundo e a cor do texto da página */
-body {    font-family: Arial, sans-serif;
-    background-color: #f2f5fc;
-    color: #123b64;
-    margin: 0;
-    }
     /* Estiliza e centraliza a área branca que contém o formulário */
 main {
     background-color: white;
@@ -84,25 +78,16 @@ main {
     border-radius: 8px;
 }
     /* Define a largura e os espaçamentos dos campos */
+/* Aparência compartilhada pelos campos do cadastro */
 input {
-    width: 100%;
-    padding: 5px;
-    box-sizing: border-box;
-    margin-bottom: 14px;
-    border: 1px solid #ccd6e0;
-    border-radius: 4px;
-    font-size: 16px;
-}
-    /* Deixa todo o texto preenchido na cor que quero*/
-input {
-    width: 100%;
-    padding: 10px;
-    box-sizing: border-box;
-    margin-bottom: 16px;
-    border: 1px solid #ccd6e0;
-    border-radius: 2px;
-    font-size: 16px;
-    color: #123b64;
+    width: 100%; /* Ocupa a largura disponível */
+    padding: 5px; /* Espaço interno */
+    box-sizing: border-box; /* Inclui bordas e padding na largura */
+    margin-bottom: 14px; /* Espaço abaixo do campo */
+    border: 1px solid #ccd6e0; /* Borda cinza azulada */
+    border-radius: 8px; /* Cantos arredondados */
+    font-size: 16px; /* Tamanho do texto */
+    color: #123b64; /* Cor do texto digitado */
 }
     /* Define a aparência do botão Cadastrar */
 .button-cadastrar {
@@ -202,54 +187,4 @@ input:focus {
     outline: 2px solid #0074d9;
     outline-offset: 2px;
 }
- /*==========CABEÇALHO DA PÁGINA ==========*/
-.cabecalho {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    gap: 16px;
-    flex-wrap: wrap;
-    padding: 16px 24px;
-    background-color: white;
-    border-bottom: 1px solid #ccd6e0;
-}
-
-.marca {
-    margin: 0;
-    font-size: 24px;
-    font-weight: bold;
-    color: #123b64;
-}
-
-.marca-destaque {
-    color: #009b8d;
-}
-
-.identificacao-clinica {
-    text-align: left;
-}
-
-.nome-clinica {
-    margin: 0;
-    font-size: 14px;
-    font-weight: bold;
-}
-
-.descricao-clinica {
-    margin: 4px 0 0;
-    font-size: 11px;
-}
-.logo {
-    display: block;
-    width: 180px;
-    max-width: 100%;
-    height: auto;
-}
-
-.identificacao-clinica .icone-clinica {
-    width: 48px;
-    height: 48px;
-    object-fit: contain;
-    flex-shrink: 0;
-    display: block;
-}
+ 
