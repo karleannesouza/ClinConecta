@@ -1,0 +1,45 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <link rel="stylesheet" href="confirmacao.css">
+
+  <title>Confirmação do agendamento | ClicConecta</title>
+  
+</head>
+<body>
+  <header class="header">
+    <a class="brand" href="index.html" aria-label="ClicConecta, página inicial">
+      <span class="brand-mark" aria-hidden="true">♡</span>Clic<span>Conecta</span>
+    </a>
+  </header>
+
+  <main>
+    <section class="card" aria-labelledby="titulo">
+      <div class="success">
+        <div class="check" aria-hidden="true">✓</div>
+        <h1 id="titulo">Agendamento confirmado!</h1>
+        <p class="subtitle">Seu agendamento foi realizado com sucesso.</p>
+      </div>
+
+      <dl class="details">
+        <div class="row"><dt>Tipo</dt><dd id="tipo"></dd></div>
+        <div class="row"><dt>Especialidade / Exame</dt><dd id="especialidade"></dd></div>
+        <div class="row"><dt>Profissional</dt><dd id="profissional"></dd></div>
+        <div class="row"><dt>Data</dt><dd id="data"></dd></div>
+        <div class="row"><dt>Horário</dt><dd id="horario"></dd></div>
+      </dl>
+
+      <a class="button" href="meus-agendamentos.html">Meus agendamentos</a>
+    </section>
+
+    <p id="demo" class="demo" hidden>
+      Prévia com dados de exemplo. A integração com o formulário será feita quando tivermos os arquivos do projeto.
+    </p>
+  </main>
+
+<script src="confirmacao.js"></script>
+</body>
+</html>
