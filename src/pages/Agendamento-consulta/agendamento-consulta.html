@@ -32,11 +32,22 @@
                 <label class="campo-formulario" for="especialidade">
                     <span class="rotulo-campo">Especialidade <span class="obrigatorio">*</span></span>
                     <span class="combobox" data-combobox>
-                        <input id="especialidade-busca" class="combobox-input" type="text" placeholder="Selecione uma especialidade" autocomplete="off" role="combobox" aria-expanded="false" aria-controls="lista-especialidades">
+                        <input id="especialidade-busca" class="combobox-input" type="text" placeholder="Selecione uma especialidade" autocomplete="off" role="combobox" aria-expanded="false" aria-controls="lista-especialidades" readonly>
                         <input id="especialidade" name="especialidade" type="hidden">
                         <button class="combobox-limpar" type="button" aria-label="Limpar especialidade" hidden>×</button>
                         <button class="combobox-seta" type="button" aria-label="Abrir especialidades" aria-controls="lista-especialidades" aria-expanded="false">⌄</button>
                         <span class="combobox-lista" id="lista-especialidades" role="listbox" hidden></span>
+                    </span>
+                </label>
+
+                <label class="campo-formulario" for="profissional">
+                    <span class="rotulo-campo">Profissional <span class="obrigatorio">*</span></span>
+                    <span class="combobox combobox-desabilitado" data-combobox-profissional>
+                        <input id="profissional-busca" class="combobox-input" type="text" placeholder="Selecione uma especialidade primeiro" autocomplete="off" role="combobox" aria-expanded="false" aria-controls="lista-profissionais" readonly disabled>
+                        <input id="profissional" name="profissional" type="hidden">
+                        <button class="combobox-limpar" type="button" aria-label="Limpar profissional" hidden>×</button>
+                        <button class="combobox-seta" type="button" aria-label="Abrir profissionais" aria-controls="lista-profissionais" aria-expanded="false" disabled>⌄</button>
+                        <span class="combobox-lista" id="lista-profissionais" role="listbox" hidden></span>
                     </span>
                 </label>
 
