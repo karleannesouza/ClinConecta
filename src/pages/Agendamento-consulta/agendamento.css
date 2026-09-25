@@ -370,6 +370,20 @@ h1 {
     background: #f1f4f8;
 }
 
+.opcao-combobox.horario-ocupado {
+    background: #fff4f2;
+    color: #b65d50;
+    cursor: not-allowed;
+}
+
+.opcao-combobox.horario-ocupado span {
+    color: #b65d50;
+}
+
+.opcao-combobox.horario-ocupado:hover {
+    background: #fff4f2;
+}
+
 .opcao-combobox strong {
     font-size: 14px;
 }

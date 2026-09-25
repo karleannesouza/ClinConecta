@@ -43,6 +43,7 @@ const profissionais = [
 ];
 
 const horariosDisponiveis = ['08:00', '09:30', '11:00', '14:00', '15:30', '17:00'];
+const horariosOcupados = ['14:00', '15:30'];
 let mesCalendario = new Date();
 let dataTemporaria = '';
 
@@ -182,9 +183,14 @@ function renderizarHorarios() {
     listaHorarios.innerHTML = horariosDisponiveis.map((horario) => {
         const [hora, minuto] = horario.split(':').map(Number);
         const horarioPassado = dataConsulta.value === dataHoje && hora * 60 + minuto < minutosAtuais;
-        const estado = horarioPassado ? ' horario-indisponivel' : '';
-        const bloqueado = horarioPassado ? ' disabled' : '';
-        const descricao = horarioPassado ? 'Horário indisponível' : 'Horário disponível';
+        const horarioOcupado = horariosOcupados.includes(horario);
+        const estado = horarioPassado
+            ? ' horario-indisponivel'
+            : horarioOcupado ? ' horario-ocupado' : '';
+        const bloqueado = horarioPassado || horarioOcupado ? ' disabled' : '';
+        const descricao = horarioPassado
+            ? 'Horário indisponível'
+            : horarioOcupado ? 'Horário ocupado' : 'Horário disponível';
 
         return `
         <button class="opcao-combobox${estado}" type="button" role="option" data-horario="${horario}"${bloqueado}>
