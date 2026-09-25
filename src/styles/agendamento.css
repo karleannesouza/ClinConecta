@@ -1,0 +1,312 @@
+:root {
+    --fundo: #eef3fc;
+    --superficie: #ffffff;
+    --texto: #123b64;
+    --texto-secundario: #526477;
+    --primaria: #0878d1;
+    --primaria-escura: #075fa8;
+    --borda: #d6e0ec;
+    --suave: #f5f8fd;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    min-width: 320px;
+    background: var(--fundo);
+    color: var(--texto);
+    font-family: Arial, sans-serif;
+}
+
+button,
+input {
+    font: inherit;
+}
+
+.cabecalho-agendamento {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 24px;
+    min-height: 78px;
+    padding: 14px clamp(20px, 5vw, 72px);
+    background: var(--superficie);
+    border-bottom: 1px solid var(--borda);
+}
+
+.marca img {
+    display: block;
+    width: min(180px, 42vw);
+    height: auto;
+}
+
+.identificacao-clinica {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    color: var(--texto);
+}
+
+.identificacao-clinica img {
+    width: 38px;
+    height: 38px;
+    object-fit: contain;
+}
+
+.identificacao-clinica div {
+    display: grid;
+    gap: 2px;
+}
+
+.identificacao-clinica strong {
+    font-size: 12px;
+}
+
+.identificacao-clinica span {
+    color: var(--texto-secundario);
+    font-size: 10px;
+}
+
+.pagina-agendamento {
+    width: min(900px, calc(100% - 32px));
+    margin: 0 auto;
+    padding: 34px 0 64px;
+}
+
+.progresso {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    margin-bottom: 24px;
+    color: #8293a7;
+    font-size: 12px;
+}
+
+.etapa {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    white-space: nowrap;
+}
+
+.etapa b {
+    display: grid;
+    width: 24px;
+    height: 24px;
+    place-items: center;
+    border: 1px solid #b8c6d6;
+    border-radius: 50%;
+    font-size: 11px;
+    font-weight: 700;
+}
+
+.etapa-atual {
+    color: var(--primaria-escura);
+    font-weight: 700;
+}
+
+.etapa-atual b {
+    border-color: var(--primaria);
+    background: var(--primaria);
+    color: #ffffff;
+}
+
+.linha-progresso {
+    width: clamp(24px, 8vw, 72px);
+    height: 1px;
+    background: #cbd6e3;
+}
+
+.painel-agendamento {
+    padding: clamp(24px, 5vw, 48px);
+    background: var(--superficie);
+    border: 1px solid var(--borda);
+    border-radius: 8px;
+    box-shadow: 0 12px 28px rgba(24, 64, 105, 0.08);
+}
+
+.rotulo-etapa {
+    margin: 0 0 8px;
+    color: var(--primaria);
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+}
+
+h1 {
+    margin: 0;
+    font-size: clamp(24px, 4vw, 32px);
+    line-height: 1.2;
+}
+
+.descricao-pagina {
+    margin: 10px 0 28px;
+    color: var(--texto-secundario);
+    font-size: 15px;
+    line-height: 1.5;
+}
+
+.opcoes-especialidade {
+    display: grid;
+    gap: 12px;
+    margin: 0;
+    padding: 0;
+    border: 0;
+}
+
+.opcao-especialidade {
+    display: grid;
+    grid-template-columns: 1fr auto;
+    gap: 16px;
+    align-items: center;
+    padding: 18px 20px;
+    background: var(--suave);
+    border: 1px solid var(--borda);
+    border-radius: 6px;
+    cursor: pointer;
+    transition: border-color 160ms ease, background-color 160ms ease, box-shadow 160ms ease;
+}
+
+.opcao-especialidade:hover,
+.opcao-especialidade:focus-within {
+    border-color: #8dbce2;
+}
+
+.opcao-especialidade:has(input:checked) {
+    background: #f0f8ff;
+    border-color: var(--primaria);
+    box-shadow: 0 0 0 2px rgba(8, 120, 209, 0.1);
+}
+
+.opcao-especialidade input {
+    position: absolute;
+    opacity: 0;
+    pointer-events: none;
+}
+
+.conteudo-opcao {
+    display: grid;
+    gap: 6px;
+}
+
+.conteudo-opcao strong {
+    font-size: 16px;
+}
+
+.conteudo-opcao small {
+    color: var(--texto-secundario);
+    font-size: 13px;
+    line-height: 1.4;
+}
+
+.marcador-opcao {
+    width: 20px;
+    height: 20px;
+    border: 2px solid #9caec1;
+    border-radius: 50%;
+}
+
+.opcao-especialidade:has(input:checked) .marcador-opcao {
+    border: 5px solid var(--primaria);
+}
+
+.mensagem-formulario {
+    margin: 16px 0 0;
+    padding: 12px 14px;
+    background: #fff3f3;
+    border-left: 3px solid #d93737;
+    color: #a72b2b;
+    font-size: 13px;
+}
+
+.acoes-formulario {
+    display: flex;
+    justify-content: space-between;
+    gap: 12px;
+    margin-top: 32px;
+}
+
+.botao {
+    display: inline-flex;
+    min-height: 44px;
+    align-items: center;
+    justify-content: center;
+    padding: 0 24px;
+    border-radius: 4px;
+    font-size: 14px;
+    font-weight: 700;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.botao-principal {
+    border: 1px solid var(--primaria);
+    background: var(--primaria);
+    color: #ffffff;
+}
+
+.botao-principal:hover:not(:disabled) {
+    background: var(--primaria-escura);
+}
+
+.botao-principal:disabled {
+    border-color: #b6c7d8;
+    background: #b6c7d8;
+    cursor: not-allowed;
+}
+
+.botao-secundario {
+    border: 1px solid var(--borda);
+    background: #ffffff;
+    color: var(--texto);
+}
+
+.botao-secundario:hover {
+    background: var(--suave);
+}
+
+.sr-only {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border: 0;
+}
+
+@media (max-width: 560px) {
+    .cabecalho-agendamento {
+        align-items: flex-start;
+        flex-direction: column;
+    }
+
+    .identificacao-clinica {
+        align-self: flex-end;
+    }
+
+    .progresso {
+        justify-content: flex-start;
+        overflow-x: auto;
+        padding-bottom: 4px;
+    }
+
+    .painel-agendamento {
+        padding: 24px 18px;
+    }
+
+    .acoes-formulario {
+        flex-direction: column-reverse;
+    }
+
+    .botao {
+        width: 100%;
+    }
+}

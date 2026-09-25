@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Agendar consulta | ClinConecta</title>
+    <link rel="stylesheet" href="../styles/global.css">
+    <link rel="stylesheet" href="../styles/agendamento.css">
+</head>
+<body>
+    <header class="cabecalho-agendamento">
+        <a class="marca" href="../../src/index.html" aria-label="Voltar para a página inicial">
+            <img src="../../public/images/logoprincipal.png" alt="ClinConecta">
+        </a>
+
+        <div class="identificacao-clinica">
+            <img src="../../public/images/coracaovazado.png" alt="" aria-hidden="true">
+            <div>
+                <strong>Clínica Popular</strong>
+                <span>Atendimento acessível e de qualidade</span>
+            </div>
+        </div>
+    </header>
+
+    <main class="pagina-agendamento">
+        <nav class="progresso" aria-label="Etapas do agendamento">
+            <span class="etapa etapa-atual"><b>1</b> Especialidade</span>
+            <span class="linha-progresso" aria-hidden="true"></span>
+            <span class="etapa"><b>2</b> Profissional</span>
+            <span class="linha-progresso" aria-hidden="true"></span>
+            <span class="etapa"><b>3</b> Data e horário</span>
+        </nav>
+
+        <section class="painel-agendamento" aria-labelledby="titulo-pagina">
+            <p class="rotulo-etapa">Agendar consulta</p>
+            <h1 id="titulo-pagina">Qual especialidade você precisa?</h1>
+            <p class="descricao-pagina">Selecione uma especialidade para ver os profissionais disponíveis.</p>
+
+            <form id="form-especialidade">
+                <fieldset class="opcoes-especialidade">
+                    <legend class="sr-only">Especialidades disponíveis</legend>
+
+                    <label class="opcao-especialidade">
+                        <input type="radio" name="especialidade" value="clinico-geral">
+                        <span class="conteudo-opcao">
+                            <strong>Clínico geral</strong>
+                            <small>Atendimento para cuidados gerais de saúde.</small>
+                        </span>
+                        <span class="marcador-opcao" aria-hidden="true"></span>
+                    </label>
+
+                    <label class="opcao-especialidade">
+                        <input type="radio" name="especialidade" value="cardiologia">
+                        <span class="conteudo-opcao">
+                            <strong>Cardiologia</strong>
+                            <small>Avaliação e acompanhamento do coração.</small>
+                        </span>
+                        <span class="marcador-opcao" aria-hidden="true"></span>
+                    </label>
+
+                    <label class="opcao-especialidade">
+                        <input type="radio" name="especialidade" value="pediatria">
+                        <span class="conteudo-opcao">
+                            <strong>Pediatria</strong>
+                            <small>Cuidados de saúde para crianças e adolescentes.</small>
+                        </span>
+                        <span class="marcador-opcao" aria-hidden="true"></span>
+                    </label>
+                </fieldset>
+
+                <p class="mensagem-formulario" id="mensagem-formulario" role="alert" hidden>
+                    Selecione uma especialidade para continuar.
+                </p>
+
+                <div class="acoes-formulario">
+                    <a class="botao botao-secundario" href="../../src/index.html">Voltar</a>
+                    <button class="botao botao-principal" type="submit" disabled>Continuar</button>
+                </div>
+            </form>
+        </section>
+    </main>
+
+    <script src="./agendamento-consulta.js"></script>
+</body>
+</html>
