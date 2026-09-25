@@ -63,6 +63,47 @@ const mes = String(hoje.getMonth() + 1).padStart(2, "0");
 const dia = String(hoje.getDate()).padStart(2, "0");
 
 campoNascimento.max = `${ano}-${mes}-${dia}`;
+ // TELEFONE - Encontra o campo TELEFONE no html
+const campoTelefone = document.getElementById("telefone");
+    // Limita os números de telefone e aplica a formatação com DDD
+campoTelefone.addEventListener("input", function () {
+    const numeros = campoTelefone.value.replace(/[^0-9]/g, "").slice(0, 11);
+
+    const ddd = numeros.slice(0, 2);
+    const numero = numeros.slice(2);
+
+    let telefoneFormatado = "";
+
+    if (numeros.length > 0) {
+        telefoneFormatado = `(${ddd}`;
+    }
+
+    if (numeros.length >= 2) {
+        telefoneFormatado += ") ";
+    }
+
+    if (numero.length > 0) {
+        const posicaoHifen = numero.length <= 8 ? 4 : 5;
+
+        telefoneFormatado += numero.slice(0, posicaoHifen);
+
+        if (numero.length > posicaoHifen) {
+            telefoneFormatado += `-${numero.slice(posicaoHifen)}`;
+        }
+    }
+
+    campoTelefone.value = telefoneFormatado;
+     // TELEFONE- Verifica se o telefone tem a quantidade esperada de dígitos
+    const telefoneCompleto = numeros.length === 10 || numeros.length === 11;
+
+    if (numeros.length === 0 || telefoneCompleto) {
+        campoTelefone.setCustomValidity("");
+    } else {
+        campoTelefone.setCustomValidity(
+            "Digite o telefone com DDD: 10 ou 11 números."
+        );
+    }
+});
 
     // SENHA- Encontra o campo e os indicadores SENHA no html
 const campoSenha = document.getElementById("senha");
@@ -127,47 +168,6 @@ botoesAlternarSenha.forEach(function (botao) {
     });
 });
 
-    // TELEFONE - Encontra o campo TELEFONE no html
-const campoTelefone = document.getElementById("telefone");
-    // Limita os números de telefone e aplica a formatação com DDD
-campoTelefone.addEventListener("input", function () {
-    const numeros = campoTelefone.value.replace(/[^0-9]/g, "").slice(0, 11);
-
-    const ddd = numeros.slice(0, 2);
-    const numero = numeros.slice(2);
-
-    let telefoneFormatado = "";
-
-    if (numeros.length > 0) {
-        telefoneFormatado = `(${ddd}`;
-    }
-
-    if (numeros.length >= 2) {
-        telefoneFormatado += ") ";
-    }
-
-    if (numero.length > 0) {
-        const posicaoHifen = numero.length <= 8 ? 4 : 5;
-
-        telefoneFormatado += numero.slice(0, posicaoHifen);
-
-        if (numero.length > posicaoHifen) {
-            telefoneFormatado += `-${numero.slice(posicaoHifen)}`;
-        }
-    }
-
-    campoTelefone.value = telefoneFormatado;
-     // TELEFONE- Verifica se o telefone tem a quantidade esperada de dígitos
-    const telefoneCompleto = numeros.length === 10 || numeros.length === 11;
-
-    if (numeros.length === 0 || telefoneCompleto) {
-        campoTelefone.setCustomValidity("");
-    } else {
-        campoTelefone.setCustomValidity(
-            "Digite o telefone com DDD: 10 ou 11 números."
-        );
-    }
-});
     // FORMULARIO — encontra o formulário e o espaço para mensagens
 const formulario = document.getElementById("form-cadastro");
 const mensagemCadastro = document.getElementById("mensagem-cadastro");
@@ -193,7 +193,8 @@ try {
 
     mensagemCadastro.textContent =
         "Cadastro salvo com sucesso neste navegador.";
-} catch (erro) {
+    } catch (erro) {
     mensagemCadastro.textContent =
         "Não foi possível salvar. Os campos foram mantidos para tentar novamente.";
-}});
+    }
+});
