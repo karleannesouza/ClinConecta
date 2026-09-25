@@ -1,0 +1,190 @@
+/*Deixa os asteriscos em vermelho*/
+.obrigatorio {color: red;}
+    /* Estiliza o texto de orientação acima do formulário */
+.instrucao {
+    font-size: 14px;
+    color: #1b4673;
+    margin-bottom: 20px;
+    margin-top: 0;
+}
+    /* Agrupa e posiciona o campo com seu ícone */
+.campo-com-icone {
+    position: relative;
+    margin-bottom: 14px;
+}
+
+    /* Reserva espaço para o ícone dentro do campo */
+.campo-com-icone input {
+    padding-left: 36px;
+    margin-bottom: 0;
+}
+
+    /* Define a aparência e a posição do ícone */
+.icone-campo {
+    position: absolute;
+    left: 10px;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 22px;
+    height: 22px;
+    fill: none;
+    stroke: currentColor;
+    stroke-width: 1.8;
+    color: #1b4673;
+    pointer-events: none;
+}
+    /* SENHA — lista de requisitos abaixo do campo */
+.requisitos-senha {
+    display: grid;
+    gap: 4px;
+    list-style: none;
+    padding: 0;
+    margin: 0 0 16px;
+    font-size: 12px;
+    line-height: 1.4;
+    color: #526477;
+}
+
+    /* SENHA- Marca os requisitos ainda não atendidos */
+.requisitos-senha li::before {
+    content: "×";
+    display: inline-block;
+    width: 18px;
+    color: #c62828;
+}
+
+    /* SENHA- Destaca os requisitos atendidos */
+.requisitos-senha li.atendido {
+    color: #237a41;}
+
+.requisitos-senha li.atendido::before {
+    content: "✓";
+    color: #237a41;
+}
+
+    /* SENHA — orientação sobre o preenchimento */
+.ajuda-campo {
+    font-size: 12px;
+    color: #526477;
+    margin: 0 0 16px;
+}
+
+    /* Estiliza e centraliza a área branca que contém o formulário */
+main {
+    background-color: white;
+    max-width: 400px;
+    margin: 30px auto;
+    padding: 24px;
+    border-radius: 8px;
+}
+    /* Define a largura e os espaçamentos dos campos */
+/* Aparência compartilhada pelos campos do cadastro */
+input {
+    width: 100%; /* Ocupa a largura disponível */
+    padding: 5px; /* Espaço interno */
+    box-sizing: border-box; /* Inclui bordas e padding na largura */
+    margin-bottom: 14px; /* Espaço abaixo do campo */
+    border: 1px solid #ccd6e0; /* Borda cinza azulada */
+    border-radius: 8px; /* Cantos arredondados */
+    font-size: 16px; /* Tamanho do texto */
+    color: #123b64; /* Cor do texto digitado */
+}
+    /* Define a aparência do botão Cadastrar */
+.button-cadastrar {
+    width: 100%;
+    padding: 12px;
+    background-color: #0074d9;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    font-size: 16px;
+    cursor: pointer;
+}
+  /* ===== CAMPOS DO FORMULÁRIO ===== */
+input {
+    width: 100%; /* Ocupa toda a largura disponível */
+    padding: 5px; /* Cria espaço entre o texto e as bordas */
+    box-sizing: border-box; /* Inclui o espaço interno e a borda na largura */
+    margin-bottom: 14px; /* Cria espaço abaixo do campo */
+    border: 1px solid #ccd6e0; /* Define uma borda fina cinza azulada */
+    border-radius: 8px; /* Arredonda os cantos */
+    font-size: 16px; /* Define o tamanho do texto */
+    color: #123b64; /* Define a cor do texto digitado */
+}
+    /* Escurece o botão quando o mouse passa em cima */
+.button-cadastrar:hover {
+    background-color: #005bb5;
+}
+    /* Coloca cada etiqueta acima do campo e define o espaçamento */
+label {
+    display: block;
+    margin-bottom: 3px;
+    font-size: 14px;
+}
+/* Reserva espaço para os botões de mostrar senha */
+#senha,
+#confirmar-senha {
+    padding-right: 44px;
+}
+
+    /* Posiciona o botão do olho à direita do campo */
+.alternar-senha {
+    position: absolute;
+    right: 4px;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 32px;
+    height: 28px;
+    padding: 0;
+    display: grid;
+    place-items: center;
+    background: transparent;
+    border: none;
+    color: #526477;
+    cursor: pointer;
+}
+
+    /* Desenha o ícone do olho para visualizar a senha*/
+.alternar-senha svg {
+    width: 20px;
+    height: 20px;
+    fill: none;
+    stroke: currentColor;
+    stroke-width: 1.8;
+}
+
+    /* Indica que a senha está visível */
+.alternar-senha[aria-pressed="true"] {
+    color: #0074d9;
+}
+
+    /* Destaca o botão ao navegar pelo teclado */
+.alternar-senha:focus-visible {
+    outline: 2px solid #0074d9;
+    outline-offset: 2px;
+}
+    /* Ajusta o título dentro da área de cadastro */
+main h1 {
+    font-size: 22px;
+    margin: 0 0 6px;
+}
+    /* Define a cor dos textos de orientação dentro dos campos */
+input::placeholder {
+    color: #d1d1cf;
+}
+    /*NASCIMENTO- Define a cor do texto no campo de data, já que ele não usa placeholder */
+input[type="date"] {
+    color: #d1d1cf;
+    font-family: inherit;
+}
+    /*NASCIMENTO- Destaca a data quando o preenchimento é válido */
+input[type="date"]:valid {
+    color: #123b64;
+}
+    /* Destaca o campo selecionado para digitação (Passa o mouse dentro do campo e fica com a cor que desejo)*/
+input:focus {
+    border-color: #0074d9;
+    outline: 2px solid #0074d9;
+    outline-offset: 2px;
+}
+ 
