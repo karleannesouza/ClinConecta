@@ -44,6 +44,7 @@ const profissionais = [
 
 const horariosDisponiveis = ['08:00', '09:30', '11:00', '14:00', '15:30', '17:00'];
 const horariosOcupados = ['14:00', '15:30'];
+const chaveAgendamentos = 'clinconecta_agendamentos';
 let mesCalendario = new Date();
 let dataTemporaria = '';
 
@@ -485,10 +486,30 @@ formularioEspecialidade.addEventListener('submit', (evento) => {
     const especialidadeSelecionada = campoEspecialidade.value;
 
     if (!especialidadeSelecionada || !campoProfissional.value || !dataConsulta.value || !horarioSelecionado.value) {
+        if (!especialidadeSelecionada) {
+            mensagemFormulario.textContent = 'Selecione uma especialidade para continuar.';
+        } else if (!campoProfissional.value) {
+            mensagemFormulario.textContent = 'Selecione um profissional para continuar.';
+        } else if (!dataConsulta.value) {
+            mensagemFormulario.textContent = 'Selecione uma data para continuar.';
+        } else {
+            mensagemFormulario.textContent = 'Selecione um horário para continuar.';
+        }
+
         mensagemFormulario.hidden = false;
         botaoContinuar.disabled = true;
         return;
     }
+
+    const agendamentosSalvos = JSON.parse(localStorage.getItem(chaveAgendamentos) || '[]');
+    agendamentosSalvos.push({
+        especialidade: especialidadeSelecionada,
+        profissional: campoProfissional.value,
+        data: dataConsulta.value,
+        horario: horarioSelecionado.value,
+        criadoEm: new Date().toISOString()
+    });
+    localStorage.setItem(chaveAgendamentos, JSON.stringify(agendamentosSalvos));
 
     mensagemFormulario.textContent = 'Data e horário selecionados. A próxima etapa será adicionada no próximo requisito.';
     mensagemFormulario.hidden = false;
