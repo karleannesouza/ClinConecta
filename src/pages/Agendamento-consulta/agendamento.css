@@ -26,50 +26,6 @@ input {
     font: inherit;
 }
 
-.cabecalho-agendamento {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    gap: 24px;
-    min-height: 78px;
-    padding: 14px clamp(20px, 5vw, 72px);
-    background: var(--superficie);
-    border-bottom: 1px solid var(--borda);
-}
-
-.marca img {
-    display: block;
-    width: min(180px, 42vw);
-    height: auto;
-}
-
-.identificacao-clinica {
-    display: flex;
-    align-items: center;
-    gap: 8px;
-    color: var(--texto);
-}
-
-.identificacao-clinica img {
-    width: 38px;
-    height: 38px;
-    object-fit: contain;
-}
-
-.identificacao-clinica div {
-    display: grid;
-    gap: 2px;
-}
-
-.identificacao-clinica strong {
-    font-size: 12px;
-}
-
-.identificacao-clinica span {
-    color: var(--texto-secundario);
-    font-size: 10px;
-}
-
 .pagina-agendamento {
     width: min(900px, calc(100% - 32px));
     margin: 0 auto;
@@ -244,17 +200,24 @@ h1 {
     cursor: pointer;
 }
 
-.botao-principal {
+.button-cadastrar {
+    width: 100%;
+    min-height: 44px;
+    padding: 12px;
     border: 1px solid var(--primaria);
     background: var(--primaria);
     color: #ffffff;
+    border-radius: 8px;
+    font-size: 16px;
+    font-weight: 700;
+    cursor: pointer;
 }
 
-.botao-principal:hover:not(:disabled) {
+.button-cadastrar:hover:not(:disabled) {
     background: var(--primaria-escura);
 }
 
-.botao-principal:disabled {
+.button-cadastrar:disabled {
     border-color: #b6c7d8;
     background: #b6c7d8;
     cursor: not-allowed;
@@ -283,15 +246,6 @@ h1 {
 }
 
 @media (max-width: 560px) {
-    .cabecalho-agendamento {
-        align-items: flex-start;
-        flex-direction: column;
-    }
-
-    .identificacao-clinica {
-        align-self: flex-end;
-    }
-
     .progresso {
         justify-content: flex-start;
         overflow-x: auto;

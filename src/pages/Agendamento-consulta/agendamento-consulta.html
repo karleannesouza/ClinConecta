@@ -4,20 +4,20 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Agendar consulta | ClinConecta</title>
-    <link rel="stylesheet" href="../styles/global.css">
-    <link rel="stylesheet" href="../styles/agendamento.css">
+    <link rel="stylesheet" href="../../styles/global.css">
+    <link rel="stylesheet" href="./agendamento.css">
+    <script src="./agendamento-consulta.js" defer></script>
 </head>
 <body>
-    <header class="cabecalho-agendamento">
-        <a class="marca" href="../../src/index.html" aria-label="Voltar para a página inicial">
-            <img src="../../public/images/logoprincipal.png" alt="ClinConecta">
+    <header class="cabecalho">
+        <a href="../../index.html">
+            <img class="logo" src="../../../public/images/logoprincipal.png" alt="ClinConecta - página inicial">
         </a>
-
         <div class="identificacao-clinica">
-            <img src="../../public/images/coracaovazado.png" alt="" aria-hidden="true">
-            <div>
-                <strong>Clínica Popular</strong>
-                <span>Atendimento acessível e de qualidade</span>
+            <img class="icone-clinica" src="../../../public/images/coracaovazado.png" alt="">
+            <div class="textos-clinica">
+                <p class="nome-clinica">Clínica Conecta</p>
+                <p class="descricao-clinica">Atendimento acessível e de qualidade.</p>
             </div>
         </div>
     </header>
@@ -74,12 +74,10 @@
 
                 <div class="acoes-formulario">
                     <a class="botao botao-secundario" href="../../src/index.html">Voltar</a>
-                    <button class="botao botao-principal" type="submit" disabled>Continuar</button>
+                    <button class="button-cadastrar" type="submit" disabled>Continuar</button>
                 </div>
             </form>
         </section>
     </main>
-
-    <script src="./agendamento-consulta.js"></script>
 </body>
 </html>
