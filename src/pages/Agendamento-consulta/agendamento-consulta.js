@@ -501,19 +501,17 @@ formularioEspecialidade.addEventListener('submit', (evento) => {
         return;
     }
 
+    const especialidade = especialidades.find((item) => item.valor === especialidadeSelecionada);
+    const profissional = profissionais.find((item) => item.valor === campoProfissional.value);
     const agendamentosSalvos = JSON.parse(localStorage.getItem(chaveAgendamentos) || '[]');
     agendamentosSalvos.push({
         especialidade: especialidadeSelecionada,
+        nomeEspecialidade: especialidade.nome,
         profissional: campoProfissional.value,
+        nomeProfissional: profissional.nome,
         data: dataConsulta.value,
         horario: horarioSelecionado.value,
         criadoEm: new Date().toISOString()
     });
     localStorage.setItem(chaveAgendamentos, JSON.stringify(agendamentosSalvos));
-
-    mensagemFormulario.textContent = 'Data e horário selecionados. A próxima etapa será adicionada no próximo requisito.';
-    mensagemFormulario.hidden = false;
-    mensagemFormulario.style.borderLeftColor = '#168b64';
-    mensagemFormulario.style.backgroundColor = '#eefaf5';
-    mensagemFormulario.style.color = '#126746';
 });
