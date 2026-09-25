@@ -1,0 +1,119 @@
+
+    :root {
+      font-family: Arial, Helvetica, sans-serif;
+      color: #173b66;
+      background: #f3f8fd;
+    }
+
+    * { box-sizing: border-box; }
+    body { margin: 0; min-height: 100vh; }
+
+    .header {
+      background: white;
+      border-bottom: 1px solid #dce8f3;
+      padding: 18px max(20px, calc((100vw - 1050px)/2));
+    }
+
+    .brand {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      color: #173b66;
+      text-decoration: none;
+      font-size: clamp(22px, 4vw, 30px);
+      font-weight: 800;
+    }
+
+    .brand-mark {
+      color: #0aa788;
+      font-size: 35px;
+      line-height: 1;
+    }
+
+    .brand span:last-child { color: #0aa788; }
+
+    main {
+      width: min(100% - 32px, 620px);
+      margin: clamp(30px, 7vw, 78px) auto;
+    }
+
+    .card {
+      background: white;
+      border: 1px solid #dce8f3;
+      border-radius: 14px;
+      box-shadow: 0 12px 34px #153d6610;
+      padding: clamp(22px, 5vw, 42px);
+    }
+
+    .success { text-align: center; }
+
+    .check {
+      width: 64px;
+      height: 64px;
+      margin: 0 auto 18px;
+      border-radius: 50%;
+      display: grid;
+      place-items: center;
+      background: #0aa788;
+      color: white;
+      font-size: 37px;
+    }
+
+    h1 {
+      font-size: clamp(23px, 4vw, 30px);
+      margin: 0 0 10px;
+    }
+
+    .subtitle {
+      color: #4d6581;
+      margin: 0 0 30px;
+      line-height: 1.5;
+    }
+
+    .details {
+      background: #f2f8fc;
+      border: 1px solid #e1edf6;
+      border-radius: 10px;
+      padding: 8px 20px;
+      margin: 0 0 26px;
+    }
+
+    .row {
+      display: grid;
+      grid-template-columns: 130px minmax(0, 1fr);
+      gap: 14px;
+      padding: 14px 0;
+      border-bottom: 1px solid #dfebf3;
+    }
+
+    .row:last-child { border: 0; }
+    dt { font-weight: 700; }
+    dd { margin: 0; overflow-wrap: anywhere; }
+
+    .button {
+      display: block;
+      width: 100%;
+      text-align: center;
+      background: #1168c8;
+      color: white;
+      border-radius: 7px;
+      padding: 15px 20px;
+      font-weight: 700;
+      text-decoration: none;
+    }
+
+    .button:hover,
+    .button:focus-visible { background: #0b54a5; }
+
+    .demo {
+      color: #526980;
+      text-align: center;
+      font-size: 13px;
+      line-height: 1.5;
+    }
+
+    @media (max-width: 480px) {
+      .header { padding: 16px; }
+      .row { grid-template-columns: 1fr; gap: 5px; }
+      .details { padding: 4px 16px; }
+    }
