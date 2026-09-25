@@ -231,6 +231,15 @@ function habilitarHorarios() {
     renderizarHorarios();
 }
 
+function lerAgendamentos() {
+    try {
+        const agendamentos = JSON.parse(localStorage.getItem(chaveAgendamentos) || '[]');
+        return Array.isArray(agendamentos) ? agendamentos : [];
+    } catch {
+        return [];
+    }
+}
+
 function formatarData(data) {
     const ano = data.getFullYear();
     const mes = String(data.getMonth() + 1).padStart(2, '0');
@@ -503,7 +512,19 @@ formularioEspecialidade.addEventListener('submit', (evento) => {
 
     const especialidade = especialidades.find((item) => item.valor === especialidadeSelecionada);
     const profissional = profissionais.find((item) => item.valor === campoProfissional.value);
-    const agendamentosSalvos = JSON.parse(localStorage.getItem(chaveAgendamentos) || '[]');
+    const agendamentosSalvos = lerAgendamentos();
+    const agendamentoRepetido = agendamentosSalvos.some((agendamento) =>
+        agendamento.profissional === campoProfissional.value &&
+        agendamento.data === dataConsulta.value &&
+        agendamento.horario === horarioSelecionado.value
+    );
+
+    if (agendamentoRepetido) {
+        mensagemFormulario.textContent = 'Você já possui um agendamento com este profissional nesta data e horário.';
+        mensagemFormulario.hidden = false;
+        return;
+    }
+
     agendamentosSalvos.push({
         especialidade: especialidadeSelecionada,
         nomeEspecialidade: especialidade.nome,
