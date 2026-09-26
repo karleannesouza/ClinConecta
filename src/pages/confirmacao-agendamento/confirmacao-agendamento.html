@@ -1,45 +1,140 @@
 <!doctype html>
 <html lang="pt-BR">
+
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
-  <link rel="stylesheet" href="confirmacao.css">
+  <link rel="stylesheet" href="confirmacao-agendamento.css">
 
   <title>Confirmação do agendamento | ClicConecta</title>
-  
 </head>
-<body>
-  <header class="header">
-    <a class="brand" href="index.html" aria-label="ClicConecta, página inicial">
-      <span class="brand-mark" aria-hidden="true">♡</span>Clic<span>Conecta</span>
-    </a>
-  </header>
 
-  <main>
-    <section class="card" aria-labelledby="titulo">
-      <div class="success">
-        <div class="check" aria-hidden="true">✓</div>
-        <h1 id="titulo">Agendamento confirmado!</h1>
-        <p class="subtitle">Seu agendamento foi realizado com sucesso.</p>
+<body>
+
+  <header class="header">
+
+    <a class="brand" href="index.html" aria-label="ClicConecta, página inicial">
+
+      <img src="../../../public/images/logoprincipal.png" alt="ClinConecta">
+
+    </a>
+
+    <div class="clinic">
+
+      <img class="clinic-icon" src="../../../public/images/coracaovazado.png" alt="">
+
+      <div>
+        <strong>Clínica Popular</strong>
+        <small>Atendimento acessível de qualidade</small>
       </div>
 
-      <dl class="details">
-        <div class="row"><dt>Tipo</dt><dd id="tipo"></dd></div>
-        <div class="row"><dt>Especialidade / Exame</dt><dd id="especialidade"></dd></div>
-        <div class="row"><dt>Profissional</dt><dd id="profissional"></dd></div>
-        <div class="row"><dt>Data</dt><dd id="data"></dd></div>
-        <div class="row"><dt>Horário</dt><dd id="horario"></dd></div>
-      </dl>
+    </div>
 
-      <a class="button" href="meus-agendamentos.html">Meus agendamentos</a>
+  </header>
+
+
+  <main>
+
+    <section class="card" aria-labelledby="titulo">
+
+      <div class="success">
+
+        <div class="check" aria-hidden="true">
+          ✓
+        </div>
+
+        <h1 id="titulo">
+          Agendamento confirmado!
+        </h1>
+
+        <p class="subtitle">
+          Seu agendamento foi realizado com sucesso.
+        </p>
+
+      </div>
+
+
+      <div class="details">
+
+        <div class="row">
+
+          <span class="icon" aria-hidden="true">♧</span>
+
+          <div>
+            <span class="label">Tipo</span>
+            <span class="value" id="tipo"></span>
+          </div>
+
+        </div>
+
+
+        <div class="row">
+
+          <span class="icon" aria-hidden="true">♧</span>
+
+          <div>
+            <span class="label">Especialidade</span>
+            <span class="value" id="especialidade"></span>
+          </div>
+
+        </div>
+
+
+        <div class="row">
+
+          <span class="icon" aria-hidden="true">♙</span>
+
+          <div>
+            <span class="label">Profissional</span>
+            <span class="value" id="profissional"></span>
+          </div>
+
+        </div>
+
+
+        <div class="row">
+
+          <span class="icon" aria-hidden="true">▣</span>
+
+          <div>
+            <span class="label">Data</span>
+            <span class="value" id="data"></span>
+          </div>
+
+        </div>
+
+
+        <div class="row">
+
+          <span class="icon" aria-hidden="true">◷</span>
+
+          <div>
+            <span class="label">Horário</span>
+            <span class="value" id="horario"></span>
+          </div>
+
+        </div>
+
+      </div>
+
+
+      <a class="button" href="meus-agendamentos.html">
+        <span>▣</span>
+        Meus agendamentos
+      </a>
+
     </section>
 
+
     <p id="demo" class="demo" hidden>
-      Prévia com dados de exemplo. A integração com o formulário será feita quando tivermos os arquivos do projeto.
+      Prévia com dados de exemplo.
     </p>
+
   </main>
 
-<script src="confirmacao.js"></script>
+
+  <script src="confirmacao-agendamento.js"></script>
+
 </body>
 </html>
