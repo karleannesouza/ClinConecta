@@ -1,119 +1,375 @@
 
     :root {
-      font-family: Arial, Helvetica, sans-serif;
-      color: #173b66;
-      background: #f3f8fd;
-    }
+  font-family: Arial, Helvetica, sans-serif;
 
-    * { box-sizing: border-box; }
-    body { margin: 0; min-height: 100vh; }
+  --azul: #0758a8;
+  --azul-escuro: #064786;
+  --azul-claro: #eef6fc;
+  --verde: #09b58d;
+  --texto: #123f72;
+  --cinza: #5c7490;
 
-    .header {
-      background: white;
-      border-bottom: 1px solid #dce8f3;
-      padding: 18px max(20px, calc((100vw - 1050px)/2));
-    }
+  background: #f3f8fd;
+  color: var(--texto);
+}
 
-    .brand {
-      display: inline-flex;
-      align-items: center;
-      gap: 10px;
-      color: #173b66;
-      text-decoration: none;
-      font-size: clamp(22px, 4vw, 30px);
-      font-weight: 800;
-    }
+* {
+  box-sizing: border-box;
+}
 
-    .brand-mark {
-      color: #0aa788;
-      font-size: 35px;
-      line-height: 1;
-    }
+body {
+  margin: 0;
+  min-height: 100vh;
+  background: #f3f8fd;
+}
 
-    .brand span:last-child { color: #0aa788; }
 
-    main {
-      width: min(100% - 32px, 620px);
-      margin: clamp(30px, 7vw, 78px) auto;
-    }
+/* =========================
+   CABEÇALHO
+========================= */
 
-    .card {
-      background: white;
-      border: 1px solid #dce8f3;
-      border-radius: 14px;
-      box-shadow: 0 12px 34px #153d6610;
-      padding: clamp(22px, 5vw, 42px);
-    }
+.header {
+  height: 82px;
 
-    .success { text-align: center; }
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
 
-    .check {
-      width: 64px;
-      height: 64px;
-      margin: 0 auto 18px;
-      border-radius: 50%;
-      display: grid;
-      place-items: center;
-      background: #0aa788;
-      color: white;
-      font-size: 37px;
-    }
+  padding: 0 max(24px, calc((100vw - 1050px) / 2));
 
-    h1 {
-      font-size: clamp(23px, 4vw, 30px);
-      margin: 0 0 10px;
-    }
+  background: white;
 
-    .subtitle {
-      color: #4d6581;
-      margin: 0 0 30px;
-      line-height: 1.5;
-    }
+  border-bottom: 1px solid #dce8f3;
+}
 
-    .details {
-      background: #f2f8fc;
-      border: 1px solid #e1edf6;
-      border-radius: 10px;
-      padding: 8px 20px;
-      margin: 0 0 26px;
-    }
 
-    .row {
-      display: grid;
-      grid-template-columns: 130px minmax(0, 1fr);
-      gap: 14px;
-      padding: 14px 0;
-      border-bottom: 1px solid #dfebf3;
-    }
+/* LOGO */
 
-    .row:last-child { border: 0; }
-    dt { font-weight: 700; }
-    dd { margin: 0; overflow-wrap: anywhere; }
+.brand {
+  display: flex;
+  align-items: center;
+  gap: 9px;
 
-    .button {
-      display: block;
-      width: 100%;
-      text-align: center;
-      background: #1168c8;
-      color: white;
-      border-radius: 7px;
-      padding: 15px 20px;
-      font-weight: 700;
-      text-decoration: none;
-    }
+  text-decoration: none;
+  color: var(--azul);
 
-    .button:hover,
-    .button:focus-visible { background: #0b54a5; }
+  font-size: 27px;
+  font-weight: 800;
+}
 
-    .demo {
-      color: #526980;
-      text-align: center;
-      font-size: 13px;
-      line-height: 1.5;
-    }
+.brand-name span {
+  color: var(--verde);
+}
 
-    @media (max-width: 480px) {
-      .header { padding: 16px; }
-      .row { grid-template-columns: 1fr; gap: 5px; }
-      .details { padding: 4px 16px; }
-    }
+.brand-icon {
+  position: relative;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  width: 39px;
+  height: 39px;
+
+  color: var(--azul);
+
+  font-size: 42px;
+  line-height: 1;
+}
+
+.brand-icon b {
+  position: absolute;
+
+  color: var(--verde);
+
+  font-size: 17px;
+  font-weight: 800;
+}
+
+
+/* CLÍNICA POPULAR */
+
+.clinic {
+  display: flex;
+  align-items: center;
+  gap: 9px;
+
+  color: var(--azul);
+}
+
+.clinic-heart {
+  font-size: 34px;
+  line-height: 1;
+}
+
+.clinic strong {
+  display: block;
+
+  font-size: 14px;
+  font-weight: 700;
+}
+
+.clinic small {
+  display: block;
+
+  margin-top: 2px;
+
+  font-size: 9px;
+  color: #41688f;
+}
+
+
+/* =========================
+   ÁREA PRINCIPAL
+========================= */
+
+main {
+  width: min(100% - 32px, 560px);
+
+  margin: 45px auto;
+}
+
+
+/* =========================
+   CARD
+========================= */
+
+.card {
+  background: white;
+
+  border: 1px solid #d8e6f1;
+  border-radius: 8px;
+
+  box-shadow: 0 5px 18px rgba(20, 70, 110, 0.08);
+
+  padding: 28px 34px 24px;
+}
+
+
+/* =========================
+   CONFIRMAÇÃO
+========================= */
+
+.success {
+  text-align: center;
+}
+
+.check {
+  width: 48px;
+  height: 48px;
+
+  margin: 0 auto 12px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  border-radius: 50%;
+
+  background: var(--verde);
+  color: white;
+
+  font-size: 28px;
+  font-weight: 400;
+}
+
+h1 {
+  margin: 0 0 6px;
+
+  color: var(--texto);
+
+  font-size: 21px;
+  font-weight: 700;
+}
+
+.subtitle {
+  margin: 0 0 22px;
+
+  color: #62809d;
+
+  font-size: 13px;
+}
+
+
+/* =========================
+   DADOS DO AGENDAMENTO
+========================= */
+
+.details {
+  margin: 0 0 18px;
+
+  padding: 5px 16px;
+
+  background: var(--azul-claro);
+
+  border: 1px solid #e1edf6;
+  border-radius: 5px;
+}
+
+
+.row {
+  display: grid;
+
+  grid-template-columns: 28px 1fr;
+
+  align-items: center;
+
+  min-height: 42px;
+
+  border-bottom: 1px solid #dce9f3;
+}
+
+.row:last-child {
+  border-bottom: none;
+}
+
+
+/* ÍCONES */
+
+.icon {
+  color: var(--azul);
+
+  font-size: 19px;
+
+  line-height: 1;
+}
+
+
+/* TEXTOS */
+
+.label {
+  display: block;
+
+  color: #65809a;
+
+  font-size: 10px;
+  line-height: 1.2;
+}
+
+.value {
+  display: block;
+
+  margin-top: 2px;
+
+  color: #173f6c;
+
+  font-size: 12px;
+  font-weight: 600;
+}
+
+
+/* =========================
+   BOTÃO
+========================= */
+
+.button {
+  width: 100%;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+
+  padding: 11px 16px;
+
+  background: #0875d1;
+
+  color: white;
+
+  border-radius: 5px;
+
+  font-size: 12px;
+  font-weight: 700;
+
+  text-decoration: none;
+
+  transition: background 0.2s;
+}
+
+.button:hover,
+.button:focus-visible {
+  background: #065eaa;
+}
+
+.button span {
+  font-size: 14px;
+}
+
+
+/* =========================
+   DEMO
+========================= */
+
+.demo {
+  margin-top: 12px;
+
+  color: #607991;
+
+  text-align: center;
+
+  font-size: 11px;
+}
+
+
+/* =========================
+   CELULAR
+========================= */
+
+@media (max-width: 600px) {
+
+  .header {
+    height: auto;
+
+    padding: 16px 18px;
+  }
+
+  .brand {
+    font-size: 21px;
+  }
+
+  .brand-icon {
+    width: 31px;
+    height: 31px;
+
+    font-size: 34px;
+  }
+
+  .brand-icon b {
+    font-size: 14px;
+  }
+
+  .clinic {
+    display: none;
+  }
+
+  main {
+    width: min(100% - 24px, 560px);
+
+    margin: 28px auto;
+  }
+
+  .card {
+    padding: 24px 20px 20px;
+  }
+
+  h1 {
+    font-size: 20px;
+  }
+
+  .subtitle {
+    font-size: 12px;
+  }
+
+}
+.brand img {
+  display: block;
+  width: min(230px, 100%);
+  height: auto;
+}
+
+.clinic-icon {
+  display: block;
+  width: 30px;
+  height: 30px;
+  object-fit: contain;
+}
