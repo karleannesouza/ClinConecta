@@ -75,6 +75,43 @@
   line-height: 1.6;
 }
 
+.hero__acoes {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  margin-top: 24px;
+}
+
+.botao-agendamento {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  min-height: 56px;
+  padding: 12px 20px;
+  border: 2px solid var(--cor-primaria);
+  border-radius: 8px;
+  font-size: 18px;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+/* A cor destaca a consulta; o contorno mantém o exame na mesma hierarquia visual. */
+.botao-agendamento--consulta {
+  background-color: var(--cor-primaria);
+  color: #ffffff;
+}
+
+.botao-agendamento--exame {
+  background-color: var(--cor-superficie);
+  color: var(--cor-primaria);
+}
+
+.botao-agendamento:focus-visible {
+  outline: 3px solid var(--cor-texto);
+  outline-offset: 3px;
+}
+
 .hero__imagem {
   margin: 0;
 }
