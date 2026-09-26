@@ -1,0 +1,94 @@
+.cabecalho {
+  /* Flex mantém a marca e a identificação clínica nas extremidades. */
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 16px;
+  padding: 16px 24px;
+  background-color: var(--cor-superficie);
+  border-bottom: 1px solid var(--cor-borda);
+}
+
+.logo {
+  display: block;
+  width: 180px;
+  height: auto;
+}
+
+.identificacao-clinica {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.icone-clinica {
+  display: block;
+  width: 48px;
+  height: 48px;
+  /* Preserva a proporção do ícone e evita que o flex o comprima. */
+  object-fit: contain;
+  flex-shrink: 0;
+}
+
+.textos-clinica {
+  text-align: left;
+}
+
+.nome-clinica {
+  margin: 0;
+  color: var(--cor-texto);
+  font-size: 16px;
+  font-weight: bold;
+}
+
+.descricao-clinica {
+  margin: 4px 0 0;
+  color: var(--cor-texto-secundario);
+  font-size: 11px;
+}
+
+.hero {
+  display: grid;
+  /* Cria duas colunas iguais sem deixar o conteúdo forçar a largura da grade. */
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+  align-items: center;
+  gap: 32px;
+  padding: 48px 56px;
+  background-color: #f8faff;
+}
+
+.hero__conteudo {
+  max-width: 480px;
+}
+
+.hero__conteudo h1 {
+  margin: 0 0 20px;
+  color: var(--cor-texto);
+  font-size: 36px;
+  line-height: 1.2;
+}
+
+.hero__descricao {
+  margin: 0;
+  color: var(--cor-texto-secundario);
+  font-size: 18px;
+  line-height: 1.6;
+}
+
+.hero__imagem {
+  margin: 0;
+}
+
+.hero__imagem img {
+  display: block;
+  /* A imagem acompanha a coluna e mantém sua proporção original. */
+  width: 100%;
+  height: auto;
+}
+
+.mensagem-seguranca {
+  margin-top: 32px;
+  color: var(--cor-texto);
+  font-size: 14px;
+  font-weight: bold;
+}
