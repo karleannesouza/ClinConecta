@@ -11,7 +11,7 @@
 
 .logo {
   display: block;
-  width: 180px;
+  width: 200GIpx;
   height: auto;
 }
 
@@ -86,6 +86,7 @@
   display: flex;
   align-items: center;
   justify-content: center;
+  gap: 12px;
   width: 100%;
   min-height: 56px;
   padding: 12px 20px;
@@ -94,6 +95,14 @@
   font-size: 18px;
   font-weight: bold;
   cursor: pointer;
+  transition: background-color 160ms ease, border-color 160ms ease,
+    box-shadow 160ms ease, transform 160ms ease;
+}
+
+.icone-botao {
+  width: 24px;
+  height: 24px;
+  flex-shrink: 0;
 }
 
 /* A cor destaca a consulta; o contorno mantém o exame na mesma hierarquia visual. */
@@ -102,9 +111,22 @@
   color: #ffffff;
 }
 
+.botao-agendamento--consulta:hover {
+  border-color: #0064be;
+  background-color: #0064be;
+  box-shadow: 0 4px 10px rgb(18 59 100 / 18%);
+  transform: translateY(-1px);
+}
+
 .botao-agendamento--exame {
   background-color: var(--cor-superficie);
   color: var(--cor-primaria);
+}
+
+.botao-agendamento--exame:hover {
+  background-color: #eaf4ff;
+  box-shadow: 0 4px 10px rgb(18 59 100 / 12%);
+  transform: translateY(-1px);
 }
 
 .botao-agendamento:focus-visible {
@@ -121,11 +143,22 @@
   /* A imagem acompanha a coluna e mantém sua proporção original. */
   width: 100%;
   height: auto;
+  transform: translateX(65px);
 }
 
 .mensagem-seguranca {
+  display: flex;
+  align-items: center;
+  gap: 10px;
   margin-top: 32px;
-  color: var(--cor-texto);
+  color: var(--cor-texto-secundario);
   font-size: 14px;
-  font-weight: bold;
+  font-weight: normal;
+}
+
+.mensagem-seguranca svg {
+  width: 24px;
+  height: 24px;
+  flex-shrink: 0;
+  color: var(--cor-primaria);
 }
