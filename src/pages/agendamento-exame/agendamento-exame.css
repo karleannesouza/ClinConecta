@@ -30,6 +30,16 @@
     margin-top: 18px;
 }
 
+/* Campo obrigatório não preenchido ao tentar concluir */
+.campo-invalido .combobox-input {
+    border-color: #d93737;
+    background: #fffafa;
+}
+
+.campo-invalido .rotulo-campo {
+    color: #a72b2b;
+}
+
 .combobox-vazio {
     display: block;
 }

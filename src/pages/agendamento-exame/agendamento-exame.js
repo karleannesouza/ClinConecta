@@ -21,6 +21,7 @@ const comboboxHorario = document.querySelector('[data-combobox-horario]');
 const listaHorarios = document.querySelector('#lista-horarios');
 const botaoLimparHorario = comboboxHorario.querySelector('.combobox-limpar');
 const botaoSetaHorario = comboboxHorario.querySelector('.combobox-seta');
+const mensagemFormulario = document.querySelector('#mensagem-formulario');
 
 // Dados fictícios: cada exame tem sua grade de horários e os horários já ocupados.
 const exames = [
@@ -103,6 +104,15 @@ function obterHorariosDisponiveis(valorExame, data) {
     });
 }
 
+function marcarCampo(input, invalido) {
+    input.closest('.campo-formulario').classList.toggle('campo-invalido', invalido);
+    input.setAttribute('aria-invalid', String(invalido));
+}
+
+function ocultarMensagem() {
+    mensagemFormulario.hidden = true;
+}
+
 /* ===== Exame ===== */
 
 function abrirListaExames() {
@@ -139,6 +149,8 @@ function selecionarExame(exame) {
     campoExame.value = exame.valor;
     buscaExame.value = exame.nome;
     botaoLimparExame.hidden = false;
+    marcarCampo(buscaExame, false);
+    ocultarMensagem();
     mostrarDescricao(exame);
     fecharListaExames();
 
@@ -239,6 +251,8 @@ function fecharCalendario() {
 function confirmarData() {
     dataExame.value = dataTemporaria;
     buscaData.value = formatarDataExibicao(dataTemporaria);
+    marcarCampo(buscaData, false);
+    ocultarMensagem();
     limparHorario();
     habilitarHorarios();
     fecharCalendario();
@@ -283,6 +297,8 @@ function selecionarHorario(horario) {
     horarioSelecionado.value = horario;
     buscaHorario.value = horario;
     botaoLimparHorario.hidden = false;
+    marcarCampo(buscaHorario, false);
+    ocultarMensagem();
     fecharListaHorarios();
 }
 
@@ -403,5 +419,24 @@ document.addEventListener('click', (evento) => {
 
     if (!comboboxHorario.contains(evento.target)) {
         fecharListaHorarios();
+    }
+});
+
+formularioExame.addEventListener('submit', (evento) => {
+    evento.preventDefault();
+
+    const camposObrigatorios = [
+        { nome: 'Exame', valor: campoExame.value, input: buscaExame },
+        { nome: 'Data', valor: dataExame.value, input: buscaData },
+        { nome: 'Horário', valor: horarioSelecionado.value, input: buscaHorario }
+    ];
+    const faltando = camposObrigatorios.filter((campo) => !campo.valor);
+
+    camposObrigatorios.forEach((campo) => marcarCampo(campo.input, !campo.valor));
+
+    if (faltando.length) {
+        mensagemFormulario.textContent = `Preencha os campos obrigatórios: ${faltando.map((campo) => campo.nome).join(', ')}.`;
+        mensagemFormulario.hidden = false;
+        return;
     }
 });
