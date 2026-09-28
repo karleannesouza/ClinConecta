@@ -72,6 +72,17 @@
                     </span>
                 </label>
 
+                <label class="campo-formulario" for="horario-busca">
+                    <span class="rotulo-campo">Horário disponível <span class="obrigatorio">*</span></span>
+                    <span class="combobox combobox-desabilitado" data-combobox-horario>
+                        <input id="horario-busca" class="combobox-input" type="text" placeholder="Selecione uma data primeiro" autocomplete="off" role="combobox" aria-expanded="false" aria-controls="lista-horarios" readonly disabled>
+                        <input id="horario" name="horario" type="hidden">
+                        <button class="combobox-limpar" type="button" aria-label="Limpar horário" hidden>×</button>
+                        <button class="combobox-seta" type="button" aria-label="Abrir horários" aria-controls="lista-horarios" aria-expanded="false" disabled>⌄</button>
+                        <span class="combobox-lista" id="lista-horarios" role="listbox" hidden></span>
+                    </span>
+                </label>
+
             </form>
         </section>
     </main>

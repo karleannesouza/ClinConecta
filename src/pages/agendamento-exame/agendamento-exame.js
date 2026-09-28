@@ -15,26 +15,35 @@ const tituloCalendario = calendario.querySelector('[data-calendario-mes]');
 const botaoSetaData = comboboxData.querySelector('.combobox-seta');
 const botaoFecharData = calendario.querySelector('[data-calendario-fechar]');
 const botaoConfirmarData = calendario.querySelector('[data-calendario-confirmar]');
+const horarioSelecionado = document.querySelector('#horario');
+const buscaHorario = document.querySelector('#horario-busca');
+const comboboxHorario = document.querySelector('[data-combobox-horario]');
+const listaHorarios = document.querySelector('#lista-horarios');
+const botaoLimparHorario = comboboxHorario.querySelector('.combobox-limpar');
+const botaoSetaHorario = comboboxHorario.querySelector('.combobox-seta');
 
-// Dados fictícios dos exames oferecidos pela clínica.
+// Dados fictícios: cada exame tem sua grade de horários.
 const exames = [
     {
         valor: 'eletrocardiograma',
         nome: 'Eletrocardiograma',
         descricao: 'Registra a atividade elétrica do coração para avaliar ritmo e frequência cardíaca.',
-        preparo: 'Não é necessário jejum. Evite cremes ou óleos no peito no dia do exame.'
+        preparo: 'Não é necessário jejum. Evite cremes ou óleos no peito no dia do exame.',
+        horarios: ['08:00', '09:00', '10:00', '13:30', '15:00', '16:30']
     },
     {
         valor: 'hemograma-completo',
         nome: 'Hemograma Completo',
         descricao: 'Exame de sangue que avalia glóbulos vermelhos, glóbulos brancos e plaquetas.',
-        preparo: 'Jejum de 4 horas. Beba água normalmente.'
+        preparo: 'Jejum de 4 horas. Beba água normalmente.',
+        horarios: ['07:00', '07:30', '08:00', '08:30', '09:00', '10:00']
     },
     {
         valor: 'ultrassonografia',
         nome: 'Ultrassonografia',
         descricao: 'Exame de imagem que usa ondas sonoras para avaliar órgãos internos.',
-        preparo: 'Jejum de 8 horas. Para abdome total, beba 1 litro de água 1 hora antes e não urine.'
+        preparo: 'Jejum de 8 horas. Para abdome total, beba 1 litro de água 1 hora antes e não urine.',
+        horarios: ['08:00', '09:30', '11:00', '14:00', '15:30', '17:00']
     }
 ];
 
@@ -90,11 +99,18 @@ function mostrarDescricao(exame) {
 }
 
 function selecionarExame(exame) {
+    const exameAlterado = campoExame.value !== exame.valor;
+
     campoExame.value = exame.valor;
     buscaExame.value = exame.nome;
     botaoLimparExame.hidden = false;
     mostrarDescricao(exame);
     fecharListaExames();
+
+    // Horários dependem do exame: ao trocar de exame, recarrega a lista para a data escolhida.
+    if (exameAlterado) {
+        limparHorario();
+    }
 
     habilitarData();
 }
@@ -116,6 +132,10 @@ function habilitarData() {
     botaoSetaData.disabled = false;
     buscaData.placeholder = 'Selecione uma data';
     comboboxData.classList.remove('combobox-desabilitado');
+
+    if (dataExame.value) {
+        habilitarHorarios();
+    }
 }
 
 function limparData() {
@@ -126,6 +146,7 @@ function limparData() {
     botaoSetaData.disabled = !campoExame.value;
     comboboxData.classList.toggle('combobox-desabilitado', !campoExame.value);
     fecharCalendario();
+    limparHorario();
 }
 
 function renderizarCalendario() {
@@ -183,7 +204,61 @@ function fecharCalendario() {
 function confirmarData() {
     dataExame.value = dataTemporaria;
     buscaData.value = formatarDataExibicao(dataTemporaria);
+    limparHorario();
+    habilitarHorarios();
     fecharCalendario();
+}
+
+/* ===== Horário ===== */
+
+function abrirListaHorarios() {
+    listaHorarios.hidden = false;
+    buscaHorario.setAttribute('aria-expanded', 'true');
+    botaoSetaHorario.setAttribute('aria-expanded', 'true');
+}
+
+function fecharListaHorarios() {
+    listaHorarios.hidden = true;
+    buscaHorario.setAttribute('aria-expanded', 'false');
+    botaoSetaHorario.setAttribute('aria-expanded', 'false');
+}
+
+function renderizarHorarios() {
+    const exame = buscarExame(campoExame.value);
+
+    listaHorarios.innerHTML = exame.horarios.map((horario) => `
+        <button class="opcao-combobox" type="button" role="option" data-horario="${horario}" aria-selected="${horario === horarioSelecionado.value}">
+            <strong>${horario}</strong>
+        </button>
+    `).join('');
+}
+
+function habilitarHorarios() {
+    buscaHorario.disabled = false;
+    botaoSetaHorario.disabled = false;
+    buscaHorario.placeholder = 'Selecione um horário';
+    comboboxHorario.classList.remove('combobox-desabilitado');
+    renderizarHorarios();
+}
+
+function selecionarHorario(horario) {
+    horarioSelecionado.value = horario;
+    buscaHorario.value = horario;
+    botaoLimparHorario.hidden = false;
+    fecharListaHorarios();
+}
+
+function limparHorario() {
+    const semData = !dataExame.value;
+
+    horarioSelecionado.value = '';
+    buscaHorario.value = '';
+    buscaHorario.placeholder = semData ? 'Selecione uma data primeiro' : 'Selecione um horário';
+    buscaHorario.disabled = semData;
+    botaoSetaHorario.disabled = semData;
+    comboboxHorario.classList.toggle('combobox-desabilitado', semData);
+    botaoLimparHorario.hidden = true;
+    fecharListaHorarios();
 }
 
 /* ===== Eventos ===== */
@@ -254,6 +329,31 @@ botaoFecharData.addEventListener('click', () => {
 
 botaoConfirmarData.addEventListener('click', confirmarData);
 
+buscaHorario.addEventListener('click', () => {
+    renderizarHorarios();
+    abrirListaHorarios();
+});
+
+botaoSetaHorario.addEventListener('click', () => {
+    if (listaHorarios.hidden) {
+        renderizarHorarios();
+        buscaHorario.focus();
+        abrirListaHorarios();
+    } else {
+        fecharListaHorarios();
+    }
+});
+
+botaoLimparHorario.addEventListener('click', limparHorario);
+
+listaHorarios.addEventListener('click', (evento) => {
+    const opcao = evento.target.closest('[data-horario]');
+
+    if (opcao) {
+        selecionarHorario(opcao.dataset.horario);
+    }
+});
+
 document.addEventListener('click', (evento) => {
     if (!comboboxExame.contains(evento.target)) {
         fecharListaExames();
@@ -261,5 +361,9 @@ document.addEventListener('click', (evento) => {
 
     if (!comboboxData.contains(evento.target)) {
         fecharCalendario();
+    }
+
+    if (!comboboxHorario.contains(evento.target)) {
+        fecharListaHorarios();
     }
 });
