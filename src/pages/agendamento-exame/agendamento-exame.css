@@ -29,3 +29,7 @@
 .descricao-exame + .campo-formulario {
     margin-top: 18px;
 }
+
+.combobox-vazio {
+    display: block;
+}

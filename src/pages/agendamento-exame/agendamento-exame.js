@@ -22,35 +22,48 @@ const listaHorarios = document.querySelector('#lista-horarios');
 const botaoLimparHorario = comboboxHorario.querySelector('.combobox-limpar');
 const botaoSetaHorario = comboboxHorario.querySelector('.combobox-seta');
 
-// Dados fictícios: cada exame tem sua grade de horários.
+// Dados fictícios: cada exame tem sua grade de horários e os horários já ocupados.
 const exames = [
     {
         valor: 'eletrocardiograma',
         nome: 'Eletrocardiograma',
         descricao: 'Registra a atividade elétrica do coração para avaliar ritmo e frequência cardíaca.',
         preparo: 'Não é necessário jejum. Evite cremes ou óleos no peito no dia do exame.',
-        horarios: ['08:00', '09:00', '10:00', '13:30', '15:00', '16:30']
+        horarios: ['08:00', '09:00', '10:00', '13:30', '15:00', '16:30'],
+        ocupados: ['09:00', '15:00']
     },
     {
         valor: 'hemograma-completo',
         nome: 'Hemograma Completo',
         descricao: 'Exame de sangue que avalia glóbulos vermelhos, glóbulos brancos e plaquetas.',
         preparo: 'Jejum de 4 horas. Beba água normalmente.',
-        horarios: ['07:00', '07:30', '08:00', '08:30', '09:00', '10:00']
+        horarios: ['07:00', '07:30', '08:00', '08:30', '09:00', '10:00'],
+        ocupados: ['07:30', '08:30']
     },
     {
         valor: 'ultrassonografia',
         nome: 'Ultrassonografia',
         descricao: 'Exame de imagem que usa ondas sonoras para avaliar órgãos internos.',
         preparo: 'Jejum de 8 horas. Para abdome total, beba 1 litro de água 1 hora antes e não urine.',
-        horarios: ['08:00', '09:30', '11:00', '14:00', '15:30', '17:00']
+        horarios: ['08:00', '09:30', '11:00', '14:00', '15:30', '17:00'],
+        ocupados: ['11:00', '14:00']
     }
 ];
 
 // A clínica não atende aos domingos (0 = domingo em Date.getDay()).
 const diasSemAtendimento = [0];
+const chaveAgendamentos = 'clinconecta_agendamentos';
 let mesCalendario = new Date();
 let dataTemporaria = '';
+
+function lerAgendamentos() {
+    try {
+        const agendamentos = JSON.parse(localStorage.getItem(chaveAgendamentos) || '[]');
+        return Array.isArray(agendamentos) ? agendamentos : [];
+    } catch {
+        return [];
+    }
+}
 
 function buscarExame(valor) {
     return exames.find((exame) => exame.valor === valor);
@@ -66,6 +79,28 @@ function formatarData(data) {
 function formatarDataExibicao(valor) {
     const [ano, mes, dia] = valor.split('-');
     return `${dia}/${mes}/${ano}`;
+}
+
+// Retorna somente os horários livres: remove ocupados, já agendados e horários passados de hoje.
+function obterHorariosDisponiveis(valorExame, data) {
+    const exame = buscarExame(valorExame);
+
+    if (!exame || !data) {
+        return [];
+    }
+
+    const agendados = lerAgendamentos()
+        .filter((agendamento) => agendamento.exame === valorExame && agendamento.data === data)
+        .map((agendamento) => agendamento.horario);
+    const ehHoje = data === formatarData(new Date());
+    const agora = new Date();
+    const minutosAtuais = agora.getHours() * 60 + agora.getMinutes();
+
+    return exame.horarios.filter((horario) => {
+        const [hora, minuto] = horario.split(':').map(Number);
+        const horarioPassado = ehHoje && hora * 60 + minuto <= minutosAtuais;
+        return !horarioPassado && !exame.ocupados.includes(horario) && !agendados.includes(horario);
+    });
 }
 
 /* ===== Exame ===== */
@@ -224,13 +259,16 @@ function fecharListaHorarios() {
 }
 
 function renderizarHorarios() {
-    const exame = buscarExame(campoExame.value);
+    const disponiveis = obterHorariosDisponiveis(campoExame.value, dataExame.value);
 
-    listaHorarios.innerHTML = exame.horarios.map((horario) => `
-        <button class="opcao-combobox" type="button" role="option" data-horario="${horario}" aria-selected="${horario === horarioSelecionado.value}">
-            <strong>${horario}</strong>
-        </button>
-    `).join('');
+    listaHorarios.innerHTML = disponiveis.length
+        ? disponiveis.map((horario) => `
+            <button class="opcao-combobox" type="button" role="option" data-horario="${horario}" aria-selected="${horario === horarioSelecionado.value}">
+                <strong>${horario}</strong>
+                <span>Horário disponível</span>
+            </button>
+        `).join('')
+        : '<span class="combobox-vazio">Nenhum horário disponível nesta data. Escolha outra data.</span>';
 }
 
 function habilitarHorarios() {
