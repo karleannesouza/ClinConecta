@@ -21,6 +21,7 @@ const comboboxHorario = document.querySelector('[data-combobox-horario]');
 const listaHorarios = document.querySelector('#lista-horarios');
 const botaoLimparHorario = comboboxHorario.querySelector('.combobox-limpar');
 const botaoSetaHorario = comboboxHorario.querySelector('.combobox-seta');
+const botaoConcluir = formularioExame.querySelector('button[type="submit"]');
 const mensagemFormulario = document.querySelector('#mensagem-formulario');
 
 // Dados fictícios: cada exame tem sua grade de horários e os horários já ocupados.
@@ -54,6 +55,8 @@ const exames = [
 // A clínica não atende aos domingos (0 = domingo em Date.getDay()).
 const diasSemAtendimento = [0];
 const chaveAgendamentos = 'clinconecta_agendamentos';
+const chaveConfirmacao = 'agendamentoConfirmado';
+const paginaConfirmacao = '../confirmacao-agendamento/confirmacao-agendamento.html';
 let mesCalendario = new Date();
 let dataTemporaria = '';
 
@@ -464,11 +467,21 @@ formularioExame.addEventListener('submit', (evento) => {
         const agendamentosSalvos = lerAgendamentos();
         agendamentosSalvos.push(agendamento);
         localStorage.setItem(chaveAgendamentos, JSON.stringify(agendamentosSalvos));
+
+        // Formato lido pela tela de confirmação (feature/confirmacao-agendamento).
+        sessionStorage.setItem(chaveConfirmacao, JSON.stringify({
+            tipo: 'Exame',
+            especialidade: exame.nome,
+            profissional: 'Não se aplica',
+            data: formatarDataExibicao(agendamento.data),
+            horario: agendamento.horario
+        }));
     } catch {
         mensagemFormulario.textContent = 'Não foi possível salvar o agendamento. Tente novamente.';
         mensagemFormulario.hidden = false;
         return;
     }
 
-    mensagemFormulario.hidden = true;
+    botaoConcluir.disabled = true;
+    window.location.assign(paginaConfirmacao);
 });
