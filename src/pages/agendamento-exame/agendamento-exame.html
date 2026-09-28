@@ -48,6 +48,30 @@
                     <p class="preparo-exame"><span>Preparo:</span> <span data-descricao-preparo></span></p>
                 </div>
 
+                <label class="campo-formulario" for="data-exame-busca">
+                    <span class="rotulo-campo">Data <span class="obrigatorio">*</span></span>
+                    <span class="combobox combobox-desabilitado" data-combobox-data>
+                        <input id="data-exame-busca" class="combobox-input" type="text" placeholder="Selecione um exame primeiro" autocomplete="off" role="combobox" aria-expanded="false" aria-controls="calendario-exame" readonly disabled>
+                        <input id="data-exame" name="data" type="hidden">
+                        <button class="combobox-seta" type="button" aria-label="Abrir calendário" aria-controls="calendario-exame" aria-expanded="false" disabled>⌄</button>
+                        <div class="calendario" id="calendario-exame" role="dialog" aria-label="Selecione uma data" hidden>
+                            <div class="calendario-cabecalho">
+                                <button class="calendario-fechar" type="button" data-calendario-fechar aria-label="Fechar calendário">×</button>
+                                <button class="calendario-navegacao" type="button" data-mes-anterior aria-label="Mês anterior">‹</button>
+                                <strong class="calendario-mes" data-calendario-mes></strong>
+                                <button class="calendario-navegacao" type="button" data-mes-proximo aria-label="Próximo mês">›</button>
+                            </div>
+                            <div class="calendario-semana" aria-hidden="true">
+                                <span>DOM</span><span>SEG</span><span>TER</span><span>QUA</span><span>QUI</span><span>SEX</span><span>SÁB</span>
+                            </div>
+                            <div class="calendario-dias" data-calendario-dias></div>
+                            <div class="calendario-acoes">
+                                <button class="calendario-botao" type="button" data-calendario-confirmar disabled>Confirmar</button>
+                            </div>
+                        </div>
+                    </span>
+                </label>
+
             </form>
         </section>
     </main>
