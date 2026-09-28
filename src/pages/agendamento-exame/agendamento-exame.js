@@ -23,6 +23,8 @@ const botaoLimparHorario = comboboxHorario.querySelector('.combobox-limpar');
 const botaoSetaHorario = comboboxHorario.querySelector('.combobox-seta');
 const botaoConcluir = formularioExame.querySelector('button[type="submit"]');
 const mensagemFormulario = document.querySelector('#mensagem-formulario');
+const avisoAutenticacao = document.querySelector('#aviso-autenticacao');
+const pacienteIdentificado = document.querySelector('#paciente-identificado');
 
 // Dados fictícios: cada exame tem sua grade de horários e os horários já ocupados.
 const exames = [
@@ -55,10 +57,21 @@ const exames = [
 // A clínica não atende aos domingos (0 = domingo em Date.getDay()).
 const diasSemAtendimento = [0];
 const chaveAgendamentos = 'clinconecta_agendamentos';
+const chavePaciente = 'clinconecta.paciente';
 const chaveConfirmacao = 'agendamentoConfirmado';
 const paginaConfirmacao = '../confirmacao-agendamento/confirmacao-agendamento.html';
+const paciente = lerPacienteAutenticado();
 let mesCalendario = new Date();
 let dataTemporaria = '';
+
+function lerPacienteAutenticado() {
+    try {
+        const dados = JSON.parse(localStorage.getItem(chavePaciente) || 'null');
+        return dados && typeof dados === 'object' && (dados.cpf || dados.email) ? dados : null;
+    } catch {
+        return null;
+    }
+}
 
 function lerAgendamentos() {
     try {
@@ -318,6 +331,24 @@ function limparHorario() {
     fecharListaHorarios();
 }
 
+/* ===== Autenticação ===== */
+
+function bloquearFormulario() {
+    avisoAutenticacao.hidden = false;
+    formularioExame.querySelectorAll('input, button').forEach((elemento) => {
+        elemento.disabled = true;
+    });
+    comboboxExame.classList.add('combobox-desabilitado');
+}
+
+if (paciente) {
+    pacienteIdentificado.innerHTML = 'Agendando para <strong></strong>';
+    pacienteIdentificado.querySelector('strong').textContent = paciente.nome || paciente.email;
+    pacienteIdentificado.hidden = false;
+} else {
+    bloquearFormulario();
+}
+
 /* ===== Eventos ===== */
 
 renderizarExames();
@@ -428,6 +459,11 @@ document.addEventListener('click', (evento) => {
 formularioExame.addEventListener('submit', (evento) => {
     evento.preventDefault();
 
+    if (!paciente) {
+        bloquearFormulario();
+        return;
+    }
+
     const camposObrigatorios = [
         { nome: 'Exame', valor: campoExame.value, input: buscaExame },
         { nome: 'Data', valor: dataExame.value, input: buscaData },
@@ -460,6 +496,11 @@ formularioExame.addEventListener('submit', (evento) => {
         nomeExame: exame.nome,
         data: dataExame.value,
         horario: horarioSelecionado.value,
+        paciente: {
+            nome: paciente.nome || '',
+            cpf: paciente.cpf || '',
+            email: paciente.email || ''
+        },
         criadoEm: new Date().toISOString()
     };
 

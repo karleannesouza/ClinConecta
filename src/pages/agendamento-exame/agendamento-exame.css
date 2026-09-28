@@ -40,6 +40,39 @@
     color: #a72b2b;
 }
 
+.aviso-autenticacao {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+    margin-bottom: 24px;
+    padding: 12px 14px;
+    background: #fff3f3;
+    border-left: 3px solid #d93737;
+    color: #a72b2b;
+    font-size: 14px;
+}
+
+.aviso-autenticacao[hidden],
+.paciente-identificado[hidden] {
+    display: none;
+}
+
+.aviso-autenticacao p {
+    margin: 0;
+}
+
+.paciente-identificado {
+    margin: -12px 0 24px;
+    color: var(--texto-secundario);
+    font-size: 14px;
+}
+
+.paciente-identificado strong {
+    color: var(--texto);
+}
+
 .combobox-vazio {
     display: block;
 }

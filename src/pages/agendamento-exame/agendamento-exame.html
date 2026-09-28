@@ -29,6 +29,14 @@
             <h1 id="titulo-pagina">Qual exame você precisa?</h1>
             <p class="descricao-pagina">Selecione o exame, a data e um horário disponível.</p>
 
+            <!-- Exibido quando não há paciente autenticado neste navegador. -->
+            <div class="aviso-autenticacao" id="aviso-autenticacao" role="alert" hidden>
+                <p>Você precisa estar identificado para agendar um exame.</p>
+                <a class="botao botao-secundario" href="../cadastro-pacientes/cadastro-pacientes.html">Fazer cadastro</a>
+            </div>
+
+            <p class="paciente-identificado" id="paciente-identificado" hidden></p>
+
             <form id="form-exame" novalidate>
                 <label class="campo-formulario" for="exame-busca">
                     <span class="rotulo-campo">Exame <span class="obrigatorio">*</span></span>
