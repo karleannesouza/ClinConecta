@@ -1,0 +1,31 @@
+/* Estilos próprios do agendamento de exame.
+   A base (campos, combobox, calendário e botões) vem de ../Agendamento-consulta/agendamento.css. */
+
+.descricao-exame {
+    margin-top: 12px;
+    padding: 14px 16px;
+    background: var(--suave);
+    border: 1px solid var(--borda);
+    border-left: 3px solid var(--primaria);
+    border-radius: 8px;
+    font-size: 14px;
+    line-height: 1.5;
+}
+
+.descricao-exame[hidden] {
+    display: none;
+}
+
+.descricao-exame p {
+    margin: 6px 0 0;
+    color: var(--texto-secundario);
+}
+
+.descricao-exame .preparo-exame span:first-child {
+    color: var(--texto);
+    font-weight: 700;
+}
+
+.descricao-exame + .campo-formulario {
+    margin-top: 18px;
+}

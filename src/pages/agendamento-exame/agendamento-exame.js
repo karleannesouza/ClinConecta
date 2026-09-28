@@ -5,23 +5,27 @@ const comboboxExame = document.querySelector('[data-combobox-exame]');
 const listaExames = document.querySelector('#lista-exames');
 const botaoLimparExame = comboboxExame.querySelector('.combobox-limpar');
 const botaoSetaExame = comboboxExame.querySelector('.combobox-seta');
+const descricaoExame = document.querySelector('#descricao-exame');
 
 // Dados fictícios dos exames oferecidos pela clínica.
 const exames = [
     {
         valor: 'eletrocardiograma',
         nome: 'Eletrocardiograma',
-        descricao: 'Registra a atividade elétrica do coração para avaliar ritmo e frequência cardíaca.'
+        descricao: 'Registra a atividade elétrica do coração para avaliar ritmo e frequência cardíaca.',
+        preparo: 'Não é necessário jejum. Evite cremes ou óleos no peito no dia do exame.'
     },
     {
         valor: 'hemograma-completo',
         nome: 'Hemograma Completo',
-        descricao: 'Exame de sangue que avalia glóbulos vermelhos, glóbulos brancos e plaquetas.'
+        descricao: 'Exame de sangue que avalia glóbulos vermelhos, glóbulos brancos e plaquetas.',
+        preparo: 'Jejum de 4 horas. Beba água normalmente.'
     },
     {
         valor: 'ultrassonografia',
         nome: 'Ultrassonografia',
-        descricao: 'Exame de imagem que usa ondas sonoras para avaliar órgãos internos.'
+        descricao: 'Exame de imagem que usa ondas sonoras para avaliar órgãos internos.',
+        preparo: 'Jejum de 8 horas. Para abdome total, beba 1 litro de água 1 hora antes e não urine.'
     }
 ];
 
@@ -52,10 +56,18 @@ function renderizarExames() {
     `).join('');
 }
 
+function mostrarDescricao(exame) {
+    descricaoExame.querySelector('[data-descricao-nome]').textContent = exame.nome;
+    descricaoExame.querySelector('[data-descricao-texto]').textContent = exame.descricao;
+    descricaoExame.querySelector('[data-descricao-preparo]').textContent = exame.preparo;
+    descricaoExame.hidden = false;
+}
+
 function selecionarExame(exame) {
     campoExame.value = exame.valor;
     buscaExame.value = exame.nome;
     botaoLimparExame.hidden = false;
+    mostrarDescricao(exame);
     fecharListaExames();
 }
 
@@ -63,6 +75,7 @@ function limparExame() {
     campoExame.value = '';
     buscaExame.value = '';
     botaoLimparExame.hidden = true;
+    descricaoExame.hidden = true;
     renderizarExames();
     abrirListaExames();
 }

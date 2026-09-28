@@ -6,6 +6,7 @@
     <title>Agendar exame | ClinConecta</title>
     <link rel="stylesheet" href="../../styles/global.css">
     <link rel="stylesheet" href="../Agendamento-consulta/agendamento.css">
+    <link rel="stylesheet" href="./agendamento-exame.css">
     <script src="./agendamento-exame.js" defer></script>
 </head>
 <body>
@@ -39,6 +40,13 @@
                         <span class="combobox-lista" id="lista-exames" role="listbox" hidden></span>
                     </span>
                 </label>
+
+                <!-- aria-live anuncia a descrição sempre que o exame muda. -->
+                <div class="descricao-exame" id="descricao-exame" aria-live="polite" hidden>
+                    <strong data-descricao-nome></strong>
+                    <p data-descricao-texto></p>
+                    <p class="preparo-exame"><span>Preparo:</span> <span data-descricao-preparo></span></p>
+                </div>
 
             </form>
         </section>
