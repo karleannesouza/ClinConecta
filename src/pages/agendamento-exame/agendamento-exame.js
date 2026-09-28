@@ -439,4 +439,36 @@ formularioExame.addEventListener('submit', (evento) => {
         mensagemFormulario.hidden = false;
         return;
     }
+
+    // Confere de novo, pois o horário pode ter sido ocupado depois que a lista foi aberta.
+    if (!obterHorariosDisponiveis(campoExame.value, dataExame.value).includes(horarioSelecionado.value)) {
+        limparHorario();
+        habilitarHorarios();
+        marcarCampo(buscaHorario, true);
+        mensagemFormulario.textContent = 'Este horário não está mais disponível. Escolha outro horário.';
+        mensagemFormulario.hidden = false;
+        return;
+    }
+
+    const exame = buscarExame(campoExame.value);
+    const agendamento = {
+        tipo: 'exame',
+        exame: exame.valor,
+        nomeExame: exame.nome,
+        data: dataExame.value,
+        horario: horarioSelecionado.value,
+        criadoEm: new Date().toISOString()
+    };
+
+    try {
+        const agendamentosSalvos = lerAgendamentos();
+        agendamentosSalvos.push(agendamento);
+        localStorage.setItem(chaveAgendamentos, JSON.stringify(agendamentosSalvos));
+    } catch {
+        mensagemFormulario.textContent = 'Não foi possível salvar o agendamento. Tente novamente.';
+        mensagemFormulario.hidden = false;
+        return;
+    }
+
+    mensagemFormulario.hidden = true;
 });
