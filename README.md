@@ -16,6 +16,55 @@ O sistema utiliza **HTML, CSS e JavaScript**, sem backend e sem banco de dados. 
 - Demonstrar persistência local e controle de sessão em uma aplicação executada no navegador.
 - Manter a navegação consistente entre as páginas.
 
+## Público-alvo
+
+Pacientes de clínicas populares que desejam agendar e acompanhar consultas e exames pela internet, incluindo pessoas com pouca familiaridade com tecnologia.
+
+## Integrantes e organização da equipe
+
+A equipe conta com seis integrantes.
+
+| Integrante | Usuário no GitHub |
+| --- | --- |
+| Emanuelly Miranda | @manumiranda0807-byte |
+| Karleanne Souza | @karleannesouza |
+| Maria Clara Cavalcante | @ClaraCavalcante029 |
+| Rafael Silva | @RafaelSilvaWork |
+| Rubia Damaris | @rubiadamaris14-dot |
+| Vitoria Freitas | @vittoriafreitas |
+
+As contribuições individuais serão explicadas pessoalmente durante a apresentação do projeto, com apoio das evidências de participação no GitHub, como commits, Issues, branches e Pull Requests.
+
+A equipe mantém uma estrutura de pastas comum e desenvolve as alterações em branches próprias. Os Pull Requests para `dev` passam por revisão de Karleanne ou de outro integrante disponível. A integração das páginas e sua revisão também ocorrem em uma branch própria, antes do envio da versão final para `main`.
+
+## Planejamento e acompanhamento
+
+As orientações da atividade estabelecem um **Product Backlog priorizado**, com identificador, funcionalidade e prioridade. Cada história de usuário, critérios de aceitação, validação do QA estão dentro da descrição de cada issue. 
+
+O Kanban feito na aba Projects do git hub contém as etapas **Backlog**, **A fazer**, **Em desenvolvimento**, **Revisão** e **Concluído**, com organização das entregas em estrutura inicial, funcionalidades principais, correções e revisão e versão final. 
+
+### Links de acompanhamento
+
+- **Repositório:** https://github.com/karleannesouza/ClinConecta
+- **Product Backlog e Issues:** https://github.com/karleannesouza/ClinConecta/issues
+- **Quadro Kanban:** https://github.com/users/karleannesouza/projects/4/views/1
+
+
+## Fluxo Git
+
+O fluxo realizado foi:
+
+```text
+Ideia → Backlog → Issue → Branch Própria → Código → Commit → Pull Request para branch dev → Revisão → Merge
+```
+
+### Branches e integração
+
+- Cada funcionalidade foi desenvolvida em uma branch própria, sem concentrar o desenvolvimento diretamente na `main`.
+- Foram utilizados nomes descritivos, como `feature/nome-da-funcionalidade` e feito a padronização de commits como `fix/descricao-da-correcao`.
+
+- No fluxo informado, as branches de trabalho enviam Pull Requests para `dev`. A integração das páginas e a revisão acontecem em branch própria, e a versão final segue para `main`. A `main` recebe apenas código revisado.
+
 ## Tecnologias utilizadas
 
 | Tecnologia | Aplicação |
@@ -137,6 +186,8 @@ Mantenha o mesmo endereço e porta durante a demonstração para acessar o mesmo
 - Usar **Sair** e verificar o retorno ao login, preservando os dados salvos.
 - Entrar com outro paciente cadastrado e conferir a filtragem dos agendamentos por CPF.
 - Conferir a duração da sessão de 10 minutos e a navegação pelos botões **Voltar** e **Ir à página inicial**.
+
+
 
 ## Escopo acadêmico e estado atual
 
