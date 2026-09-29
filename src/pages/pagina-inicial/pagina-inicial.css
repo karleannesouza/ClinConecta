@@ -9,9 +9,21 @@
   border-bottom: 1px solid var(--cor-borda);
 }
 
+.botao-sair {
+    border-radius: 6px;
+    background-color: #dc3545;
+    color: #ffffff;
+    font: inherit;
+    cursor: pointer;
+}
+
+.botao-sair:hover {
+    opacity: 0.8;
+}
+
 .logo {
   display: block;
-  width: 200GIpx;
+  width: 200px;
   height: auto;
 }
 

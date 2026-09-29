@@ -44,6 +44,16 @@ const integracaoAgendamento = {
     },
 };
 
+const botaoSair = document.getElementById("botao-sair");
+
+if (botaoSair) {
+    botaoSair.hidden = !integracaoAgendamento.obterEstadoAutenticacao();
+
+    botaoSair.addEventListener("click", function () {
+        sessionStorage.removeItem("clinconecta.sessao");
+        window.location.href = integracaoAgendamento.destinos.loginCadastro;
+    });
+}
 function obterDestinoDoFluxo(tipoAgendamento) {
   if (typeof integracaoAgendamento.obterEstadoAutenticacao !== "function") {
     console.warn("A integração do estado de autenticação ainda não foi definida.");
