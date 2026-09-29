@@ -1,0 +1,434 @@
+
+    :root {
+  font-family: Arial, Helvetica, sans-serif;
+
+  --azul: #0758a8;
+  --azul-escuro: #064786;
+  --azul-claro: #eef6fc;
+  --verde: #09b58d;
+  --texto: #123f72;
+  --cinza: #5c7490;
+
+  background: #f3f8fd;
+  color: var(--texto);
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  background: #f3f8fd;
+}
+
+
+/* =========================
+   CABEÇALHO
+========================= */
+
+.header {
+  height: 82px;
+
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  padding: 0 max(24px, calc((100vw - 1050px) / 2));
+
+  background: white;
+
+  border-bottom: 1px solid #dce8f3;
+}
+
+
+/* LOGO */
+
+.brand {
+  display: flex;
+  align-items: center;
+  gap: 9px;
+
+  text-decoration: none;
+  color: var(--azul);
+
+  font-size: 27px;
+  font-weight: 800;
+}
+
+.brand-name span {
+  color: var(--verde);
+}
+
+.brand-icon {
+  position: relative;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  width: 39px;
+  height: 39px;
+
+  color: var(--azul);
+
+  font-size: 42px;
+  line-height: 1;
+}
+
+.brand-icon b {
+  position: absolute;
+
+  color: var(--verde);
+
+  font-size: 17px;
+  font-weight: 800;
+}
+
+
+/* CLÍNICA POPULAR */
+
+.clinic {
+  display: flex;
+  align-items: center;
+  gap: 9px;
+
+  color: var(--azul);
+}
+
+.clinic-heart {
+  font-size: 34px;
+  line-height: 1;
+}
+
+.clinic strong {
+  display: block;
+
+  font-size: 14px;
+  font-weight: 700;
+}
+
+.clinic small {
+  display: block;
+
+  margin-top: 2px;
+
+  font-size: 9px;
+  color: #41688f;
+}
+
+
+/* =========================
+   ÁREA PRINCIPAL
+========================= */
+
+main {
+  width: min(100% - 32px, 560px);
+
+  margin: 45px auto;
+}
+
+
+/* =========================
+   CARD
+========================= */
+
+.card {
+  background: white;
+
+  border: 1px solid #d8e6f1;
+  border-radius: 8px;
+
+  box-shadow: 0 5px 18px rgba(20, 70, 110, 0.08);
+
+  padding: 28px 34px 24px;
+}
+
+
+/* =========================
+   CONFIRMAÇÃO
+========================= */
+
+.success {
+  text-align: center;
+}
+
+.check {
+  width: 48px;
+  height: 48px;
+
+  margin: 0 auto 12px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  border-radius: 50%;
+
+  background: var(--verde);
+  color: white;
+
+  font-size: 28px;
+  font-weight: 400;
+}
+
+h1 {
+  margin: 0 0 6px;
+
+  color: var(--texto);
+
+  font-size: 21px;
+  font-weight: 700;
+}
+
+.subtitle {
+  margin: 0 0 22px;
+
+  color: #62809d;
+
+  font-size: 13px;
+}
+
+
+/* =========================
+   DADOS DO AGENDAMENTO
+========================= */
+
+.details {
+  margin: 0 0 18px;
+
+  padding: 5px 16px;
+
+  background: var(--azul-claro);
+
+  border: 1px solid #e1edf6;
+  border-radius: 5px;
+}
+
+
+.row {
+  display: grid;
+
+  grid-template-columns: 28px 1fr;
+
+  align-items: center;
+
+  min-height: 42px;
+
+  border-bottom: 1px solid #dce9f3;
+}
+
+.row:last-child {
+  border-bottom: none;
+}
+
+
+/* ÍCONES */
+
+.icon {
+  color: var(--azul);
+
+  font-size: 19px;
+
+  line-height: 1;
+}
+
+
+/* TEXTOS */
+
+.label {
+  display: block;
+
+  color: #65809a;
+
+  font-size: 10px;
+  line-height: 1.2;
+}
+
+.value {
+  display: block;
+
+  margin-top: 2px;
+
+  color: #173f6c;
+
+  font-size: 12px;
+  font-weight: 600;
+}
+
+
+/* =========================
+   BOTÃO
+========================= */
+
+.button {
+  width: 100%;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+
+  padding: 11px 16px;
+
+  background: #0875d1;
+
+  color: white;
+
+  border-radius: 5px;
+
+  font-size: 12px;
+  font-weight: 700;
+
+  text-decoration: none;
+
+  transition: background 0.2s;
+}
+
+.button:hover,
+.button:focus-visible {
+  background: #065eaa;
+}
+
+.button span {
+  font-size: 14px;
+}
+
+
+/* =========================
+   DEMO
+========================= */
+
+.demo {
+  margin-top: 12px;
+
+  color: #607991;
+
+  text-align: center;
+
+  font-size: 11px;
+}
+
+
+/* =========================
+   CELULAR
+========================= */
+
+@media (max-width: 600px) {
+
+  .header {
+    height: auto;
+
+    padding: 16px 18px;
+  }
+
+  .brand {
+    font-size: 21px;
+  }
+
+  .brand-icon {
+    width: 31px;
+    height: 31px;
+
+    font-size: 34px;
+  }
+
+  .brand-icon b {
+    font-size: 14px;
+  }
+
+  .clinic {
+    display: none;
+  }
+
+  main {
+    width: min(100% - 24px, 560px);
+
+    margin: 28px auto;
+  }
+
+  .card {
+    padding: 24px 20px 20px;
+  }
+
+  h1 {
+    font-size: 20px;
+  }
+
+  .subtitle {
+    font-size: 12px;
+  }
+
+}
+.brand img {
+  display: block;
+  width: min(230px, 100%);
+  height: auto;
+}
+
+.clinic-icon {
+  display: block;
+  width: 30px;
+  height: 30px;
+  object-fit: contain;
+}
+s
+@media (max-width: 600px) {
+  .brand img {
+    max-width: min(230px, 70vw);
+  }
+
+  .label {
+    font-size: 12px;
+  }
+
+  .value {
+    font-size: 14px;
+    overflow-wrap: anywhere;
+  }
+
+  .subtitle {
+    font-size: 14px;
+    line-height: 1.5;
+  }
+
+  .button {
+    min-height: 44px;
+    font-size: 14px;
+    text-align: center;
+  }
+}
+
+@media (max-width: 360px) {
+  .card {
+    padding: 20px 16px;
+  }
+
+  .details {
+    padding: 5px 10px;
+  }
+
+  .row {
+    grid-template-columns: 24px minmax(0, 1fr);
+    gap: 6px;
+  }
+}
+
+@media (max-width: 600px) {
+  .header {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 10px;
+  }
+
+  .clinic {
+    display: flex;
+    align-self: flex-end;
+  }
+
+  .clinic-icon {
+    width: 24px;
+    height: 24px;
+  }
+}

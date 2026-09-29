@@ -1,0 +1,525 @@
+/* Variáveis e paleta de cores */
+:root {
+  --fundo-pagina: #f4f7fc;
+  --fundo-card: #ffffff;
+
+  /* Cores da marca ClinConecta */
+  --azul-principal: #0066d4;
+  --azul-hover: #0052ad;
+  --verde-conexao: #00a896;
+
+  /* Textos */
+  --texto-titulo: #0f3567;
+  --texto-subtitulo: #627b9b;
+  --texto-label: #1a3b68;
+  --texto-placeholder: #8ca2bd;
+  --texto-padrao: #1e293b;
+
+  /* Bordas e ícones */
+  --borda-input: #dce7f6;
+  --borda-foco: #0066d4;
+  --icone-cinza: #5e7e9f;
+
+  /* Erro */
+  --fundo-erro: #feebee;
+  --vermelho: #e11d48;
+
+  /* Fonte */
+  --fonte-padrao: -apple-system, BlinkMacSystemFont, "Segoe UI",
+    Roboto, "Helvetica Neue", Arial, sans-serif;
+}
+
+
+/* Reset */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+
+/* Aparência geral da página */
+body {
+  font-family: var(--fonte-padrao);
+  background-color: var(--fundo-pagina);
+  color: var(--texto-padrao);
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  -webkit-font-smoothing: antialiased;
+}
+
+
+/* Cabeçalho */
+.cabecalho {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 16px;
+  padding: 16px 24px;
+  background-color: #ffffff;
+  border-bottom: 1px solid #ccd6e0;
+}
+
+
+/* Logo principal */
+.logo {
+  display: block;
+  width: 180px;
+  max-width: 100%;
+  height: auto;
+}
+
+
+/* Grupo do coração e dos textos */
+.identificacao-clinica {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+
+/* Coração vazado */
+.identificacao-clinica .icone-clinica {
+  display: block;
+  width: 48px;
+  height: 48px;
+  object-fit: contain;
+  flex-shrink: 0;
+}
+
+
+/* Textos ao lado do coração */
+.textos-clinica {
+  text-align: left;
+}
+
+
+/* Nome da clínica */
+.nome-clinica {
+  margin: 0;
+  font-family: Arial, sans-serif;
+  font-size: 16px;
+  font-weight: bold;
+  color: #123b64;
+}
+
+
+/* Descrição abaixo do nome */
+.descricao-clinica {
+  margin: 4px 0 0;
+  font-family: Arial, sans-serif;
+  font-size: 11px;
+  font-weight: normal;
+  color: #526477;
+}
+
+
+/* Área principal */
+.login-container {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 45px 20px;
+}
+
+
+/* Card de login */
+.login-card {
+  width: 100%;
+  max-width: 770px;
+  background-color: var(--fundo-card);
+  border-radius: 18px;
+  padding: 42px 45px;
+  border: 1px solid var(--borda-input);
+  box-shadow: 0 10px 30px rgba(15, 53, 103, 0.06);
+}
+
+.card-header {
+  margin-bottom: 30px;
+}
+
+.card-title {
+  font-size: 38px;
+  font-weight: 700;
+  color: var(--texto-titulo);
+  margin-bottom: 8px;
+  letter-spacing: -0.02em;
+}
+
+.card-subtitle {
+  font-size: 20px;
+  color: var(--texto-subtitulo);
+  line-height: 1.45;
+}
+
+
+/* Formulário */
+.login-form {
+  display: flex;
+  flex-direction: column;
+  gap: 22px;
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+  gap: 9px;
+}
+
+.form-label {
+  font-size: 18px;
+  font-weight: 600;
+  color: var(--texto-label);
+}
+
+.input-wrapper {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+
+/* Ícones dos campos */
+.input-icon-left {
+  position: absolute;
+  left: 18px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--icone-cinza);
+  pointer-events: none;
+}
+
+.input-icon-left .icon {
+  width: 22px;
+  height: 22px;
+}
+
+
+/* Campos */
+.form-input {
+  width: 100%;
+  height: 62px;
+  padding: 0 58px;
+  font-size: 17px;
+  font-family: inherit;
+  color: var(--texto-padrao);
+  background-color: #ffffff;
+  border: 1.5px solid var(--borda-input);
+  border-radius: 10px;
+  outline: none;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.form-input::placeholder {
+  color: var(--texto-placeholder);
+  font-size: 17px;
+}
+
+.form-input:focus {
+  border-color: var(--borda-foco);
+  box-shadow: 0 0 0 3px rgba(0, 102, 212, 0.12);
+}
+
+
+/* Mostrar ou ocultar senha */
+.password-toggle-btn {
+  position: absolute;
+  right: 14px;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  padding: 8px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--icone-cinza);
+  border-radius: 6px;
+  transition: color 0.15s ease;
+}
+
+.password-toggle-btn .icon {
+  width: 22px;
+  height: 22px;
+}
+
+.password-toggle-btn:hover {
+  color: var(--azul-principal);
+}
+
+
+/* Botão entrar */
+.btn-primary {
+  width: 100%;
+  height: 62px;
+  margin-top: 6px;
+
+  background-color: var(--azul-principal);
+  color: #ffffff;
+
+  border: none;
+  border-radius: 10px;
+
+  font-size: 20px;
+  font-weight: 600;
+  font-family: inherit;
+
+  cursor: pointer;
+
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+
+  transition: background-color 0.2s ease, transform 0.1s ease;
+}
+
+.btn-primary:hover {
+  background-color: var(--azul-hover);
+}
+
+.btn-primary:active {
+  transform: scale(0.99);
+}
+
+.btn-primary .icon-arrow-right {
+  width: 22px;
+  height: 22px;
+  stroke: #ffffff;
+  transition: transform 0.15s ease;
+}
+
+.btn-primary:hover .icon-arrow-right {
+  transform: translateX(3px);
+}
+
+
+/* Cadastro */
+.signup-prompt {
+  text-align: center;
+  margin-top: 22px;
+  font-size: 16px;
+  color: var(--texto-subtitulo);
+}
+
+.signup-link {
+  color: var(--azul-principal);
+  font-weight: 600;
+  text-decoration: underline;
+  margin-left: 4px;
+}
+
+
+/* Mensagem de erro */
+.alert-error {
+  display: none;
+  margin-top: 28px;
+  padding: 15px 20px;
+  border-radius: 9px;
+  background-color: var(--fundo-erro);
+}
+
+.alert-error.show {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.alert-error .icon-error {
+  width: 20px;
+  height: 20px;
+  color: var(--vermelho);
+  flex-shrink: 0;
+}
+
+.alert-text {
+  color: var(--vermelho);
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 1.35;
+}
+
+
+/* Tablet */
+@media (max-width: 768px) {
+
+  .cabecalho {
+    padding: 20px 28px;
+  }
+
+  .logo {
+    width: 180px;
+  }
+
+  .identificacao-clinica .icone-clinica {
+    width: 44px;
+    height: 44px;
+  }
+
+  .login-container {
+    padding: 35px 18px;
+  }
+
+  .login-card {
+    max-width: 680px;
+    padding: 36px 35px;
+  }
+
+  .card-title {
+    font-size: 34px;
+  }
+
+  .card-subtitle {
+    font-size: 18px;
+  }
+
+  .form-label {
+    font-size: 17px;
+  }
+
+  .form-input,
+  .btn-primary {
+    height: 58px;
+  }
+}
+
+
+/* Celular */
+@media (max-width: 640px) {
+
+  .cabecalho {
+    padding: 16px 20px;
+  }
+
+  .logo {
+    width: 170px;
+  }
+
+  .identificacao-clinica {
+    gap: 6px;
+  }
+
+  .identificacao-clinica .icone-clinica {
+    width: 36px;
+    height: 36px;
+  }
+
+  .nome-clinica {
+    font-size: 13px;
+  }
+
+  .descricao-clinica {
+    display: none;
+  }
+
+  .login-container {
+    padding: 24px 14px;
+    align-items: flex-start;
+  }
+
+  .login-card {
+    width: 100%;
+    padding: 30px 22px;
+    border-radius: 16px;
+  }
+
+  .card-header {
+    margin-bottom: 25px;
+  }
+
+  .card-title {
+    font-size: 28px;
+  }
+
+  .card-subtitle {
+    font-size: 15px;
+  }
+
+  .login-form {
+    gap: 18px;
+  }
+
+  .form-group {
+    gap: 7px;
+  }
+
+  .form-label {
+    font-size: 16px;
+  }
+
+  .form-input {
+    height: 55px;
+    padding: 0 50px;
+    font-size: 16px;
+  }
+
+  .form-input::placeholder {
+    font-size: 16px;
+  }
+
+  .input-icon-left {
+    left: 16px;
+  }
+
+  .input-icon-left .icon {
+    width: 20px;
+    height: 20px;
+  }
+
+  .password-toggle-btn {
+    right: 10px;
+  }
+
+  .btn-primary {
+    height: 55px;
+    font-size: 18px;
+  }
+
+  .signup-prompt {
+    font-size: 15px;
+    margin-top: 20px;
+  }
+}
+
+
+/* Celulares muito pequenos */
+@media (max-width: 380px) {
+
+  .cabecalho {
+    padding: 14px 16px;
+  }
+
+  .logo {
+    width: 145px;
+  }
+
+  .identificacao-clinica {
+    gap: 4px;
+  }
+
+  .identificacao-clinica .icone-clinica {
+    width: 30px;
+    height: 30px;
+  }
+
+  .nome-clinica {
+    font-size: 12px;
+  }
+
+  .login-card {
+    padding: 26px 18px;
+  }
+
+  .card-title {
+    font-size: 25px;
+  }
+
+  .card-subtitle {
+    font-size: 14px;
+  }
+}
