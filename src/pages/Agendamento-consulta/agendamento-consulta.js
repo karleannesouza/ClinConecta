@@ -513,6 +513,8 @@ formularioEspecialidade.addEventListener('submit', (evento) => {
     const especialidade = especialidades.find((item) => item.valor === especialidadeSelecionada);
     const profissional = profissionais.find((item) => item.valor === campoProfissional.value);
     const agendamentosSalvos = lerAgendamentos();
+    const pacienteSalvo = JSON.parse(localStorage.getItem("clinconecta.paciente"));
+    const pacienteCpf = pacienteSalvo?.cpf || null;
     const agendamentoRepetido = agendamentosSalvos.some((agendamento) =>
         agendamento.profissional === campoProfissional.value &&
         agendamento.data === dataConsulta.value &&
@@ -526,12 +528,16 @@ formularioEspecialidade.addEventListener('submit', (evento) => {
     }
 
     agendamentosSalvos.push({
+        id: `consulta-${Date.now()}`,
+        pacienteCpf: pacienteCpf,
+        tipo: 'consulta',
         especialidade: especialidadeSelecionada,
         nomeEspecialidade: especialidade.nome,
         profissional: campoProfissional.value,
         nomeProfissional: profissional.nome,
         data: dataConsulta.value,
         horario: horarioSelecionado.value,
+        status: 'marcado',
         criadoEm: new Date().toISOString()
     });
 try {

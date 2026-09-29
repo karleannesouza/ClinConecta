@@ -92,10 +92,13 @@
     }
 
     function obterAgendamentos() {
-        // Ponto de integração futura: substituir a fonte após acordar o contrato.
-        // Os registros atuais de clinconecta_agendamentos não têm proprietário.
-        return agendamentosFicticios;
-    }
+    const texto = localStorage.getItem('clinconecta_agendamentos');
+
+        if (texto === null) {
+            return [];
+        }
+            return JSON.parse(texto);
+        }
 
     function textoValido(valor) {
         return typeof valor === 'string' && valor.trim().length > 0;
@@ -113,40 +116,42 @@
     }
 
     function registroValido(registro) {
-        if (!registro || typeof registro !== 'object' || Array.isArray(registro)) {
-            return false;
-        }
-
-        const servicoValido = registro.tipo === 'consulta'
-            ? textoValido(registro.nomeEspecialidade)
-            : registro.tipo === 'exame' && textoValido(registro.nomeExame);
-        const profissionalValido = registro.nomeProfissional == null
-            || textoValido(registro.nomeProfissional);
-
-        return textoValido(registro.id)
-            && normalizarCpf(registro.pacienteCpf) !== null
-            && servicoValido
-            && profissionalValido
-            && dataValida(registro.data)
-            && typeof registro.horario === 'string'
-            && /^([01]\d|2[0-3]):[0-5]\d$/.test(registro.horario)
-            && ['marcado', 'cancelado'].includes(registro.status);
+    if (!registro || typeof registro !== 'object' || Array.isArray(registro)) {
+        return false;
     }
 
-    function selecionarAgendamentos(registros, cpf) {
-        if (!Array.isArray(registros)) {
-            throw new Error('Fonte de agendamentos inválida.');
-        }
+    const servicoValido = registro.tipo === 'consulta'
+        ? textoValido(registro.nomeEspecialidade)
+        : registro.tipo === 'exame' && textoValido(registro.nomeExame);
 
-        return registros
-            .filter((registro) => registroValido(registro)
-                && normalizarCpf(registro.pacienteCpf) === cpf)
-            .sort((primeiro, segundo) => {
-                const inicioPrimeiro = primeiro.data + 'T' + primeiro.horario;
-                const inicioSegundo = segundo.data + 'T' + segundo.horario;
-                return inicioPrimeiro < inicioSegundo ? -1 : inicioPrimeiro > inicioSegundo ? 1 : 0;
-            });
+    const profissionalValido = registro.nomeProfissional == null
+        || textoValido(registro.nomeProfissional);
+
+    return textoValido(registro.id)
+        && normalizarCpf(registro.pacienteCpf) !== null
+        && servicoValido
+        && profissionalValido
+        && dataValida(registro.data)
+        && typeof registro.horario === 'string'
+        && /^([01]\d|2[0-3]):[0-5]\d$/.test(registro.horario)
+        && ['marcado', 'cancelado'].includes(registro.status);
     }
+
+   function selecionarAgendamentos(registros, cpf) {
+    if (!Array.isArray(registros)) {
+        throw new Error('Fonte de agendamentos inválida.');
+    }
+
+    return registros
+        .filter((registro) => registroValido(registro)
+            && normalizarCpf(registro.pacienteCpf) === cpf)
+        .sort((primeiro, segundo) => {
+            const inicioPrimeiro = primeiro.data + 'T' + primeiro.horario;
+            const inicioSegundo = segundo.data + 'T' + segundo.horario;
+
+            return inicioPrimeiro < inicioSegundo ? -1 : inicioPrimeiro > inicioSegundo ? 1 : 0;
+        });
+}
 
     function exibirMensagem(texto) {
         lista.replaceChildren();

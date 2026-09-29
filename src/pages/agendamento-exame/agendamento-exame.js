@@ -491,6 +491,8 @@ formularioExame.addEventListener('submit', (evento) => {
 
     const exame = buscarExame(campoExame.value);
     const agendamento = {
+        id: `exame-${Date.now()}`,
+        pacienteCpf: paciente.cpf,
         tipo: 'exame',
         exame: exame.valor,
         nomeExame: exame.nome,
@@ -501,6 +503,7 @@ formularioExame.addEventListener('submit', (evento) => {
             cpf: paciente.cpf || '',
             email: paciente.email || ''
         },
+        status: 'marcado',
         criadoEm: new Date().toISOString()
     };
 
