@@ -56,6 +56,18 @@
     line-height: 1.35;
 }
 
+.pagina-meus-agendamentos .link-voltar {
+    display: inline-block;
+    margin-bottom: 20px;
+    color: var(--cor-texto);
+    font-size: 14px;
+    text-decoration: underline;
+}
+
+.pagina-meus-agendamentos .link-voltar:focus-visible {
+    outline: 2px solid var(--cor-primaria);
+    outline-offset: 4px;
+}
 /* Rótulos e valores de tipo, profissional, data, horário e status. */
 .pagina-meus-agendamentos .detalhes-agendamento {
     display: grid;
