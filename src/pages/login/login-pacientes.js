@@ -93,14 +93,13 @@ function validarCPF(cpf) {
 /* Valida o formato do e-mail */
 function validarEmail(email) {
   const regraEmail = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-
   return regraEmail.test(email);
 }
 
 
 /* Identifica se o campo está sendo usado como CPF */
 function ehCPF(valor) {
-  return /^[\d.\-\s]+$/.test(valor);
+    return /^[\d.\-\s]+$/.test(valor);
 }
 
 
@@ -140,6 +139,7 @@ passwordInput.addEventListener("input", () => {
 /* Valida os dados do formulário */
 loginForm.addEventListener("submit", (event) => {
   event.preventDefault();
+  errorMessage.textContent = "Informe um CPF ou e-mail válido e preencha a senha.";
 
   const identificador = identifierInput.value.trim();
   const senha = passwordInput.value.trim();
@@ -166,7 +166,55 @@ loginForm.addEventListener("submit", (event) => {
 
   /* Oculta o erro quando os dados são válidos */
   ocultarErro();
+/* Identifica o paciente e inicia a sessão simulada. */
+try {
+    const paciente = JSON.parse(
+        localStorage.getItem("clinconecta.paciente") || "null"
+    );
 
-  /* Redireciona para a tela de agendamento */
-  window.location.href = "../agendamento-consulta/agendamento-consulta.html";
+    const cpf = typeof paciente?.cpf === "string"
+        ? somenteNumeros(paciente.cpf)
+        : "";
+
+    const correspondeAoCadastro = ehCPF(identificador)
+        ? somenteNumeros(identificador) === cpf
+        : typeof paciente?.email === "string" &&
+          identificador.toLowerCase() === paciente.email.trim().toLowerCase();
+
+    if (!validarCPF(cpf) || !correspondeAoCadastro) {
+        errorMessage.textContent =
+            "Use o CPF ou e-mail cadastrado neste navegador. Se necessário, clique em Cadastre-se.";
+        mostrarErro();
+        return;
+    }
+
+    sessionStorage.setItem(
+        "clinconecta.sessao",
+        JSON.stringify({ pacienteCpf: cpf })
+    );
+} catch {
+    errorMessage.textContent =
+        "Não foi possível iniciar a sessão neste navegador.";
+    mostrarErro();
+    return;
+}  
+
+  /* Recupera o tipo de agendamento escolhido na página inicial. */
+const tipoAgendamento = sessionStorage.getItem(
+    "clinconecta.tipoAgendamento"
+);
+
+  /* Define os destinos permitidos. */
+const destinos = {
+    consulta: "../Agendamento-consulta/agendamento-consulta.html",
+    exame: "../agendamento-exame/agendamento-exame.html"
+};
+
+  /* Sem uma escolha válida, retorna à página inicial. */
+const destino = destinos[tipoAgendamento] || "../../index.html";
+
+  /* Remove a escolha depois de utilizá-la. */
+sessionStorage.removeItem("clinconecta.tipoAgendamento");
+
+window.location.assign(destino);
 });

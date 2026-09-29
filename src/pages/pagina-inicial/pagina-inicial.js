@@ -64,5 +64,10 @@ document.addEventListener("click", (evento) => {
     return;
   }
 
+  // Guarda se a pessoa escolheu consulta ou exame nesta aba.
+sessionStorage.setItem(
+    "clinconecta.tipoAgendamento",
+    tipoAgendamento
+);
   window.location.assign(destino);
 });
