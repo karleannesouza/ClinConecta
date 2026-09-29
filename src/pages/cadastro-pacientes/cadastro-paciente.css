@@ -103,11 +103,11 @@ input {
   /* ===== CAMPOS DO FORMULÁRIO ===== */
 input {
     width: 100%; /* Ocupa toda a largura disponível */
-    padding: 5px; /* Cria espaço entre o texto e as bordas */
+    padding: 8px; /* Cria espaço entre o texto e as bordas */
     box-sizing: border-box; /* Inclui o espaço interno e a borda na largura */
     margin-bottom: 14px; /* Cria espaço abaixo do campo */
     border: 1px solid #ccd6e0; /* Define uma borda fina cinza azulada */
-    border-radius: 8px; /* Arredonda os cantos */
+    border-radius: 4px; /* Arredonda os cantos */
     font-size: 16px; /* Define o tamanho do texto */
     color: #123b64; /* Define a cor do texto digitado */
 }
@@ -187,4 +187,8 @@ input:focus {
     outline: 2px solid #0074d9;
     outline-offset: 2px;
 }
- 
+
+ #mensagem-cadastro.sucesso {
+    color: #1cac51;
+    font-weight: 700;
+}
