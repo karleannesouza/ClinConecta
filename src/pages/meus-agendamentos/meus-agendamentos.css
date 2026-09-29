@@ -100,14 +100,9 @@
 }
 
 /* O status permanece legível em texto, sem depender apenas de cor. */
-.pagina-meus-agendamentos .detalhes-agendamento [data-campo="status"] {
-    display: inline-block;
-    max-width: 100%;
-    padding: 4px 12px;
-    background-color: var(--cor-fundo);
-    border: 1px solid var(--cor-borda);
-    border-radius: 16px;
-    font-size: 13px;
+.pagina-meus-agendamentos .detalhes-agendamento [data-campo="status"].status-cancelado {
+    color: #dc3545;
+    font-weight: 600;
 }
 
 .pagina-meus-agendamentos .estado-vazio {
@@ -129,6 +124,7 @@
 .pagina-meus-agendamentos [hidden] {
     display: none;
 }
+
 
 @media (max-width: 560px) {
     .pagina-meus-agendamentos {

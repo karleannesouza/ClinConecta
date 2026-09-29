@@ -108,9 +108,9 @@
 
 /* Ação de desistir */
 #desistir-cancelamento {
-    background-color: var(--cor-superficie);
+    background-color: rgb(61, 131, 71);
     border-color: var(--cor-borda);
-    color: var(--cor-texto);
+    color: white;
 }
 
 /* Ação de confirmar */
@@ -146,7 +146,7 @@
 .resumo-agendamento p:first-child { font-weight: 700; font-size: 17px; }
 .acoes-pagina { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 24px; }
 .acoes-pagina a, .acoes-pagina button { flex: 1; padding: 14px 18px; border-radius: 8px; text-align: center; font-size: 14px; line-height: 1.5; cursor: pointer; }
-.botao-voltar { background: white; color: var(--cor-texto); border: 1px solid var(--cor-borda); text-decoration: none; }
+.botao-voltar { background: rgb(61, 131, 71); color: white; border: 1px solid var(--cor-borda); text-decoration: none; }
 #abrir-cancelamento { border: 1px solid #c62828; background: #c62828; color: white; }
 #abrir-cancelamento:hover:not(:disabled) { background: #a51f1f; }
 #abrir-cancelamento:disabled { opacity: .5; cursor: not-allowed; }

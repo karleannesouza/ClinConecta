@@ -184,6 +184,16 @@
             campo('horario').textContent = registro.horario;
             campo('horario').setAttribute('datetime', registro.horario);
             campo('status').textContent = registro.status === 'marcado' ? 'Marcado' : 'Cancelado';
+            if (registro.status === 'cancelado') {
+                campo('status').classList.add('status-cancelado');
+            }
+            const botaoCancelar = item.querySelector('[data-acao="cancelar"]');
+
+            botaoCancelar.hidden = registro.status !== 'marcado';
+            botaoCancelar.addEventListener('click', function () {
+                sessionStorage.setItem('clinconecta.agendamentoCancelar', registro.id);
+                window.location.href ='../cancelamento-agendamento/cancelamento-agendamento.html';
+            });
 
             fragmento.appendChild(item);
         });
