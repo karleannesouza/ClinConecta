@@ -534,5 +534,29 @@ formularioEspecialidade.addEventListener('submit', (evento) => {
         horario: horarioSelecionado.value,
         criadoEm: new Date().toISOString()
     });
-    localStorage.setItem(chaveAgendamentos, JSON.stringify(agendamentosSalvos));
-});
+try {
+    // Mantém a gravação que já existia.
+    localStorage.setItem(
+        chaveAgendamentos,
+        JSON.stringify(agendamentosSalvos)
+    );
+
+    // Envia o resumo no formato utilizado pela confirmação.
+    sessionStorage.setItem("agendamentoConfirmado", JSON.stringify({
+        tipo: "Consulta",
+        especialidade: especialidade.nome,
+        profissional: profissional.nome,
+        data: dataConsulta.value.split("-").reverse().join("/"),
+        horario: horarioSelecionado.value
+    }));
+
+    botaoContinuar.disabled = true;
+
+    window.location.assign(
+        "../confirmacao-agendamento/confirmacao-agendamento.html"
+    );
+} catch {
+    mensagemFormulario.textContent =
+        "Não foi possível concluir esta etapa. O agendamento pode já ter sido salvo.";
+    mensagemFormulario.hidden = false;
+}});
