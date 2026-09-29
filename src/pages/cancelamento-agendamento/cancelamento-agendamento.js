@@ -63,7 +63,7 @@ function atualizarResumoDaPagina() {
         : "Marcado";
 
     const linhas = [
-        `${tipo} — ${servico}`,
+        `${tipo} ${servico}`,
         agendamentoTeste.nomeProfissional,
         `${dataFormatada} às ${agendamentoTeste.horario}`,
         `Status: ${status}`
@@ -176,7 +176,7 @@ botaoAbrir.addEventListener("click", function () {
     const dataFormatada = partesData.reverse().join("/");
 
     // Preenche o resumo com texto
-    resumoServico.textContent = `${tipoExibido} — ${nomeServico}`;
+    resumoServico.textContent = `${tipoExibido} ${nomeServico}`;
 
     resumoProfissional.textContent =
         agendamentoTeste.nomeProfissional || "";

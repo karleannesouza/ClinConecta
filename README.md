@@ -1,303 +1,153 @@
 # ClinConecta
 
-## 1. Sobre o projeto
+## Sobre o projeto
 
-O *ClinConecta* é um protótipo de alta fidelidade de um sistema web de agendamento online de consultas e exames para uma clínica popular. O projeto foi desenvolvido como atividade acadêmica do curso de Análise e Desenvolvimento de Sistemas e tem como foco principal a *experiência do usuário (UX) e a interface (UI)*.
+O **ClinConecta** é um protótipo de alta fidelidade de um sistema web de agendamento online de consultas e exames para uma clínica popular. Desenvolvido como atividade acadêmica do curso de **Análise e Desenvolvimento de Sistemas**, o projeto tem como foco a experiência do usuário (UX), a interface (UI) e a integração dos fluxos de atendimento no navegador.
 
-O problema que o sistema busca resolver é a dificuldade que pacientes de clínicas populares enfrentam para agendar atendimentos: em muitos casos, é necessário se deslocar até a unidade, enfrentar filas telefônicas ou atendimento presencial apenas para marcar uma consulta ou um exame.
+O projeto aborda a dificuldade enfrentada por pacientes que precisam se deslocar até uma unidade ou enfrentar filas telefônicas e atendimento presencial apenas para marcar uma consulta ou um exame. Sua proposta é demonstrar uma alternativa de agendamento pela internet, com poucos passos, linguagem simples e orientações claras.
 
-A finalidade do ClinConecta é permitir que o paciente realize todo o agendamento pela internet, em poucos passos, com linguagem simples e orientações claras — inclusive o pagamento, que é demonstrado de forma simulada dentro do próprio sistema.
+O sistema utiliza **HTML, CSS e JavaScript**, sem backend e sem banco de dados. Os dados são fictícios, e os cadastros e agendamentos são persistidos localmente no navegador.
 
-> *Nota:* trata-se de um protótipo navegável, sem backend, banco de dados ou integração real. Todos os dados são fictícios e existem apenas na memória do navegador durante a utilização.
+## Objetivos
 
-## 2. Objetivo
+- Facilitar o acesso aos serviços da clínica por meio do agendamento online de consultas e exames.
+- Oferecer uma interface simples e intuitiva, inclusive para pessoas com pouca familiaridade com tecnologia.
+- Integrar cadastro, login, agendamento, acompanhamento e cancelamento.
+- Demonstrar persistência local e controle de sessão em uma aplicação executada no navegador.
+- Manter a navegação consistente entre as páginas.
 
-O objetivo geral do sistema é *facilitar o acesso dos pacientes aos serviços da clínica*, permitindo agendar consultas e exames online, sem deslocamento e sem burocracia.
+## Tecnologias utilizadas
 
-De forma mais específica, o sistema busca:
-
-- Reduzir o número de etapas necessárias para agendar um atendimento;
-- Oferecer uma interface simples e intuitiva, adequada a usuários com pouca familiaridade com tecnologia;
-- Apresentar informações essenciais (serviço, preço, preparo, profissional, data, horário) de forma organizada e legível;
-- Demonstrar um fluxo completo de agendamento, incluindo pagamento, revisão, confirmação e acompanhamento dos agendamentos.
-
-## 3. Funcionalidades
-
-As funcionalidades abaixo estão implementadas no protótipo e podem ser navegadas no navegador.
-
-### 3.1 Cadastro e login (simulados)
-
-- Tela de acesso com a marca ClinConecta, campos de e-mail e senha e botão "Entrar";
-- Criação de novo cadastro ("Criar cadastro") com formulário simples;
-- Recuperação de senha, que exibe a mensagem "Instruções enviadas para o e-mail informado";
-- Validação visual de erro quando os campos não são preenchidos corretamente.
-
-> A autenticação é simulada: qualquer e-mail e senha permitem avançar, e nenhuma credencial é armazenada ou verificada.
-
-### 3.2 Página inicial
-
-- Saudação personalizada: "Olá, Vitória! O que você deseja agendar?";
-- Cards de atalho para *"Agendar consulta"* e *"Agendar exame"*;
-- Acesso a *"Meus agendamentos", *"Meu perfil"* e **área administrativa* pelo cabeçalho;
-- Cartão informativo "Tudo em um só lugar", com acesso ao perfil.
-
-### 3.3 Agendamento de consultas
-
-Fluxo específico para consultas, em etapas guiadas:
-
-1. Escolha da categoria (Consulta);
-2. Seleção do serviço/especialidade: *Clínico geral, Pediatra ou Cardiologista*, com nome, descrição e preço;
-3. Seleção do *profissional*: cards com nome, especialidade e CRM (ex.: "Dr. Marcos Silva — Clínico geral — CRM 12841"); o card selecionado fica em destaque;
-4. Escolha da *data* em calendário;
-5. Escolha do *horário*;
-6. Pagamento, revisão e confirmação.
-
-### 3.4 Agendamento de exames
-
-Fluxo específico para exames, sem etapa de profissional:
-
-1. Escolha da categoria (Exame);
-2. Seleção do exame: *Hemograma, Ecocardiograma ou Ultrassonografia, com nome, descrição, **instruções de preparo* (ex.: "Jejum de 8 horas") e preço;
-3. Escolha da *data* e do *horário*;
-4. Pagamento, revisão e confirmação.
-
-### 3.5 Pesquisa e filtro de exames
-
-- Campo de pesquisa por nome do exame (ex.: "Buscar exame, ex: Hemograma");
-- Botões de filtro por grupo: *Todos, Laboratório e Imagem*;
-- Estado vazio com a mensagem *"Nenhum exame encontrado."* e sugestão de nova busca quando a combinação de pesquisa e filtro não retorna resultados.
-
-### 3.6 Seleção de data e horário
-
-- *Calendário mensal (maio de 2026)* com dias da semana; dias disponíveis são selecionáveis e dias indisponíveis aparecem desabilitados (esmaecidos e riscados);
-- Confirmação visual da data escolhida: "Data selecionada: 15/05/2026";
-- Grade de *horários* (ex.: 14:20, 16:00, 17:20) em botões grandes, com apenas um horário selecionável por vez;
-- Legenda visual com os estados "Selecionado", "Disponível" e "Indisponível".
-
-### 3.7 Pagamento (Mercado Pago — simulado)
-
-- Tela "Escolha uma forma de pagamento" com duas opções: *PIX* e *Cartão*;
-- Fluxo PIX: QR Code fictício, código PIX de teste e status *"Aguardando pagamento" → "Pagamento aprovado"*;
-- Fluxo Cartão: formulário com número, nome, validade e CVV, com simulação de *aprovação* ou *recusa*; em caso de recusa, é exibida a mensagem "Não foi possível realizar o pagamento. Tente novamente." e o usuário pode tentar novamente ou trocar a forma de pagamento;
-- A aprovação do pagamento é obrigatória para avançar para a revisão;
-- Todas as telas de pagamento exibem o aviso *"Mercado Pago Sandbox — Ambiente seguro de teste"*.
-
-### 3.8 Revisão do agendamento
-
-- Resumo completo com: paciente, tipo de atendimento, serviço, profissional (quando aplicável), data, horário, forma de pagamento e status *"Pagamento aprovado"*;
-- Botões *"Voltar e editar"* (retorna à etapa anterior) e *"Confirmar agendamento"*.
-
-### 3.9 Confirmação / comprovante do agendamento
-
-- Mensagem de sucesso: *"Agendamento realizado com sucesso!"*;
-- Cartão-resumo com serviço, tipo de atendimento, profissional (quando aplicável), data e horário, forma de pagamento e status *"Confirmado"*;
-- Botões de continuidade: *"Ver meus agendamentos"* e *"Voltar para o início"*.
-
-### 3.10 Meus agendamentos
-
-- Lista de cards com os agendamentos do paciente, exibindo tipo (Consulta/Exame), serviço, profissional ou unidade, data, horário e *status* ("Confirmado" ou "Cancelado");
-- Botão *"Novo agendamento"* para reiniciar o fluxo.
-
-### 3.11 Perfil do paciente
-
-- Tela "Meu perfil" com os dados do paciente de demonstração (Vitória Régia) e navegação de volta para a área principal.
-
-### 3.12 Área administrativa
-
-- Tela administrativa simples com *tabela de agendamentos* contendo: paciente, serviço, tipo, data, horário e status (ex.: Vitória R. | Clínico geral | 15/05/2026 | 14:20 | Confirmado).
-
-### 3.13 Feedbacks ao usuário
-
-- Mensagens de sucesso (pagamento aprovado, agendamento confirmado, instruções enviadas);
-- Mensagens de erro (campos obrigatórios, pagamento recusado, "Nenhum exame encontrado.");
-- Estados visuais distintos para itens selecionados, disponíveis, indisponíveis e desabilitados.
-
-## 4. Fluxo de navegação
-
-A navegação é *guiada por etapas*, com um indicador de progresso fixo no topo durante o agendamento, exibindo a posição atual e as etapas concluídas:
-
-
-Login/Cadastro
-      │
-      ▼
-   Início ──► Meus agendamentos / Meu perfil / Administração
-      │
-      ▼
- Categoria (Consulta ou Exame)
-      │
-      ▼
- Serviço (especialidade ou exame)
-      │
-      ▼
- Profissional (somente para consultas)
-      │
-      ▼
- Data ──► Horário
-      │
-      ▼
- Pagamento (PIX ou Cartão — simulado)
-      │
-      ▼
- Revisão ──► Confirmação
-      │
-      ▼
- Meus agendamentos
-
-
-Características do fluxo:
-
-- Em *consultas, o fluxo inclui a etapa de escolha do profissional; em **exames*, essa etapa é omitida;
-- É possível *voltar a etapas anteriores* a qualquer momento, por meio do botão "Voltar" presente em cada tela e da opção "Voltar e editar" na revisão;
-- Os botões de avanço ("Continuar") permanecem *desabilitados* até que a escolha obrigatória da etapa seja feita, evitando avanços sem seleção;
-- As escolhas do paciente são mantidas durante todo o percurso, e a revisão final consolida todas as informações antes da confirmação.
-
-## 5. Tecnologias utilizadas
-
-| Tecnologia | Uso no projeto |
+| Tecnologia | Aplicação |
 | --- | --- |
-| *React 19* | Biblioteca para construção da interface |
-| *TypeScript* | Tipagem estática do código |
-| *TanStack Start v1* | Framework full-stack (roteamento em arquivos, SSR e funções de servidor) |
-| *TanStack Router* | Roteamento da aplicação |
-| *Vite* | Ferramenta de build e servidor de desenvolvimento |
-| *Tailwind CSS v4* | Estilização utilitária e design system (tokens semânticos de cor) |
-| *Lucide React* | Ícones da interface |
-| *Componentes de UI no padrão shadcn/ui* (Radix UI, class-variance-authority, clsx, tailwind-merge) | Botões, campos de entrada e utilitários de estilo |
+| HTML | Estrutura e conteúdo das páginas |
+| CSS | Estilização, apresentação visual e padronização dos botões |
+| JavaScript | Interações, navegação, controle de sessão e regras dos agendamentos |
+| `localStorage` | Persistência dos dados de cadastro e dos agendamentos |
+| `sessionStorage` | Controle da sessão temporária e transporte de dados entre páginas |
 
-> O protótipo *não utiliza* backend, banco de dados, bibliotecas de autenticação ou gateway de pagamento real: todo o comportamento é simulado no navegador com estado do React (useState/useMemo).
+## Funcionalidades
 
-## 6. UX/UI
+### Cadastro, login e sessão
 
-As principais decisões de UX/UI do protótipo foram:
+- Cadastro do paciente com persistência local dos dados.
+- Login integrado à identificação do paciente durante a navegação.
+- Sessão temporária de **10 minutos**, controlada por `sessionStorage` e validada durante a navegação entre as páginas.
+- Botão **Sair**, que encerra a sessão e redireciona para o login sem excluir o cadastro ou os agendamentos salvos.
+- Opção **Ir à página inicial** na tela de login.
 
-### Identidade visual
+O controle de acesso é demonstrativo e acontece no navegador; não há autenticação em um servidor.
 
-- Direção visual *"Warm teal wellness"*: verde-petróleo como cor primária e laranja acolhedor como destaque, transmitindo saúde, segurança, confiança e tranquilidade, sem aparência hospitalar;
-- Tipografia moderna: *Sora* para títulos e *Inter* para textos;
-- Estilo minimalista, com cartões organizados, cantos suaves, botões claros e bom uso de espaço em branco.
+### Agendamento de consultas e exames
 
-### Organização e hierarquia visual
+- Fluxos para agendar **consultas** e **exames**, utilizando dados fictícios.
+- Transporte de dados entre as páginas com `sessionStorage`.
+- Persistência dos agendamentos em `localStorage`.
+- Identificação de cada agendamento por um **ID único**.
+- Associação do registro ao CPF do paciente.
+- Uso dos status `marcado` e `cancelado` para acompanhar a situação do atendimento.
+- Integração dos dois tipos de atendimento com a página **Meus Agendamentos**.
 
-- Divisão do agendamento em *etapas curtas*, uma decisão por tela, reduzindo a carga cognitiva;
-- Indicador de progresso fixo mostrando onde o usuário está e o que falta;
-- Uso de "eyebrows" (rótulos como "Passo 1", "Próxima etapa") e títulos grandes para orientar o usuário;
-- Informações essenciais (preço, preparo, CRM, status) sempre visíveis nos cartões.
+### Meus Agendamentos
 
-### Facilidade de navegação
+- Leitura dos registros salvos na chave `clinconecta_agendamentos` do `localStorage`.
+- Exibição dos agendamentos criados nos fluxos de consultas e exames, substituindo a lista fixa de demonstração dessa página.
+- Filtragem pelo CPF do paciente identificado na sessão.
+- Exibição da situação de cada agendamento.
+- Destaque em **vermelho** para o status `cancelado`.
+- Botão **Cancelar agendamento** exibido somente para registros com status `marcado`.
 
-- Botões grandes e de fácil identificação, com rótulos em linguagem simples;
-- Botões de avanço desabilitados até a conclusão da escolha, prevenindo erros;
-- Possibilidade de voltar e editar etapas anteriores sem perder os dados já informados.
+### Cancelamento integrado
 
-### Acessibilidade e estados visuais
+- Seleção do agendamento a cancelar a partir de **Meus Agendamentos**.
+- Identificação do registro pelo seu ID único.
+- Exibição, na página de cancelamento, dos dados do agendamento selecionado.
+- Atualização do status para `cancelado` após a confirmação.
+- Persistência da alteração no `localStorage`, mantendo o registro cancelado disponível para consulta.
 
-- Contraste elevado entre texto e fundo;
-- Estados visuais bem definidos: *selecionado* (anel e preenchimento), *desabilitado* (esmaecido/riscado), *erro* (vermelho) e *sucesso* (verde);
-- Mensagens de feedback com ícones e cores semânticas (role="alert" nas mensagens de erro/aviso);
-- Atributos aria-label em elementos interativos e role="progressbar" no indicador de etapas;
-- Respeito à preferência do sistema prefers-reduced-motion para reduzir animações.
+O cancelamento permanece salvo após recarregar a página, e o registro deixa de apresentar o botão de cancelamento.
 
-## 7. Estrutura do projeto
+### Navegação e interface
 
+- Navegação integrada entre login, agendamento, listagem e cancelamento.
+- Botões **Voltar** padronizados para manter a consistência visual e de navegação.
+- Acesso à página inicial e encerramento de sessão pelos controles correspondentes.
+- Diferenciação visual do status cancelado para facilitar a leitura dos registros.
 
-├── index.html                          # Página HTML raiz
-├── package.json                        # Dependências e scripts
-├── src/
-│   ├── components/
-│   │   ├── clin-conecta-app.tsx        # Aplicação completa: telas, estado,
-│   │   │                               #   navegação e dados de demonstração
-│   │   └── ui/                         # Componentes de interface reutilizáveis
-│   │       ├── button.tsx              #   (botão)
-│   │       └── input.tsx               #   (campo de entrada)
-│   ├── routes/
-│   │   ├── __root.tsx                  # Shell raiz: fontes e metadados globais
-│   │   └── index.tsx                   # Rota "/" com metadados da página
-│   ├── styles.css                      # Design system: tokens de cor, fontes
-│   │                                   #   e utilidades
-│   ├── router.tsx                      # Configuração do roteador
-│   ├── routeTree.gen.ts                # Árvore de rotas (gerado automaticamente)
-│   ├── start.ts                        # Inicialização do TanStack Start
-│   └── server.ts                       # Entrada do servidor
-└── vite.config.ts                      # Configuração do Vite
+## Fluxo principal
 
+1. O paciente realiza o cadastro e o login.
+2. Escolhe o fluxo de consulta ou exame e conclui o agendamento.
+3. O sistema salva o registro com ID único, CPF do paciente, tipo de atendimento e status `marcado`.
+4. A página **Meus Agendamentos** apresenta os registros associados ao CPF do paciente identificado.
+5. Ao selecionar **Cancelar agendamento**, o paciente acessa os dados do registro correspondente.
+6. A confirmação do cancelamento altera o status para `cancelado` e salva a mudança no navegador.
+7. O paciente pode encerrar a sessão pelo botão **Sair**, preservando os dados persistidos.
 
-Toda a lógica do protótipo está centralizada em src/components/clin-conecta-app.tsx, que define:
+## Armazenamento dos dados
 
-- Os *tipos* das telas (Screen), categorias (Category) e formas de pagamento (PaymentMethod);
-- Os *dados fictícios* de consultas, exames e profissionais;
-- O *controle de navegação* entre telas por estado do React;
-- Os *componentes de cada tela*: autenticação, início, categoria, serviço, profissional, data, horário, pagamento (PIX e cartão), revisão, confirmação, meus agendamentos, perfil e administração.
+### Persistência com `localStorage`
 
-## 8. Responsividade
+Os dados de cadastro e os agendamentos permanecem armazenados após recarregar as páginas ou encerrar a sessão, enquanto o armazenamento do navegador for mantido.
 
-O protótipo é responsivo e se adapta a computador, tablet e celular:
+Os agendamentos utilizam a chave `clinconecta_agendamentos`. Entre os campos usados na integração estão:
 
-- *Grade fluida:* as grades de cards (serviços, profissionais, horários) se reorganizam conforme a largura da tela (sm:grid-cols-2, lg:grid-cols-3);
-- *Cabeçalho adaptável:* no computador, apresenta logotipo, navegação e perfil distribuídos em três colunas; no celular, os itens de navegação são agrupados em um menu inferior compacto;
-- *Indicador de progresso:* no celular, exibe apenas os números das etapas para economizar espaço; no computador, mostra também os nomes;
-- *Pagamento:* a escolha da forma de pagamento e o painel correspondente ficam lado a lado no computador e empilhados no celular;
-- *Formulários e tabelas:* campos e tabelas se ajustam à largura disponível, com rolagem horizontal na área administrativa quando necessário.
-
-O layout foi verificado em resoluções de desktop (1280 px) e mobile (390 px), sem overflow horizontal.
-
-## 9. Pagamentos
-
-O fluxo de pagamento do protótipo *simula* a integração com o *Mercado Pago em modo sandbox*. Nenhuma cobrança real é realizada e nenhuma transação é enviada a serviço externo.
-
-Funcionamento:
-
-1. O paciente escolhe entre *PIX* e *Cartão*;
-2. *PIX:* é exibido um QR Code fictício e um código PIX de teste. Ao clicar em "Simular pagamento", o status muda de "Aguardando pagamento" para "Pagamento aprovado";
-3. *Cartão:* o paciente preenche número, nome, validade e CVV (apenas dados de teste). O protótipo permite simular tanto a *aprovação* quanto a *recusa* do pagamento; em caso de recusa, é exibida uma mensagem clara e o usuário pode tentar novamente ou trocar a forma de pagamento;
-4. Somente com o pagamento *aprovado* o botão "Revisar agendamento" é habilitado;
-5. Todas as telas de pagamento exibem o aviso de ambiente de teste: "Mercado Pago Sandbox · Ambiente seguro de teste" e "Esta é apenas uma simulação. Nenhuma cobrança real será realizada.".
-
-## 10. Como executar o projeto
-
-Pré-requisitos: *Node.js* (versão 20 ou superior) e *npm* instalados.
-
-bash
-# 1. Clonar o repositório
-git clone <url-do-repositorio>
-cd clinconecta
-
-# 2. Instalar as dependências
-npm install
-
-# 3. Executar em modo de desenvolvimento
-npm run dev
-
-
-Após executar, acesse *http://localhost:8080* no navegador.
-
-Comandos adicionais:
-
-bash
-npm run build     # gera a build de produção
-npm run preview   # serve a build de produção localmente
-npm run lint      # executa a verificação de código
-
-
-> Não é necessária nenhuma configuração de variáveis de ambiente, banco de dados ou chaves de API: o protótipo funciona integralmente no navegador.
-
-## 11. Equipe
-
-| Integrante | Função |
+| Campo | Finalidade |
 | --- | --- |
-| (nome do integrante) | (função) |
-| (nome do integrante) | (função) |
-| (nome do integrante) | (função) |
-| (nome do integrante) | (função) |
+| `id` | Identificar de forma única o agendamento, inclusive no cancelamento |
+| `pacienteCpf` | Associar o registro ao paciente e filtrar a listagem |
+| `tipo` | Diferenciar consulta e exame |
+| `status` | Indicar se o agendamento está `marcado` ou `cancelado` |
 
-## 12. Status do projeto
+### Dados temporários com `sessionStorage`
 
-*Protótipo de alta fidelidade — projeto acadêmico em desenvolvimento.*
+O `sessionStorage` mantém as informações da sessão temporária e auxilia no transporte de dados entre as páginas. A duração de **10 minutos** é uma regra controlada pelo JavaScript do projeto.
 
-- O sistema é um protótipo navegável, com foco em UX/UI e representação visual;
-- Não há backend, banco de dados, autenticação real nem integração real com o Mercado Pago;
-- Os dados exibidos (paciente, profissionais, exames, consultas, agendamentos) são fictícios e não são persistidos — ao recarregar a página, o protótipo retorna à tela inicial;
-- O protótipo serve como referência visual e de experiência para orientar a equipe de desenvolvimento nas próximas fases do projeto.
+### Limites da persistência local
+
+- Os dados ficam vinculados ao navegador e à origem em que o projeto é acessado.
+- Não há sincronização entre dispositivos ou navegadores.
+- Limpar os dados do site pode remover os cadastros e agendamentos salvos.
+- A filtragem por CPF organiza a exibição dos registros no protótipo; ela não substitui autorização e proteção de dados em um backend.
+
+## Organização da aplicação
+
+A aplicação é composta por páginas HTML, arquivos CSS e scripts JavaScript que implementam a interface e conectam os fluxos. A comunicação entre páginas e a manutenção dos dados utilizam os recursos de armazenamento do navegador.
+
+## Como executar
+
+1. Baixe ou clone o repositório do projeto.
+2. Abra a pasta em um editor de sua preferência.
+3. Sirva a pasta com um servidor estático local, como a extensão **Live Server** do Visual Studio Code ou uma ferramenta equivalente.
+4. Acesse a página inicial pelo endereço disponibilizado pelo servidor.
+5. Utilize dados fictícios para explorar cadastro, login, consultas, exames e cancelamento.
+
+Mantenha o mesmo endereço e porta durante a demonstração para acessar o mesmo armazenamento local. Servir as páginas por HTTP local ajuda a manter o comportamento consistente do armazenamento entre elas.
+
+**Node.js e npm não são requisitos obrigatórios da aplicação.** Não é necessário configurar backend ou banco de dados.
+
+## Roteiro de demonstração
+
+- Realizar um cadastro e entrar no sistema.
+- Criar uma consulta e um exame.
+- Conferir os dois registros em **Meus Agendamentos**.
+- Recarregar a página e conferir a persistência dos registros.
+- Cancelar um agendamento e verificar o status em vermelho e a ausência do botão de cancelamento nesse registro.
+- Recarregar a página e conferir a persistência do cancelamento.
+- Usar **Sair** e verificar o retorno ao login, preservando os dados salvos.
+- Entrar com outro paciente cadastrado e conferir a filtragem dos agendamentos por CPF.
+- Conferir a duração da sessão de 10 minutos e a navegação pelos botões **Voltar** e **Ir à página inicial**.
+
+## Escopo acadêmico e estado atual
+
+O ClinConecta é um **protótipo acadêmico navegável**, com integração dos fluxos de cadastro, sessão, agendamento, acompanhamento e cancelamento no navegador.
+
+- Utiliza dados fictícios para demonstração.
+- Não possui backend nem banco de dados.
+- A persistência ocorre localmente, por meio das APIs de armazenamento do navegador.
+- Não realiza cobranças reais nem apresenta integração confirmada com gateway de pagamento.
+- Não se destina ao uso com dados reais de pacientes ou à operação de uma clínica em produção.
 
 ---
 
-Projeto acadêmico do curso de Análise e Desenvolvimento de Sistemas.
+Projeto acadêmico do curso de **Análise e Desenvolvimento de Sistemas**, com foco em UX/UI e na integração de fluxos web com HTML, CSS e JavaScript.

@@ -168,7 +168,7 @@ botoesAlternarSenha.forEach(function (botao) {
     });
 });
 
-    // FORMULARIO — encontra o formulário e o espaço para mensagens
+    // FORMULARIO - encontra o formulário e o espaço para mensagens
 const formulario = document.getElementById("form-cadastro");
 const mensagemCadastro = document.getElementById("mensagem-cadastro");
 
