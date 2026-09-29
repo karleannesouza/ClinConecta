@@ -33,6 +33,49 @@ const agendamentoTeste = {
     horario: "14:30",
     status: "marcado"
 };
+// Mostra na página os mesmos dados usados na confirmação.
+const detalhesCancelamento = document.getElementById(
+    "detalhes-cancelamento"
+);
+
+function atualizarResumoDaPagina() {
+    const tipo = agendamentoTeste.tipo === "consulta"
+        ? "Consulta"
+        : "Exame";
+
+    const servico = agendamentoTeste.tipo === "consulta"
+        ? agendamentoTeste.nomeEspecialidade
+        : agendamentoTeste.nomeExame;
+
+    const dataFormatada = agendamentoTeste.data
+        .split("-")
+        .reverse()
+        .join("/");
+
+    const status = agendamentoTeste.status === "cancelado"
+        ? "Cancelado"
+        : "Marcado";
+
+    const linhas = [
+        `${tipo} — ${servico}`,
+        agendamentoTeste.nomeProfissional,
+        `${dataFormatada} às ${agendamentoTeste.horario}`,
+        `Status: ${status}`
+    ];
+
+    detalhesCancelamento.replaceChildren();
+
+    linhas.filter(Boolean).forEach(function (texto) {
+        const paragrafo = document.createElement("p");
+        paragrafo.textContent = texto;
+        detalhesCancelamento.appendChild(paragrafo);
+    });
+
+    botaoAbrir.disabled = agendamentoTeste.status !== "marcado";
+}
+
+// Preenche o resumo ao carregar a página.
+atualizarResumoDaPagina();
 
 
 // ===== IDENTIFICAÇÃO DO PACIENTE =====
@@ -193,6 +236,7 @@ botaoConfirmar.addEventListener("click", function () {
 
     // Mantém o registro e seu proprietário, alterando apenas o status
     agendamentoTeste.status = "cancelado";
+    atualizarResumoDaPagina();
 
     // Fecha a janela e informa o resultado
     fecharModal();

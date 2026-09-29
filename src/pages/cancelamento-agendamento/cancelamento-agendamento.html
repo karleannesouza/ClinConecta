@@ -19,16 +19,37 @@
     <script src="./cancelamento-agendamento.js" defer></script>
 </head>
 <body>
-    <!-- Área temporária: será substituída pela integração com a listagem -->
-    <main class="pagina-teste-cancelamento">
-        <h1>Teste de cancelamento</h1>
-
+    <header class="cabecalho">
+        <a href="../../index.html">
+            <img class="logo" src="../../../public/images/logoprincipal.png" alt="ClinConecta - página inicial">
+        </a>
+        <div class="identificacao-clinica">
+            <img class="icone-clinica" src="../../../public/images/coracaovazado.png" alt="">
+            <div class="textos-clinica">
+                <p class="nome-clinica">Clínica Conecta</p>
+                <p class="descricao-clinica">Atendimento acessível e de qualidade.</p>
+            </div>
+        </div>
+    </header>
+    <main class="pagina-cancelamento">
+        <a class="link-voltar" href="../../index.html"> Voltar para o início </a>
+        <section class="painel-cancelamento" aria-labelledby="titulo-pagina">
+            <span class="etiqueta">SEUS ATENDIMENTOS</span>
+            <h1 id="titulo-pagina">Cancelar agendamento</h1>
+            <p class="introducao">Confira os detalhes antes de cancelar seu atendimento.</p>
+            <p class="introducao">  Demonstração com agendamento fictício. O cancelamento desta versão não fica salvo após recarregar a página.
+            </p>
+            <div id="detalhes-cancelamento" class="resumo-agendamento"></div>
+            <p id="mensagem-cancelamento" role="status" aria-live="polite"></p>
+            <div class="acoes-pagina">
+            <a class="botao-voltar" href="../../index.html">
+                Voltar para o início
+            </a>
         <button type="button" id="abrir-cancelamento">
             Cancelar agendamento
         </button>
-
-        <!-- Mostra mensagens de erro ou confirmação -->
-        <p id="mensagem-cancelamento" role="status"></p>
+            </div>
+        </section>
     </main>
 
     <!-- Janela de confirmação, inicialmente fechada -->
@@ -68,7 +89,7 @@
                 id="desistir-cancelamento"
                 autofocus
             >
-                Voltar
+                Manter agendamento
             </button>
 
             <button type="button" id="confirmar-cancelamento">

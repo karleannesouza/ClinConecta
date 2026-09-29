@@ -136,3 +136,22 @@
         flex-direction: column; /* Coloca um botão abaixo do outro */
     }
 }
+.pagina-cancelamento { width: min(720px, calc(100% - 32px)); margin: 36px auto 64px; }
+.link-voltar { display: inline-block; margin-bottom: 24px; color: var(--cor-texto); }
+.painel-cancelamento { background: var(--cor-superficie); border: 1px solid var(--cor-borda); border-radius: 16px; padding: clamp(24px, 5vw, 44px); box-shadow: 0 12px 28px #18406914; }
+.etiqueta { color: var(--cor-primaria); font-size: 12px; font-weight: 700; letter-spacing: .1em; }
+.painel-cancelamento h1 { font-size: clamp(26px, 5vw, 34px); margin: 14px 0; }
+.introducao { color: var(--cor-texto-secundario); line-height: 1.6; margin-bottom: 28px; }
+.painel-cancelamento .resumo-agendamento { border-left: 4px solid var(--cor-primaria); padding: 24px; }
+.resumo-agendamento p:first-child { font-weight: 700; font-size: 17px; }
+.acoes-pagina { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 24px; }
+.acoes-pagina a, .acoes-pagina button { flex: 1; padding: 14px 18px; border-radius: 8px; text-align: center; font-size: 14px; line-height: 1.5; cursor: pointer; }
+.botao-voltar { background: white; color: var(--cor-texto); border: 1px solid var(--cor-borda); text-decoration: none; }
+#abrir-cancelamento { border: 1px solid #c62828; background: #c62828; color: white; }
+#abrir-cancelamento:hover:not(:disabled) { background: #a51f1f; }
+#abrir-cancelamento:disabled { opacity: .5; cursor: not-allowed; }
+#mensagem-cancelamento { line-height: 1.6; font-weight: 700; }
+.pagina-cancelamento :focus-visible { outline: 3px solid var(--cor-primaria); outline-offset: 3px; }
+@media (max-width: 480px) { .acoes-pagina { flex-direction: column; } }
+
+#detalhes-cancelamento:empty { display: none; }
