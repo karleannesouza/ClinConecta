@@ -1,6 +1,7 @@
 const acoesAgendamento = Object.freeze({
   "agendar-consulta": "consulta",
   "agendar-exame": "exame",
+  "meus-agendamentos": "meus-agendamentos",
 });
 
 // No protótipo, o cadastro salvo identifica o paciente. Isso não representa uma autenticação real.
@@ -31,6 +32,7 @@ const integracaoAgendamento = {
         loginCadastro: "./pages/login/login-pacientes.html",
         consulta: "./pages/Agendamento-consulta/agendamento-consulta.html",
         exame: "./pages/agendamento-exame/agendamento-exame.html",
+        meusAgendamentos: "./pages/meus-agendamentos/meus-agendamentos.html",
     },
 };
 

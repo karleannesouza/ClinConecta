@@ -207,7 +207,9 @@ const tipoAgendamento = sessionStorage.getItem(
   /* Define os destinos permitidos. */
 const destinos = {
     consulta: "../Agendamento-consulta/agendamento-consulta.html",
-    exame: "../agendamento-exame/agendamento-exame.html"
+    exame: "../agendamento-exame/agendamento-exame.html",
+    meusAgendamentos: "../meus-agendamentos/meus-agendamentos.html"
+
 };
 
   /* Sem uma escolha válida, retorna à página inicial. */
