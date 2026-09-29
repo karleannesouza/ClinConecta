@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <!-- Permite exibir acentos corretamente -->
+    <meta charset="UTF-8">
+
+    <!-- Adapta a página à largura do dispositivo -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Cancelar agendamento - ClinConecta</title>
+
+    <!-- Aparência compartilhada pelo projeto -->
+    <link rel="stylesheet" href="../../styles/global.css">
+
+    <!-- Aparência específica do cancelamento -->
+    <link rel="stylesheet" href="./cancelamento-agendamento.css">
+
+    <!-- Executa o JavaScript depois da leitura do HTML -->
+    <script src="./cancelamento-agendamento.js" defer></script>
+</head>
+<body>
+    <header class="cabecalho">
+        <a href="../../index.html">
+            <img class="logo" src="../../../public/images/logoprincipal.png" alt="ClinConecta - página inicial">
+        </a>
+        <div class="identificacao-clinica">
+            <img class="icone-clinica" src="../../../public/images/coracaovazado.png" alt="">
+            <div class="textos-clinica">
+                <p class="nome-clinica">Clínica Conecta</p>
+                <p class="descricao-clinica">Atendimento acessível e de qualidade.</p>
+            </div>
+        </div>
+    </header>
+    <main class="pagina-cancelamento">
+        <a class="link-voltar" href="../../index.html"> Voltar para o início </a>
+        <section class="painel-cancelamento" aria-labelledby="titulo-pagina">
+            <span class="etiqueta">SEUS ATENDIMENTOS</span>
+            <h1 id="titulo-pagina">Cancelar agendamento</h1>
+            <p class="introducao">Confira os detalhes antes de cancelar seu atendimento.</p>
+            <p class="introducao">  Demonstração com agendamento fictício. O cancelamento desta versão não fica salvo após recarregar a página.
+            </p>
+            <div id="detalhes-cancelamento" class="resumo-agendamento"></div>
+            <p id="mensagem-cancelamento" role="status" aria-live="polite"></p>
+            <div class="acoes-pagina">
+            <a class="botao-voltar" href="../../index.html">
+                Voltar para o início
+            </a>
+        <button type="button" id="abrir-cancelamento">
+            Cancelar agendamento
+        </button>
+            </div>
+        </section>
+    </main>
+
+    <!-- Janela de confirmação, inicialmente fechada -->
+    <dialog
+        id="modal-cancelamento"
+        class="modal-cancelamento"
+        aria-labelledby="titulo-cancelamento"
+        aria-describedby="descricao-cancelamento"
+    >
+        <!-- Fecha sem alterar o agendamento -->
+        <button
+            type="button"
+            id="fechar-cancelamento"
+            class="fechar-modal"
+            aria-label="Fechar confirmação de cancelamento"
+        >
+            <span aria-hidden="true">×</span>
+        </button>
+
+        <h2 id="titulo-cancelamento">Cancelar agendamento</h2>
+
+        <p id="descricao-cancelamento">
+            Tem certeza de que deseja cancelar este agendamento?
+        </p>
+
+        <!-- O JavaScript preenche estes parágrafos -->
+        <div id="resumo-agendamento" class="resumo-agendamento">
+            <p id="resumo-servico"></p>
+            <p id="resumo-profissional"></p>
+            <p id="resumo-data-horario"></p>
+        </div>
+
+        <!-- Ações disponíveis na confirmação -->
+        <div class="acoes-cancelamento">
+            <button
+                type="button"
+                id="desistir-cancelamento"
+                autofocus
+            >
+                Manter agendamento
+            </button>
+
+            <button type="button" id="confirmar-cancelamento">
+                Cancelar agendamento
+            </button>
+        </div>
+    </dialog>
+</body>
+</html>
