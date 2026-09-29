@@ -15,7 +15,9 @@ const integracaoAgendamento = {
             }
 
             const paciente = JSON.parse(texto);
-            sessionStorage.getItem("clinconecta.sessao") || "null"
+            const sessao = JSON.parse(
+                sessionStorage.getItem("clinconecta.sessao") || "null"
+            );
 
             return (
                 paciente !== null &&
@@ -25,6 +27,8 @@ const integracaoAgendamento = {
                 paciente.cpf.trim() !== "" &&
                 sessao !== null &&
                 typeof sessao.pacienteCpf === "string" &&
+                typeof sessao.expiraEm === "number" &&
+                Date.now() < sessao.expiraEm &&
                 sessao.pacienteCpf === paciente.cpf.replace(/\D/g, "")
             );
         } catch {

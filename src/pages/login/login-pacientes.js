@@ -190,7 +190,7 @@ try {
 
     sessionStorage.setItem(
         "clinconecta.sessao",
-        JSON.stringify({ pacienteCpf: cpf })
+        JSON.stringify({ pacienteCpf: cpf, expiraEm: Date.now() + 10 * 60 * 1000 })
     );
 } catch {
     errorMessage.textContent =
