@@ -57,11 +57,26 @@
 }
 
 .pagina-meus-agendamentos .link-voltar {
-    display: inline-block;
-    margin-bottom: 20px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+
+    min-width: 110px;
+    height: 54px;
+    padding: 0 20px;
+    margin-bottom: 10px;
+
+    background-color: var(--cor-superficie);
     color: var(--cor-texto);
+
+    border: 1px solid var(--cor-borda);
+    border-radius: 6px;
+
     font-size: 14px;
-    text-decoration: underline;
+    font-weight: 600;
+    text-decoration: none;
+
+    cursor: pointer;
 }
 
 .pagina-meus-agendamentos .link-voltar:focus-visible {
@@ -125,6 +140,38 @@
     display: none;
 }
 
+/* Preserva os estados ocultos que serão controlados pelo JavaScript. */
+.pagina-meus-agendamentos [hidden] {
+    display: none;
+}
+
+/* Botão para cancelar um agendamento marcado. */
+.pagina-meus-agendamentos .botao-cancelar {
+    margin-top: 20px;
+    padding: 10px 16px;
+
+    background-color: #dc3545;
+    color: #ffffff;
+
+    border: none;
+    border-radius: 8px;
+
+    font-size: 14px;
+    font-weight: 600;
+    font-family: inherit;
+
+    cursor: pointer;
+
+    transition: background-color 0.2s ease, transform 0.1s ease;
+}
+
+.pagina-meus-agendamentos .botao-cancelar:hover {
+    background-color: #bb2d3b;
+}
+
+.pagina-meus-agendamentos .botao-cancelar:active {
+    transform: scale(0.99);
+}
 
 @media (max-width: 560px) {
     .pagina-meus-agendamentos {
