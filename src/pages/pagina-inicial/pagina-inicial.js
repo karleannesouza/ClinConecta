@@ -1,7 +1,7 @@
 const acoesAgendamento = Object.freeze({
   "agendar-consulta": "consulta",
   "agendar-exame": "exame",
-  "meus-agendamentos": "meus-agendamentos",
+  "meus-agendamentos": "meusAgendamentos",
 });
 
 // No protótipo, o cadastro salvo identifica o paciente. Isso não representa uma autenticação real.
@@ -15,13 +15,17 @@ const integracaoAgendamento = {
             }
 
             const paciente = JSON.parse(texto);
+            sessionStorage.getItem("clinconecta.sessao") || "null"
 
             return (
                 paciente !== null &&
                 typeof paciente === "object" &&
                 !Array.isArray(paciente) &&
                 typeof paciente.cpf === "string" &&
-                paciente.cpf.trim() !== ""
+                paciente.cpf.trim() !== "" &&
+                sessao !== null &&
+                typeof sessao.pacienteCpf === "string" &&
+                sessao.pacienteCpf === paciente.cpf.replace(/\D/g, "")
             );
         } catch {
             return false;
