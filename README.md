@@ -16,6 +16,55 @@ O sistema utiliza **HTML, CSS e JavaScript**, sem backend e sem banco de dados. 
 - Demonstrar persistência local e controle de sessão em uma aplicação executada no navegador.
 - Manter a navegação consistente entre as páginas.
 
+## Público-alvo
+
+Pacientes de clínicas populares que desejam agendar e acompanhar consultas e exames pela internet, incluindo pessoas com pouca familiaridade com tecnologia.
+
+## Integrantes e organização da equipe
+
+A equipe conta com seis integrantes.
+
+| Integrante | Usuário no GitHub | Participação na equipe |
+| --- | --- | --- |
+| Emanuelly&nbsp;Miranda | @manumiranda0807&#8288;-&#8288;byte | Implementação de Meus Agendamentos, incluindo consultas e exames, ordenação por data e horário e exibição de status. |
+| Karleanne&nbsp;Souza | @karleannesouza | Criação das Issues, gestão do backlog, desenvolvimento das telas de cancelamento e cadastro do paciente, integração das páginas e revisão de código antes do envio para `main`. |
+| Maria&nbsp;Clara&nbsp;Cavalcante | @ClaraCavalcante029 | Desenvolvimento da página inicial, incluindo estrutura, elementos visuais, botões de agendamento e suas funcionalidades. |
+| Rafael&nbsp;Silva | @RafaelSilvaWork | Desenvolvimento das telas de agendamento de consultas e exames, seleção de especialidade/profissional ou exame, calendário, horários disponíveis e salvamento do agendamento. |
+| Rubia&nbsp;Damaris | @rubiadamaris14-dot | Desenvolvimento da página de confirmação de agendamento, com layout responsivo e visual padronizado com o ClinConecta. |
+| Vitoria&nbsp;Freitas | @vittoriafreitas | Idealização do design e desenvolvimento da tela de login de pacientes, incluindo estrutura visual, estilização responsiva e validação. |
+
+As contribuições individuais serão explicadas pessoalmente durante a apresentação do projeto, com apoio das evidências de participação no GitHub, como commits, Issues, branches e Pull Requests.
+
+A equipe mantém uma estrutura de pastas comum e desenvolve as alterações em branches próprias. Os Pull Requests para `dev` passam por revisão de Karleanne ou de outro integrante disponível. A integração das páginas e sua revisão também ocorrem em uma branch própria, antes do envio da versão final para `main`.
+
+## Planejamento e acompanhamento
+
+As orientações da atividade estabelecem um **Product Backlog priorizado**, com identificador, funcionalidade e prioridade. As histórias de usuário, os critérios de aceitação e a validação de qualidade (QA) estão na descrição de cada Issue. 
+
+O quadro Kanban, organizado no GitHub Projects, contém as etapas **Backlog**, **A fazer**, **Em desenvolvimento**, **Revisão** e **Concluído**, com organização das entregas em estrutura inicial, funcionalidades principais, correções e revisão e versão final. 
+
+### Links de acompanhamento
+
+- **Repositório:** [ClinConecta](https://github.com/karleannesouza/ClinConecta)
+- **Product Backlog e Issues:** [Issues do projeto](https://github.com/karleannesouza/ClinConecta/issues)
+- **Quadro Kanban:** [GitHub Projects](https://github.com/users/karleannesouza/projects/4/views/1)
+
+
+## Fluxo Git
+
+O fluxo realizado foi:
+
+```text
+Ideia → Backlog → Issue → Branch Própria → Código → Commit → Pull Request para branch dev → Revisão → Merge
+```
+
+### Branches e integração
+
+- Cada funcionalidade foi desenvolvida em uma branch própria, sem concentrar o desenvolvimento diretamente na `main`.
+- As branches utilizam nomes descritivos, como `feature/nome-da-funcionalidade`. O formato `fix/descricao-da-correcao` também corresponde a um nome de branch. Para mensagens de commit, os exemplos de formato são `feat: adiciona funcionalidade`, `fix: corrige validação` e `docs: atualiza README`.
+
+- No fluxo informado, as branches de trabalho enviam Pull Requests para `dev`. A integração das páginas e a revisão acontecem em branch própria, e a versão final segue para `main`. A `main` recebe apenas código revisado.
+
 ## Tecnologias utilizadas
 
 | Tecnologia | Aplicação |
@@ -86,7 +135,7 @@ O cancelamento permanece salvo após recarregar a página, e o registro deixa de
 
 ## Armazenamento dos dados
 
-### Persistência com `localStorage`
+#### Persistência com `localStorage`
 
 Os dados de cadastro e os agendamentos permanecem armazenados após recarregar as páginas ou encerrar a sessão, enquanto o armazenamento do navegador for mantido.
 
@@ -99,7 +148,7 @@ Os agendamentos utilizam a chave `clinconecta_agendamentos`. Entre os campos usa
 | `tipo` | Diferenciar consulta e exame |
 | `status` | Indicar se o agendamento está `marcado` ou `cancelado` |
 
-### Dados temporários com `sessionStorage`
+#### Dados temporários com `sessionStorage`
 
 O `sessionStorage` mantém as informações da sessão temporária e auxilia no transporte de dados entre as páginas. A duração de **10 minutos** é uma regra controlada pelo JavaScript do projeto.
 
@@ -138,6 +187,28 @@ Mantenha o mesmo endereço e porta durante a demonstração para acessar o mesmo
 - Entrar com outro paciente cadastrado e conferir a filtragem dos agendamentos por CPF.
 - Conferir a duração da sessão de 10 minutos e a navegação pelos botões **Voltar** e **Ir à página inicial**.
 
+
+
+## Screenshots 
+
+### Página inicial
+![Página inicial](public/screenshots/Pagina-inicial.png)
+
+### Login
+![Login](public/screenshots/login.png)
+
+### Agendamento de consulta
+![Agendamento de consulta](public/screenshots/agendamento-de-consulta.png)
+
+### Agendamento de exame
+![Agendamento de exame](public/screenshots/agendamento-de-exame.png)
+
+### Meus Agendamentos
+![Meus Agendamentos](public/screenshots/meus-agendamentos.png)
+
+### Cancelamento de agendamento
+![Cancelamento de agendamento](public/screenshots/cancelamento-de-agendamento.png)
+
 ## Escopo acadêmico e estado atual
 
 O ClinConecta é um **protótipo acadêmico navegável**, com integração dos fluxos de cadastro, sessão, agendamento, acompanhamento e cancelamento no navegador.
@@ -151,3 +222,4 @@ O ClinConecta é um **protótipo acadêmico navegável**, com integração dos f
 ---
 
 Projeto acadêmico do curso de **Análise e Desenvolvimento de Sistemas**, com foco em UX/UI e na integração de fluxos web com HTML, CSS e JavaScript.
+
