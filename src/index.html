@@ -1,11 +1,109 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-</head>
-<body>
-    
-</body>
+<!doctype html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>ClinConecta</title>
+    <!-- Os caminhos são relativos a este arquivo, que está dentro de src/. -->
+    <link rel="stylesheet" href="./styles/global.css" />
+    <link rel="stylesheet" href="./pages/pagina-inicial/pagina-inicial.css" />
+  </head>
+  <body>
+    <header class="cabecalho">
+      <img
+        class="logo"
+        src="../public/images/logoprincipal.png"
+        alt="ClinConecta"
+      />
+
+      <div class="identificacao-clinica">
+        <img
+          class="icone-clinica"
+          src="../public/images/coracaovazado.png"
+          alt=""
+          aria-hidden="true"
+        />
+        <div class="textos-clinica">
+          <p class="nome-clinica">Clínica Popular</p>
+          <p class="descricao-clinica">Atendimento acessível de qualidade</p>
+        </div>
+        <button type="button" class="botao-sair" id="botao-sair"> Sair </button>
+      </div>
+    </header>
+
+    <main>
+      <!-- aria-labelledby associa o nome desta seção ao título principal. -->
+      <section class="hero" aria-labelledby="titulo-principal">
+        <div class="hero__conteudo">
+          <h1 id="titulo-principal">Sua saúde<BR>mais perto de você</h1>
+          <p class="hero__descricao">
+            Agende consultas e exames nas<BR>principais especialidades, com<BR>preços
+            acessíveis e atendimento de qualidade.
+          </p>
+          <!-- Os atributos data-acao identificam os botões para eventos futuros. -->
+          <div class="hero__acoes">
+            <button
+              class="botao-agendamento botao-agendamento--consulta"
+              type="button"
+              data-acao="agendar-consulta"
+            >
+              <svg class="icone-botao" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false">
+                <rect x="3.5" y="5.5" width="17" height="16" rx="2" />
+                <path d="M8 3.5v4M16 3.5v4M3.5 10h17M8 14h2M14 14h2M8 17h2" />
+              </svg>
+              Agendar consulta
+            </button>
+            <button
+              class="botao-agendamento botao-agendamento--consulta"
+              type="button"
+              data-acao="agendar-exame"
+            >
+              <svg class="icone-botao" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false">
+                <path d="M9 3h6M10 3v6.2l-5.4 9.3A1.7 1.7 0 0 0 6.1 21h11.8a1.7 1.7 0 0 0 1.5-2.5L14 9.2V3" />
+                <path d="M8 15h8M10 12h4" />
+              </svg>
+              Agendar exame
+            </button>
+            <button
+              class="botao-agendamento botao-agendamento--consulta"
+              type="button"
+              data-acao="meus-agendamentos"
+            >
+              <svg
+                  class="icone-botao"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  aria-hidden="true"
+                  focusable="false"
+              >
+                  <rect x="4" y="3" width="16" height="18" rx="2" />
+                  <path d="M8 8h8M8 12h8M8 16h5" />
+              </svg>
+              Meus agendamentos
+          </button>
+          </div>
+          <p class="mensagem-seguranca">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false">
+              <path d="M12 3 20 6v5c0 4.6-3 8-8 10-5-2-8-5.4-8-10V6l8-3Z" />
+              <path d="m9 12 2 2 4-4" />
+            </svg>
+            <span>É rápido, seguro e sem complicação.</span>
+          </p>
+        </div>
+        <figure class="hero__imagem">
+          <img
+            src="../public/images/imagempaginainicial.png"
+            alt="Estetoscópio e símbolo de cuidado com a saúde"
+          />
+        </figure>
+      </section>
+    </main>
+
+    <!-- No fim do body, o script é carregado depois da estrutura da página. -->
+    <script src="./pages/pagina-inicial/pagina-inicial.js"></script>
+  </body>
 </html>

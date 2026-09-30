@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Meus agendamentos - ClinConecta</title>
+    <link rel="stylesheet" href="../../styles/global.css">
+    <link rel="stylesheet" href="./meus-agendamentos.css">
+    <script src="./meus-agendamentos.js" defer></script>
+</head>
+<body>
+    <header class="cabecalho">
+        <a href="../../index.html">
+            <img class="logo" src="../../../public/images/logoprincipal.png" alt="ClinConecta - página inicial">
+        </a>
+        <div class="identificacao-clinica">
+            <img class="icone-clinica" src="../../../public/images/coracaovazado.png" alt="">
+            <div class="textos-clinica">
+                <p class="nome-clinica">Clínica Conecta</p>
+                <p class="descricao-clinica">Atendimento acessível e de qualidade.</p>
+            </div>
+        </div>
+    </header>
+
+    <main class="pagina-meus-agendamentos">
+        <section class="painel-meus-agendamentos" aria-labelledby="titulo-pagina">
+            <a class="link-voltar" href="../../index.html">
+                Voltar para a pagina inicial
+            </a>
+            <h1 id="titulo-pagina">Meus agendamentos</h1>
+            <p class="descricao-pagina">Acompanhe suas consultas e exames agendados.</p>
+
+            <!-- O JavaScript renderizará os itens e alternará a lista e o estado vazio. -->
+            <ul class="lista-agendamentos" id="lista-agendamentos" aria-label="Agendamentos do paciente" hidden></ul>
+
+            <div class="estado-vazio" id="estado-vazio" role="status" hidden>
+                <p>Você ainda não possui agendamentos.</p>
+            </div>
+        </section>
+    </main>
+
+    <!-- Modelo sem dados para os itens que serão preenchidos pelo JavaScript. -->
+    <template id="modelo-agendamento">
+        <li class="item-agendamento">
+            <article class="card-agendamento">
+                <h2 class="titulo-agendamento" data-campo="servico"></h2>
+                <dl class="detalhes-agendamento">
+                    <div>
+                        <dt>Tipo do agendamento</dt>
+                        <dd data-campo="tipo"></dd>
+                    </div>
+                    <!-- O JavaScript omitirá este grupo quando não houver profissional. -->
+                    <div data-grupo="profissional">
+                        <dt>Profissional</dt>
+                        <dd data-campo="profissional"></dd>
+                    </div>
+                    <div>
+                        <dt>Data</dt>
+                        <dd><time data-campo="data"></time></dd>
+                    </div>
+                    <div>
+                        <dt>Horário</dt>
+                        <dd><time data-campo="horario"></time></dd>
+                    </div>
+                    <div>
+                        <dt>Status</dt>
+                        <dd data-campo="status"></dd>
+                    </div>
+                </dl>
+                    <button
+                        type="button"
+                        class="botao-cancelar"
+                        data-acao="cancelar"
+                    >
+                        Cancelar agendamento
+                    </button>
+            </article>
+        </li>
+    </template>
+</body>
+</html>

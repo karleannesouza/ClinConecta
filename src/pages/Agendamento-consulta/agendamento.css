@@ -1,0 +1,503 @@
+:root {
+    --fundo: #eef3fc;
+    --superficie: #ffffff;
+    --texto: #123b64;
+    --texto-secundario: #526477;
+    --primaria: #0878d1;
+    --primaria-escura: #075fa8;
+    --borda: #d6e0ec;
+    --suave: #f5f8fd;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    min-width: 320px;
+    background: var(--fundo);
+    color: var(--texto);
+    font-family: Arial, sans-serif;
+}
+
+button,
+input {
+    font: inherit;
+}
+
+.pagina-agendamento {
+    width: min(900px, calc(100% - 32px));
+    margin: 0 auto;
+    padding: 34px 0 64px;
+}
+
+.painel-agendamento {
+    padding: clamp(24px, 5vw, 48px);
+    background: var(--superficie);
+    border: 1px solid var(--borda);
+    border-radius: 8px;
+    box-shadow: 0 12px 28px rgba(24, 64, 105, 0.08);
+}
+
+.rotulo-etapa {
+    margin: 0 0 8px;
+    color: var(--primaria);
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+}
+
+h1 {
+    margin: 0;
+    font-size: clamp(24px, 4vw, 32px);
+    line-height: 1.2;
+}
+
+.descricao-pagina {
+    margin: 10px 0 28px;
+    color: var(--texto-secundario);
+    font-size: 15px;
+    line-height: 1.5;
+}
+
+.campo-formulario {
+    display: grid;
+    gap: 2px;
+    color: var(--texto);
+    font-size: 13px;
+    font-weight: 700;
+}
+
+.campo-formulario + .campo-formulario {
+    margin-top: 18px;
+}
+
+.rotulo-campo {
+    line-height: 1.3;
+}
+
+.campo-data-input {
+    width: 100%;
+    min-height: 46px;
+    padding: 0 14px;
+    border: 1px solid #ccd6e0;
+    border-radius: 8px;
+    background: #ffffff;
+    color: var(--texto);
+    cursor: pointer;
+    font-size: 15px;
+}
+
+.campo-data-input:focus {
+    border-color: var(--primaria);
+    outline: 2px solid rgba(8, 120, 209, 0.18);
+    outline-offset: 1px;
+}
+
+.campo-data-input:disabled {
+    background: #f1f4f8;
+    color: #91a0af;
+    cursor: not-allowed;
+}
+
+.obrigatorio {
+    color: #d93737;
+}
+
+.combobox {
+    position: relative;
+    display: block;
+}
+
+.combobox-input {
+    width: 100%;
+    min-height: 46px;
+    padding: 0 76px 0 14px;
+    border: 1px solid #ccd6e0;
+    border-radius: 8px;
+    background: #ffffff;
+    color: var(--texto);
+    cursor: pointer;
+    font-size: 15px;
+}
+
+.combobox-input::placeholder {
+    color: #8293a7;
+}
+
+.combobox-input:focus {
+    border-color: var(--primaria);
+    outline: 2px solid rgba(8, 120, 209, 0.18);
+    outline-offset: 1px;
+}
+
+.combobox-input:disabled {
+    cursor: not-allowed;
+}
+
+.combobox-seta,
+.combobox-limpar {
+    position: absolute;
+    top: 50%;
+    display: grid;
+    width: 30px;
+    height: 30px;
+    padding: 0;
+    place-items: center;
+    transform: translateY(-50%);
+    border: 0;
+    background: transparent;
+    color: var(--texto-secundario);
+    cursor: pointer;
+}
+
+.combobox-limpar[hidden],
+.combobox-lista[hidden] {
+    display: none;
+}
+
+.combobox-seta {
+    right: 8px;
+    font-size: 0;
+}
+
+.combobox-seta::before {
+    width: 8px;
+    height: 8px;
+    border-right: 2px solid var(--texto-secundario);
+    border-bottom: 2px solid var(--texto-secundario);
+    content: '';
+    transform: translateY(4px) rotate(45deg);
+}
+
+.combobox-limpar {
+    right: 38px;
+    border-radius: 50%;
+    background: #e4e9ef;
+    color: #6d7d8d;
+    font-size: 18px;
+    line-height: 1;
+}
+
+.combobox-lista {
+    position: absolute;
+    z-index: 2;
+    top: calc(100% + 6px);
+    right: 0;
+    left: 0;
+    display: grid;
+    max-height: 220px;
+    overflow-y: auto;
+    padding: 6px;
+    border: 1px solid var(--borda);
+    border-radius: 8px;
+    background: #ffffff;
+    box-shadow: 0 10px 22px rgba(24, 64, 105, 0.16);
+}
+
+.calendario[hidden] {
+    display: none;
+}
+
+.calendario {
+    position: absolute;
+    z-index: 3;
+    top: calc(100% + 6px);
+    right: 0;
+    left: 0;
+    padding: 16px;
+    border: 1px solid var(--borda);
+    border-radius: 12px;
+    background: #ffffff;
+    box-shadow: 0 12px 28px rgba(24, 64, 105, 0.18);
+}
+
+.calendario-cabecalho,
+.calendario-acoes {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 10px;
+}
+
+.calendario-cabecalho {
+    position: relative;
+    justify-content: center;
+}
+
+.calendario-fechar {
+    position: absolute;
+    top: -4px;
+    right: -4px;
+    display: grid;
+    width: 26px;
+    height: 26px;
+    place-items: center;
+    border: 0;
+    border-radius: 50%;
+    background: #e4e9ef;
+    color: #6d7d8d;
+    cursor: pointer;
+    font-size: 18px;
+    line-height: 1;
+}
+
+.calendario-mes {
+    color: var(--texto);
+    font-size: 14px;
+}
+
+.calendario-navegacao,
+.calendario-botao {
+    border: 1px solid var(--borda);
+    background: #ffffff;
+    color: var(--texto);
+    cursor: pointer;
+}
+
+.calendario-navegacao {
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    font-size: 22px;
+    line-height: 1;
+}
+
+.calendario-semana,
+.calendario-dias {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    gap: 5px;
+    text-align: center;
+}
+
+.calendario-semana {
+    margin: 18px 0 8px;
+    color: var(--texto-secundario);
+    font-size: 10px;
+    font-weight: 700;
+}
+
+.calendario-dia,
+.calendario-dia-vazio {
+    display: grid;
+    min-height: 32px;
+    place-items: center;
+}
+
+.calendario-dia {
+    border: 0;
+    border-radius: 50%;
+    background: transparent;
+    color: var(--texto);
+    cursor: pointer;
+    font-size: 12px;
+}
+
+.calendario-dia:hover,
+.calendario-dia:focus-visible {
+    background: #e8f2fc;
+    outline: 0;
+}
+
+.calendario-dia.dia-indisponivel {
+    color: #b8c2cc;
+    cursor: not-allowed;
+    text-decoration: line-through;
+}
+
+.calendario-dia.dia-indisponivel:hover {
+    background: transparent;
+}
+
+.calendario-dia.dia-selecionado {
+    background: var(--primaria);
+    color: #ffffff;
+    font-weight: 700;
+}
+
+.calendario-acoes {
+    margin-top: 16px;
+    justify-content: flex-end;
+}
+
+.calendario-botao {
+    min-width: 88px;
+    min-height: 34px;
+    padding: 0 14px;
+    border-radius: 18px;
+    font-size: 12px;
+    font-weight: 700;
+}
+
+.calendario-botao:disabled {
+    background: #f1f4f8;
+    color: #91a0af;
+    cursor: not-allowed;
+}
+
+.opcao-combobox {
+    display: grid;
+    gap: 3px;
+    padding: 11px 12px;
+    border: 0;
+    border-radius: 6px;
+    background: transparent;
+    color: var(--texto);
+    text-align: left;
+    cursor: pointer;
+}
+
+.opcao-combobox:hover,
+.opcao-combobox:focus-visible {
+    background: #e8f2fc;
+    outline: 0;
+}
+
+.opcao-combobox.horario-indisponivel {
+    background: #f1f4f8;
+    color: #9aa7b4;
+    cursor: not-allowed;
+}
+
+.opcao-combobox.horario-indisponivel span {
+    color: #9aa7b4;
+}
+
+.opcao-combobox.horario-indisponivel:hover {
+    background: #f1f4f8;
+}
+
+.opcao-combobox.horario-ocupado {
+    background: #fff4f2;
+    color: #b65d50;
+    cursor: not-allowed;
+}
+
+.opcao-combobox.horario-ocupado span {
+    color: #b65d50;
+}
+
+.opcao-combobox.horario-ocupado:hover {
+    background: #fff4f2;
+}
+
+.opcao-combobox strong {
+    font-size: 14px;
+}
+
+.opcao-combobox span,
+.combobox-vazio {
+    color: var(--texto-secundario);
+    font-size: 12px;
+}
+
+.combobox-vazio {
+    padding: 12px;
+}
+
+.mensagem-formulario {
+    margin: 16px 0 0;
+    padding: 12px 14px;
+    background: #fff3f3;
+    border-left: 3px solid #d93737;
+    color: #a72b2b;
+    font-size: 13px;
+}
+
+.acoes-formulario {
+    display: flex;
+    justify-content: space-between;
+    gap: 12px;
+    margin-top: 32px;
+}
+
+.botao {
+    display: inline-flex;
+    min-height: 44px;
+    align-items: center;
+    justify-content: center;
+    padding: 0 24px;
+    border: 1px solid var(--borda);
+    border-radius: 4px;
+    background: var(--superficie);
+    color: var(--texto);
+    font-size: 14px;
+    font-weight: 700;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.button-cadastrar {
+    width: 100%;
+    min-height: 44px;
+    padding: 12px;
+    border: 1px solid var(--primaria);
+    border-radius: 8px;
+    background: var(--primaria);
+    color: #ffffff;
+    font-size: 16px;
+    font-weight: 700;
+    cursor: pointer;
+}
+
+.button-cadastrar:hover:not(:disabled) {
+    background: var(--primaria-escura);
+}
+
+.button-cadastrar:disabled {
+    border-color: #b6c7d8;
+    background: #b6c7d8;
+    cursor: not-allowed;
+}
+
+.botao-secundario {
+    background: #ffffff;
+    color: var(--texto);
+}
+
+.botao-secundario:hover {
+    background: var(--suave);
+}
+
+.sr-only {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border: 0;
+}
+
+@media (max-width: 560px) {
+    .painel-agendamento {
+        padding: 24px 18px;
+    }
+
+    .acoes-formulario {
+        flex-direction: column-reverse;
+    }
+
+    .botao {
+        width: 100%;
+    }
+}
+
+.combobox-desabilitado {
+    opacity: 0.72;
+}
+
+.combobox-input:disabled {
+    background: #f1f4f8;
+    color: #91a0af;
+    cursor: not-allowed;
+}
+
+.combobox-seta:disabled {
+    cursor: not-allowed;
+}
