@@ -49,7 +49,6 @@ O quadro Kanban, organizado no GitHub Projects, contém as etapas **Backlog**, *
 - **Product Backlog e Issues:** [Issues do projeto](https://github.com/karleannesouza/ClinConecta/issues)
 - **Quadro Kanban:** [GitHub Projects](https://github.com/users/karleannesouza/projects/4/views/1)
 
-
 ## Fluxo Git
 
 O fluxo realizado foi:
@@ -186,8 +185,6 @@ Mantenha o mesmo endereço e porta durante a demonstração para acessar o mesmo
 - Usar **Sair** e verificar o retorno ao login, preservando os dados salvos.
 - Entrar com outro paciente cadastrado e conferir a filtragem dos agendamentos por CPF.
 - Conferir a duração da sessão de 10 minutos e a navegação pelos botões **Voltar** e **Ir à página inicial**.
-
-
 
 ## Screenshots 
 
