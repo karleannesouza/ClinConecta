@@ -1,18 +1,59 @@
 const acoesAgendamento = Object.freeze({
   "agendar-consulta": "consulta",
   "agendar-exame": "exame",
+  "meus-agendamentos": "meusAgendamentos",
 });
 
-// Esses valores aguardam as rotas e a autenticação que serão fornecidas pelo projeto.
+// No protótipo, o cadastro salvo identifica o paciente. Isso não representa uma autenticação real.
 const integracaoAgendamento = {
-  obterEstadoAutenticacao: null,
-  destinos: {
-    loginCadastro: null,
-    consulta: null,
-    exame: null,
-  },
+    obterEstadoAutenticacao: function () {
+        try {
+            const texto = localStorage.getItem("clinconecta.paciente");
+
+            if (!texto) {
+                return false;
+            }
+
+            const paciente = JSON.parse(texto);
+            const sessao = JSON.parse(
+                sessionStorage.getItem("clinconecta.sessao") || "null"
+            );
+
+            return (
+                paciente !== null &&
+                typeof paciente === "object" &&
+                !Array.isArray(paciente) &&
+                typeof paciente.cpf === "string" &&
+                paciente.cpf.trim() !== "" &&
+                sessao !== null &&
+                typeof sessao.pacienteCpf === "string" &&
+                typeof sessao.expiraEm === "number" &&
+                Date.now() < sessao.expiraEm &&
+                sessao.pacienteCpf === paciente.cpf.replace(/\D/g, "")
+            );
+        } catch {
+            return false;
+        }
+    },
+
+    destinos: {
+        loginCadastro: "./pages/login/login-pacientes.html",
+        consulta: "./pages/Agendamento-consulta/agendamento-consulta.html",
+        exame: "./pages/agendamento-exame/agendamento-exame.html",
+        meusAgendamentos: "./pages/meus-agendamentos/meus-agendamentos.html",
+    },
 };
 
+const botaoSair = document.getElementById("botao-sair");
+
+if (botaoSair) {
+    botaoSair.hidden = !integracaoAgendamento.obterEstadoAutenticacao();
+
+    botaoSair.addEventListener("click", function () {
+        sessionStorage.removeItem("clinconecta.sessao");
+        window.location.href = integracaoAgendamento.destinos.loginCadastro;
+    });
+}
 function obterDestinoDoFluxo(tipoAgendamento) {
   if (typeof integracaoAgendamento.obterEstadoAutenticacao !== "function") {
     console.warn("A integração do estado de autenticação ainda não foi definida.");
@@ -43,5 +84,10 @@ document.addEventListener("click", (evento) => {
     return;
   }
 
+  // Guarda se a pessoa escolheu consulta ou exame nesta aba.
+sessionStorage.setItem(
+    "clinconecta.tipoAgendamento",
+    tipoAgendamento
+);
   window.location.assign(destino);
 });

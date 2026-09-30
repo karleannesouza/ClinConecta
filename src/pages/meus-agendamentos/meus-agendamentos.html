@@ -24,6 +24,9 @@
 
     <main class="pagina-meus-agendamentos">
         <section class="painel-meus-agendamentos" aria-labelledby="titulo-pagina">
+            <a class="link-voltar" href="../../index.html">
+                Voltar para a pagina inicial
+            </a>
             <h1 id="titulo-pagina">Meus agendamentos</h1>
             <p class="descricao-pagina">Acompanhe suas consultas e exames agendados.</p>
 
@@ -64,6 +67,13 @@
                         <dd data-campo="status"></dd>
                     </div>
                 </dl>
+                    <button
+                        type="button"
+                        class="botao-cancelar"
+                        data-acao="cancelar"
+                    >
+                        Cancelar agendamento
+                    </button>
             </article>
         </li>
     </template>

@@ -18,22 +18,28 @@ const resumoProfissional = document.getElementById("resumo-profissional");
 const resumoDataHorario = document.getElementById("resumo-data-horario");
 
 
-// ===== AGENDAMENTO FICTÍCIO PARA TESTE =====
+    // ===== AGENDAMENTO SELECIONADO =====
 
-// Este objeto existe apenas na memória enquanto a página está aberta
-const agendamentoTeste = {
-    id: "consulta-001",
-    pacienteCpf: "52998224725",
-    tipo: "consulta",
-    especialidade: "clinico-geral",
-    nomeEspecialidade: "Clínico geral",
-    profissional: "marcos-silva",
-    nomeProfissional: "Dr. Marcos Silva",
-    data: "2026-12-10",
-    horario: "14:30",
-    status: "marcado"
-};
-// Mostra na página os mesmos dados usados na confirmação.
+    // Recupera o ID do agendamento escolhido na página Meus Agendamentos
+const idAgendamento = sessionStorage.getItem(
+    "clinconecta.agendamentoCancelar"
+);
+
+    // Recupera os agendamentos salvos no navegador
+const dadosAgendamentos = localStorage.getItem(
+    "clinconecta_agendamentos"
+);
+
+const agendamentos = dadosAgendamentos
+    ? JSON.parse(dadosAgendamentos)
+    : [];
+
+    // Procura o agendamento correspondente ao ID selecionado
+const agendamentoTeste = agendamentos.find(function (agendamento) {
+    return agendamento.id === idAgendamento;
+});
+
+    // Mostra na página os mesmos dados usados na confirmação.
 const detalhesCancelamento = document.getElementById(
     "detalhes-cancelamento"
 );
@@ -57,7 +63,7 @@ function atualizarResumoDaPagina() {
         : "Marcado";
 
     const linhas = [
-        `${tipo} — ${servico}`,
+        `${tipo} ${servico}`,
         agendamentoTeste.nomeProfissional,
         `${dataFormatada} às ${agendamentoTeste.horario}`,
         `Status: ${status}`
@@ -170,7 +176,7 @@ botaoAbrir.addEventListener("click", function () {
     const dataFormatada = partesData.reverse().join("/");
 
     // Preenche o resumo com texto
-    resumoServico.textContent = `${tipoExibido} — ${nomeServico}`;
+    resumoServico.textContent = `${tipoExibido} ${nomeServico}`;
 
     resumoProfissional.textContent =
         agendamentoTeste.nomeProfissional || "";
@@ -236,6 +242,9 @@ botaoConfirmar.addEventListener("click", function () {
 
     // Mantém o registro e seu proprietário, alterando apenas o status
     agendamentoTeste.status = "cancelado";
+    localStorage.setItem("clinconecta_agendamentos",
+    JSON.stringify(agendamentos)
+    );
     atualizarResumoDaPagina();
 
     // Fecha a janela e informa o resultado

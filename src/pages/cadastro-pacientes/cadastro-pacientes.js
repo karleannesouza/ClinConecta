@@ -168,7 +168,7 @@ botoesAlternarSenha.forEach(function (botao) {
     });
 });
 
-    // FORMULARIO — encontra o formulário e o espaço para mensagens
+    // FORMULARIO - encontra o formulário e o espaço para mensagens
 const formulario = document.getElementById("form-cadastro");
 const mensagemCadastro = document.getElementById("mensagem-cadastro");
 
@@ -190,9 +190,17 @@ try {
     const pacienteEmTexto = JSON.stringify(paciente);
 
     localStorage.setItem("clinconecta.paciente", pacienteEmTexto);
-
+    mensagemCadastro.classList.add("sucesso");
     mensagemCadastro.textContent =
-        "Cadastro salvo com sucesso neste navegador.";
+        "Cadastro salvo com sucesso! Você será direcionado para o login.";
+
+    // Evita novos envios enquanto aguarda o redirecionamento.
+    formulario.querySelector('button[type="submit"]').disabled = true;
+
+    setTimeout(function () {
+        window.location.assign("../login/login-pacientes.html");
+    }, 2000);
+
     } catch (erro) {
     mensagemCadastro.textContent =
         "Não foi possível salvar. Os campos foram mantidos para tentar novamente.";
